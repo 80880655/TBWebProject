@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08 SetTimeout 02</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .box {
+            margin: 40px auto;
+            width: 400px;
+            height: 120px;
+            border: 1px solid #ccc;
+        }
+
+        div div {
+            margin: 40px auto;
+            width: 200px;
+            height: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box02">
+            <a id="a01">5</a>
+            <a>秒钟之后将会返回</a>
+            <a href="http://www.baidu.com">首页</a>
+            <!-- <a>首页</a> -->
+        </div>
+    </div>
+
+    <script>
+        var a01=document.getElementById("a01");
+        var icount=5;
+        var timer=null;
+
+        timer=setInterval(gotoIndexPage,1000);
+
+        setTimeout(gotoIndexPage);
+
+        // 1.第一件事情就是界面上的数值发生变化，递减
+
+        // 2.5秒钟之后就跳转到主页。
+
+
+        function gotoIndexPage() {
+            icount--;
+            if (icount>=0) {
+                // 1.界面数值的变动
+                a01.innerHTML=icount;
+            }
+            else
+            {
+                //注意： 这里一定是加上 "http://" 否则就报错
+                window.location.href="http://www.baidu.com";
+                clearTimeout(timer);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图的小圆点</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            margin: 50px 500px 0 500px;
+            border: 1px solid #ccc;
+            width: 300px;
+            height: 150px;
+        }
+
+        div ul {
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            /*margin-left: -30px;*/
+        }
+
+        div ul li {
+            float: left;
+            width: 18px;
+            height: 18px;
+            list-style: none;
+            border-radius: 50%;
+            font-weight: bold;
+            /*begin 水平居中、垂直居中*/
+            text-align: center;
+            line-height: 18px;
+            /*end 水平居中、垂直居中*/
+
+            background-color: #3E3E3E;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        div ul li:hover {
+            /*pointer指针*/
+            cursor: pointer;
+            background-color: #b61b1f;
+        }
+
+        div ul li.current {
+            background-color: #b61b1f;
+        }
+
+    </style>
+    <link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+<div>
+    <ul>
+        <li class="current">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="arrow">
+        <a href="">></a>
+        <a href=""><</a>
+    </div>
+</div>
+
+</body>
+</html>

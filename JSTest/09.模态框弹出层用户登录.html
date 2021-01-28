@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态框弹出层-用户登录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*1.不加引号*/
+            /*background: url(../images/baidu/1.jpg) top center;*/
+            /*2.加单引号*/
+            background: url('../images/baidu/1.jpg') top center;
+            /*3.默认是双引号*/
+            /*background: url("../images/baidu/1.jpg") top center;*/
+        }
+
+        /*用户点击登录之后，整个页面背景全部变成灰色变透明的效果。*/
+        .mask {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            /*如果页面中有其他的定位，则需要指定一下z-index的值，确保在最上层*/
+            z-index: 999;
+
+            /*用户进入页面后，默认是隐藏这个盒子的*/
+            display: none;
+        }
+
+        /*用户登录框弹出层*/
+        .loginfrm {
+            /*默认不显示出来，当用户点击登录之后就显示；*/
+            display: none;
+
+            /*背景是z-index:999，所以这个要设置成1000*/
+
+            z-index: 1000;
+            width: 400px;
+            height: 230px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin:-115px 0 0 -200px;
+        }
+
+        .close {
+            display: block;
+            font-size: 18px;
+            /*字体的高度等于字体大小*/
+            line-height: 18px;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            /*background-color: red;*/
+
+            /*这里使用绝对定位将X号固定在最右边。*/
+            position: absolute;
+            top:0px;
+            right: 10px;
+
+        }
+
+        .close:hover {
+            cursor: pointer;
+
+            /*下面2个就是旋转*/
+            transition: all 0.3s;
+            transform-origin: 50 100;
+
+
+            border-radius: 50%;
+            transform: rotate(-90deg);
+        }
+
+        .box_login {
+            float: right;
+            font-size: 14px;
+            color: #666;
+            margin-right: 100px;
+        }
+
+        .box_login:hover {
+            color:#e33333;
+            cursor: pointer;
+        }
+
+
+        .box {
+            height: 150px;
+            background: rgba(255, 255, 255, .3);
+            /*box下面的img水平居中*/
+            text-align: center;
+
+            /*如果图片过大就不能使用line-height*/
+            /*line-height: 250px;*/
+            padding-top: 70px;
+        }
+
+        .box img {
+            width: 100px;
+
+            /*修改这个值可以改变图片显示放大的速度*/
+            transition: all 0.3s;
+        }
+
+        .box img:hover {
+            cursor: pointer;
+            /*下面这个值是改变图片当前的大小倍数*/
+            transform: scale(1.4);
+
+            /*鼠标经过图片的时候，将左右2边的外边距变大*/
+            margin-right: 20px;
+            margin-left: 20px;
+            /*1111*/
+        }
+
+    </style>
+
+    <script>
+        // 1.onload入口函数，有入口函数之后就可以将 script 脚本写在网页的最上面； 如果没有则只能写在 body 里面的最下面。
+        window.onload = function () {
+            // 1.先声明对象
+            var pic1 = document.getElementById("pic1");
+            var pic2 = document.getElementById("pic2");
+            var pic3 = document.getElementById("pic3");
+            var pic4 = document.getElementById("pic4");
+            var pic5 = document.getElementById("pic5");
+            var mask=document.getElementById("mask");
+            var denglu=document.getElementById("denglu");
+            var loginfrm=document.getElementById("loginfrm");
+            var close=document.getElementById("close");
+
+            denglu.onclick=function(){
+                mask.style.display="block";
+                loginfrm.style.display="block";
+            }
+
+            close.onclick=function(){
+                mask.style.display="none";
+                loginfrm.style.display="none";
+            }
+
+            pic1.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/1.jpg')";
+            }
+
+            pic2.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/2.jpg')";
+            }
+
+            pic3.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/3.jpg')";
+            }
+
+            pic4.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/4.jpg')";
+            }
+
+            pic5.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/5.jpg')";
+            }
+        }
+    </script>
+</head>
+<body id="body">
+<div class="mask" id="mask">
+
+</div>
+
+<div class="loginfrm" id="loginfrm">
+    <span class="close" id="close">×</span>
+</div>
+
+<div class="box_login" >
+    <span id="denglu">请登录</span>
+</div>
+
+<div class="box" id="box">
+    <img id="pic1" src="../images/baidu/1.jpg"/>
+    <img id="pic2" src="../images/baidu/2.jpg"/>
+    <img id="pic3" src="../images/baidu/3.jpg"/>
+    <img id="pic4" src="../images/baidu/4.jpg"/>
+    <img id="pic5" src="../images/baidu/5.jpg"/>
+</div>
+
+</body>
+</html>

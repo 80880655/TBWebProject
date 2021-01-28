@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>23 轮播图</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      /* 453 224 */
+      .box {
+        margin: 50px auto;
+        width: 453px;
+        height: 248px;
+        /* background-color: red; */
+        border: 1px solid #ccc;
+        overflow: hidden;
+      }
+
+      /* 1.图片滚动 */
+      .box .scrroll {
+        width: 400%;
+        height: 224px;
+        /* background-color: blue; */
+        position: relative;
+      }
+
+      .box .scrroll ul {
+        width: 400%;
+        list-style: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .box .scrroll ul li {
+        float: left;
+      }
+
+      .box .scrroll ul li img {
+        vertical-align: top;
+      }
+
+      /* 2.span底部按钮 */
+      .box .scr_span {
+        height: 24px;
+        width: 100%;
+        /* background-color: yellow; */
+        text-align: center;
+      }
+
+      .box .scr_span span {
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        background-color: #888888;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: 0px 4px;
+        vertical-align: center;
+        /* 小圆点变形 */
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        /* IE浏览器 10或以上 */
+        -ms-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+      }
+
+      /* 
+            时间：2019/9/19 23:35 分 明天需要处理网易得的轮播图切换速度。
+            3.切换类 
+            这样写不能生效，因为 width 和 height 没有附加到指定的类上，所以这里需要提升 类 的等级
+        */
+      .box .scr_span .current {
+        width: 24px;
+        height: 6px;
+        background: #ff3333;
+      }
+    </style>
+    <script>
+      window.onload = function() {
+        function $(id) {
+          return document.getElementById(id);
+        }
+
+        var scr_span = $("scr_span").children;
+        var ul = $("scrroll").children[0];
+        var num = 0;
+        var timer = null;
+
+        //这种写法IE不支持。
+        timer = setInterval(() => {
+          num--;
+          num <= -1812 ? (num = 0) : num;
+          ul.style.left = num + "px";
+        }, 5);
+
+        function roll() {
+          num--;
+          num <= -1812 ? (num = 0) : num;
+          ul.style.left = num + "px";
+        }
+
+        // 1.span的类切换事件
+        for (var i = 0; i < scr_span.length; i++) {
+          scr_span[i].index = i;
+          scr_span[i].onmousemove = function() {
+            for (var j = 0; j < scr_span.length; j++) {
+              scr_span[j].className = "";
+            }
+            this.className = "current";
+          };
+        }
+
+        //2.轮播图滚动
+        ul.onmousemove = function() {
+          // alert('1');
+          clearInterval(timer);
+        };
+
+        ul.onmouseout = () => {
+          // alert('');
+          timer = setInterval(() => {
+            num--;
+            num <= -1812 ? (num = 0) : num;
+            ul.style.left = num + "px";
+          }, 5);
+
+          console.log(num);
+        };
+
+        // ul.onmouseout=function(){
+        //     timer=setInterval(roll,5);
+        // }
+      };
+    </script>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="scrroll" id="scrroll">
+        <ul>
+          <li>
+            <a href=""
+              ><img src="../京东商城JS第七天/网易轮播图/1.jpeg" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="../京东商城JS第七天/网易轮播图/2.jpeg" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="../京东商城JS第七天/网易轮播图/3.jpeg" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="../京东商城JS第七天/网易轮播图/4.jpeg" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="../京东商城JS第七天/网易轮播图/1.jpeg" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="../京东商城JS第七天/网易轮播图/2.jpeg" alt=""
+            /></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="scr_span" id="scr_span">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </body>
+</html>

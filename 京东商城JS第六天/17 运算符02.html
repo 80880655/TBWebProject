@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17 运算符01</title>
+    <script>
+        window.onload=function(){
+
+            //时间：2019/4/8 因为javaScript是单线程，由上往下执行。
+            // setTimeout的最短时间间隔是4毫秒；setInterval的最短间隔时间是10毫秒，也就是说，小于10毫秒的时间间隔会被调整到10毫秒
+            // alert("1");
+            // setTimeout("alert('2')",0); // setTimeout默认最短间隔是4秒，间隔4秒钟之后执行，只执行一次。
+            // alert("3");
+
+            var num=10;
+            alert(1);
+            num=20;
+            setTimeout("alert("+num+")",0);
+            alert(3);
+            num=30;
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

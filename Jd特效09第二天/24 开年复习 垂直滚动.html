@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 垂直滚动</title>
+    <style>
+        * {margin: 0px; padding: 0px;}
+
+        .box1 {
+            margin: 30px auto;
+            width: 500px;
+            height: 2000px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+
+    </div>
+</body>
+</html>
+
+<script src="my.js"></script>
+<script>
+    var i=0;
+
+    // 滚动事件
+    document.onscroll=function(){
+        i++;
+        console.log(i);
+
+    }
+
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.筋斗云</title>
+    <style>
+        * {margin: 0px; padding: 0px;}
+    
+        body {background-color: #333;}
+
+        .nav {
+            height: 42px;
+            width: 800px;
+            /* background-color: #fff; */
+            margin: 80px auto;
+            background: #fff url('../Jd特效08/img/rss.png') no-repeat right center;
+            /* background: url('../Jd特效08/img/rss.png') no-repeat right center #fff ; */
+            /* 小圆角 */
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .clound {
+            width: 83px;
+            height: 42px;
+            background: url('../Jd特效08/img/cloud.gif') no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .nav ul li {
+            /* list-style: none; */
+            float: left;
+            width: 83px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        /* 
+            时间：2019/11/14 16：37  重点
+            1.span 的图片  和 ul 遮挡住了， 导致图片会将字体遮挡住。
+            2.所以最优化的做法就是，当前的 html span 标签在 ul之上； 通过标签的上下顺序巧妙的避开了使用z-index的问题。
+                所以这里需要将ul下面的li的定位放在ul这里。
+         */
+    
+    
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <span class="clound"></span>
+        <ul>
+            <li>首页新闻</li>
+            <li>师资力量</li>
+            <li>活动策划</li>
+            <li>企业文化</li>
+            <li>招聘信息</li>
+            <li>公司简介</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

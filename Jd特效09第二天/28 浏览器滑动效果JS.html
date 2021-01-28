@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28 浏览器滑动效果JS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 设置整个页面的字体 */
+        body,
+        div {
+            font-family: "Times New Roman", "微软雅黑", "宋体";
+        }
+
+        ul,
+        ol {
+            list-style-type: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul li {
+            width: 100%;
+            height: 100%;
+        }
+
+        #ol {
+            position: fixed;
+            top: 10px;
+            left: 50px;
+        }
+
+        #ol li {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 14px;
+            line-height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>首页</li>
+        <li>关注</li>
+        <li>动态</li>
+        <li>风格</li>
+        <li>作品</li>
+    </ul>
+
+    <ol id="ol">
+        <li>首页</li>
+        <li>关注</li>
+        <li>动态</li>
+        <li>风格</li>
+        <li>作品</li>
+    </ol>
+
+</body>
+
+</html>
+
+<script src="my.js"></script>
+<script>
+    var ulBox = $('ul');
+    var ulBoxli = ulBox.children;
+    var olBox = $('ol');
+    var olBoxLi = olBox.children;
+    var bgColor = ['pink', 'purple', 'orange', 'blue', 'green'];
+    var leader = 0, target = 0, timer = null;
+
+    // console.log(ulBoxli);
+    // 时间：2020/3/6 17:16 
+    // 1.主要是使用 offsetTop ，滚动 几个相同大小的距离
+
+    for (var i = 0; i < ulBoxli.length; i++) {
+        ulBoxli[i].style.backgroundColor = bgColor[i];
+        olBoxLi[i].style.backgroundColor = bgColor[i];
+
+        olBoxLi[i].index = i;  // 记录当前的索引号，和后面的进行匹配
+
+        olBoxLi[i].onclick = function () {
+            clearInterval(timer);
+
+            target = ulBoxli[this.index].offsetTop;  //核心语句
+
+            timer = setInterval(function () {
+                /*
+                 * time:gaofeng 2020/3/26 10:22
+                 *   1.需要注意一下，这下面的计算公式 leader + (target - leader) / 10 永远都除不尽；所以在浏览器调试的时候会一直卡住计算结果
+                 */
+                leader = leader + (target - leader) / 10;
+                window.scrollTo(0, leader);  //屏幕滚动
+            }, 20);
+
+        }
+
+    }
+
+</script>

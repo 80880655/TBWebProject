@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20 offset 无定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box2 {
+            width: 800px;
+            height: 400px;
+            border: 1px solid #ccc;
+            background: purple;
+            margin: 100px;
+            position: relative;
+        }
+
+        .father {
+            margin: 50px auto;
+            width: 400px;
+            height: 270px;
+            border: 1px solid #ccc;
+            background-color: #883;
+
+            position: relative;
+        }
+
+        .son {
+            width: 130px;
+            height: 90px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            /* padding: 50px; */
+
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box2">box2
+        <div class="father" id="box1">box1
+            <div class="son">son</div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    var box1 = document.getElementById('box1');
+    var son = box1.children[0];
+
+    console.log(box1.offsetLeft);
+    console.log(box1.offsetTop);
+    console.log('--------------------');
+    console.log(son.offsetLeft);
+    console.log(son.offsetTop);
+
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tab栏切换04</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 240px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+
+        .box .mt {
+            font-size: 0;
+        }
+
+        div span {
+            display: inline-block;
+            font-size: 16px;
+            border: none;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .box .mt .show {
+            color: #ccc;
+            font-weight: 700;
+            background-color: purple;
+        }
+
+        /* ***下半部分 */
+        .box .mb {
+            /*时间：2018/12/5 10:31 分，如果需要设置 overflow为溢出的部分隐藏，
+                则一定要设置父亲和儿子的宽高范围，*/
+            /*这样系统才知道是溢出的部分，否则无法实现隐藏,可以使用高度或100%来代替*/
+            overflow: hidden;
+            width: 240px;
+            height: 270px;
+        }
+
+        .box .mb div {
+            /*这里的设置背景是将所有都设置成一个颜色，然后将多余溢出的部分隐藏掉*/
+            /*然后再来切换各span之间的鼠标移动*/
+            background-color: purple;
+            height: 270px;
+            width: 100%;
+
+            display: none;
+        }
+
+        .box .mb .div1 {
+            display: block;
+            color: #ccc;
+            font-weight: 700;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            var objs_span = document.getElementById("mt").getElementsByTagName("span");
+            var objs_div = document.getElementById("mb").getElementsByTagName("div");
+
+            // 鼠标移动
+            for (var i = 0; i < objs_span.length; i++) {
+
+                objs_span[i].index = i;
+                // 1.鼠标经过变底色
+                // 2.清除所有，流下自己
+                // 3.处理div的显示，在CSS中将所有的 div全部不显示，然后单独将第一个显示成默认；
+                // 后面通过类名的切换display的属性
+                objs_span[i].onmousemove = function () {
+                    for (var j = 0; j < objs_span.length; j++) {
+                        objs_span[j].className = "";
+                        objs_div[j].className = "";
+                    }
+                    // 这里是 objs_span 不能写成this[this.index].className 这里有2个this,系统没有办法
+                    // 区分到底是那个this的指向
+                    objs_span[this.index].className = "show";
+                    objs_div[this.index].className = "div1";
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+<div class="box">
+    <div class="mt" id="mt">
+        <span class="show">新闻</span>
+        <span>英文</span>
+        <span>体育</span>
+        <span>娱乐</span>
+    </div>
+
+    <div class="mb" id="mb">
+        <div class="div1">新闻</div>
+        <div>英文</div>
+        <div>体育</div>
+        <div>娱乐12</div>
+    </div>
+</div>
+
+</body>
+
+</html>

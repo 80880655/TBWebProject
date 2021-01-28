@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>43.放大镜JS 04</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            margin: 100px;
+            position: relative;
+            float: left;
+        }
+
+        .box2 {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            margin: 100px;
+            background-color: red;
+            float: left;
+        }
+
+        .small {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .big {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 鼠标指针 */
+        .mask {
+            width: 100px;
+            height: 100px;
+            background: rgb(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            /* 默认不显示 */
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="small">
+            <img src="../Jd特效08/img/001.jpg" alt="">
+            <!-- 鼠标指针 -->
+            <div class="mask" id="mask"></div>
+        </div>
+        <div class="big" id='big'>
+            <img src="../Jd特效08/img/0001.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="box2">显示的字体内容，显示大图片的时候需要有遮挡效果</div>
+</body>
+
+</html>
+
+<script>
+    // 时间：2019/12/10 11:08
+    // 1.需要补充 盒子mask 在 盒子small 里面移动。
+    // 2.固定住光标盒子mask的活动范围
+    var mask = document.getElementById('mask');  //mask 鼠标指针
+    var small = mask.parentNode;
+    var box = mask.parentNode.parentNode;
+    var big = document.getElementById('big');  //大盒子
+    var bigImg = big.children[0]; //获取大盒子下面的图片
+    var x = 0, y = 0;
+
+    console.log(box);
+    small.onmouseover = function (event) {
+        var event = event || window.event;
+        mask.style.display = 'block';
+        big.style.display = 'block';
+
+        // 因为small盒子和bo盒子一样大，所以这里使用this.offsetLeft 
+        x = event.clientX - box.offsetLeft - mask.offsetWidth / 2;
+        y = event.clientY - box.offsetTop - mask.offsetHeight / 2;
+
+        // 2.固定住光标盒子mask的活动范围
+        if (x < 0) {
+            x = 0;
+        }
+        else if (x > small.offsetWidth - mask.offsetWidth) {
+            x = small.offsetWidth - mask.offsetWidth;
+        }
+
+        if (y < 0) {
+            y = 0
+        }
+        else if (y > small.offsetHeight - mask.offsetHeight) {
+            y = small.offsetHeight - mask.offsetHeight;
+        }
+
+        // 3.补充大图的放大效果
+        bigImg.style.top = -y * small.offsetHeight / big.offsetHeight + 'px';
+        bigImg.style.left = -x * small.offsetWidth / big.offsetWidth + 'px';
+
+        // 验证small盒子的 offsetLeft 和 offsetTop 是为0；
+        // alert(this.offsetLeft);
+        mask.style.top = y + 'px';
+        mask.style.left = x + 'px';
+
+        // console.log(event.clientX);
+        // console.log(x);
+        // console.log(bigImg);
+        // console.log(small.offsetHeight);
+        // console.log(big.offsetHeight);
+    }
+
+    small.onmouseout = function () {
+        mask.style.display = 'none';
+        big.style.display = 'none';
+    }
+
+
+
+
+
+</script>

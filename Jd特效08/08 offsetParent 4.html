@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08 offsetParent 4</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+
+        .box {
+            margin: 80px auto;
+            height: 150px;
+            width: 200px;
+            border: 1px solid #ccc;
+            background-color: yellow;
+        }
+        .box2 {
+            height: 75px;
+            width: 100px;
+            border: 1px solid #ccc;
+            background-color:aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="ibox">
+        <div class="box2" id="ibox2">
+
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    var oibox=document.getElementById('ibox');
+    var oibox2=document.getElementById('ibox2');
+
+    console.log(oibox);
+    console.log('offsetParent:');
+    console.log(oibox2.offsetParent);
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01 时钟的显示</title>
+</head>
+
+<style>
+
+</style>
+
+<script>
+    window.onload = function () {
+        var date = new Date();
+        var ms = date.getMilliseconds();  //获取现在的毫秒
+        var mount = date.getMinutes();    //获取分
+        var ss = date.getSeconds();       //获取秒
+
+
+
+        console.log(date);
+        console.log(ms);
+        console.log(mount);
+        console.log(ss);
+
+    }
+
+</script>
+
+<body>
+
+</body>
+
+</html>

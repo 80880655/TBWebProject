@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标展示js部分02,升级写法</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box1 {
+            height: 70px;
+            width: 360px;
+            padding-top: 360px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            /*overflow:hidden;清除超出的多余部分*/
+            overflow: hidden;
+            /*时间：2018/10/12 这里注意一下，关于图片的路径问题，在images文件夹在二级目录，所以需要在前面打“..” 两个点*/
+            background: url(../images/鼠标/01big.jpg) no-repeat;
+        }
+
+        #ul1 {
+            border-top: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        #ul1 li {
+            float: left;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            //时间：2018/10/17 bg就是背景图的名称，liid就是id值
+            // function fun(liid,img){1
+            //     var li02=document.getElementById(liid);
+            //     var bg=document.getElementById("box1");
+            //     li02.onmousemove=function(){
+            //         bg.style.backgroundImage="url(../images/鼠标/"+img+".jpg)";
+            //     }
+            // }
+
+            // // fun(event.target.id,);
+            // console.log(this.id);
+            function fun(li) {
+                var _objli = document.getElementById(li);
+                var _objbg = document.getElementById("box1");
+                _objli.onmousemove = function () {
+                    _objbg.style.backgroundImage = "url(../images/鼠标/" + li + "big.jpg)";
+                }
+            }
+            // fun("'"+this.id+"'");
+            // // 时间：2018/10/17 15:54 检测用户事件并及时捕获元素的id的值
+            document.getElementById("box1").onmousemove = function (event) {
+                console.log(event.target.id);
+            }
+            fun("li01");
+            fun("li02");
+            fun("li03");
+            fun("li04");
+            fun("li05");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+        <ul id="ul1">
+            <li id="li01"><img src="../images/鼠标/01.jpg" /></li>
+            <li id="li02"><img src="../images/鼠标/02.jpg" /></li>
+            <li id="li03"><img src="../images/鼠标/03.jpg" /></li>
+            <li id="li04"><img src="../images/鼠标/04.jpg" /></li>
+            <li id="li05"><img src="../images/鼠标/05.jpg" /></li>
+        </ul>
+    </div>
+</body>
+
+</html>

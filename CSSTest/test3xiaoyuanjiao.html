@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小圆角</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        .father {
+            /*background-color: silver;*/
+            width: 400px;
+            height: 100px;
+            margin: 0px auto;
+        }
+        .div1 {
+            margin-top: 50px;
+            width: 100px;
+            height: 36px;
+            border: 2px solid #cccccc;
+        }
+
+        .father .div1 .buttom {
+            font: 12px/1.5 Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b体,sans-serif;
+            line-height: 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .father .div1 .buttom .font_gouwuche {
+            color: #aeb5ad;
+            text-decoration: none;
+            display: block;
+            /*加粗*/
+            font-weight: bold;
+        }
+
+        .father .div1 .buttom .font_gouwuche:hover {
+            color: #f10214;
+        }
+
+        .father .div1 .buttom span {
+            width: 14px;
+            height: 14px;
+            background-color: #ff0000;
+            font-size: 12px;
+            line-height: 12px;
+            color: #ffffff;
+            /*文字居中*/
+            text-align: center;
+            position: absolute;
+            top: -8px;
+            left: 80px;
+            /*right: auto;*/
+
+            /*顶部边框变成圆角, border-radius 也是上右下左的顺序进行圆角，这个
+            span的宽和高都是14px;所以 border-radius 的值就是一半，留下最左边的为0代表不变成圆角*/
+            border-radius: 7px 7px 7px 0px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="div1">
+        <div class="buttom">
+            <a href="javascript:;" class="font_gouwuche">我的购物车</a>
+            <span>8</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

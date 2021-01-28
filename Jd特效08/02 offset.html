@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offSet</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            margin: 80px auto;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #cccc;
+            background-color: pink;
+            position:relative;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            border: 2px solid #ccc;
+            padding-top: 20px;
+
+            /* position: absolute;
+            top: 12px;
+            left: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="box">
+        <div class="box2" id="box2"></div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    var box = document.getElementById('box');
+
+    var box2 = document.getElementById('box').children[0];
+
+    // console.log(offHeight.style.width);
+
+    console.log('box offsetHeight:' + box.offsetHeight);
+
+    console.log('box2 offsetHeight:' + box2.offsetHeight);
+
+    // 只有offsetTop 和 offsetLeft， 上和左边才有；
+    /*
+        时间：2019/9/27 8:57分
+        1.只有offsetTop 和 offsetLeft， 上和左边才有；
+        2.和定位有关系，如果存在定位，则当前距父级的盒子的距离。
+        3.如果不存在定位，则是当前盒子距离 body 的距离。
+    */
+    console.log('box2 offsetTop 表示元素的上外边框至offsetParent元素的上内边框之间的像素距:' + box2.offsetTop);
+
+    console.log('box2 offsetLeft 表示元素的上外边框至offsetParent元素的上内边框之间的像素距:' + box2.offsetLeft);
+
+
+</script>

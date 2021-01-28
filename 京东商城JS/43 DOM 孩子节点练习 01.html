@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 孩子节点练习02 children</title>
+    <script>
+
+        window.onload = function () {
+
+            var obj_uls = document.getElementById("ul");
+
+            var obj_childs = obj_uls.children;
+
+            console.log(obj_childs);
+            console.log(obj_childs.length);
+        }
+
+
+        // 时间：2019/1/17 11:13  
+        // 1.使用 children 在IE7或以下 ，将不会计算 “注释”，结果为3
+        // 2.如果使用IE8 则结果为 4，因为“注释” 也算成一个。
+        // 3.除了IE8以外，IE10\IE11 或是火狐或其他浏览器，结果均为3。
+
+        // 4.所有的孩子节点 childNodes ，因为 IE8或以下的版本 不会将 “换行符” 计算在内，如果是高级版本或其他浏览器 则会计算“换行符”。
+
+        // 5.所以大部分比较常用的还是使用 children 
+
+    </script>
+</head>
+
+<body>
+
+<ul id="ul">
+    <li>s1212111111111</li>
+    <li>12121</li>
+    <li>3333</li>
+    <!-- 12121 -->
+</ul>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日期函数的使用 02</title>
+</head>
+<script>
+    window.onload=function(){
+        
+        var date=new Date();
+
+        // 1. date.getDate() 输出结果为23
+        console.log(date.getDate());
+
+        // 2.获取星期几，得到结果为：3
+        console.log("获取结果星期几：");
+        console.log(date.getDay());
+
+        // 3.获取月份 ，值为：0~11， 1月就是0 ；所以正常的就是需要 加上 1
+        console.log("date.getMonth()---------------------");
+        console.log(date.getMonth());
+        console.log("date.getMonth()---------------------");
+
+        // 4.获取完整的年份
+        console.log(date.getFullYear());
+
+        // 5.获取小时 0-23, 当前为14:23分，得到结果为：14
+        console.log(date.getHours());
+
+        // 6.获取分钟 0-59, 当前为14:23分，得到结果为：23，获得分钟数。
+        console.log(date.getMinutes());
+
+        // 7.获取当前时间的 秒，0-59
+        console.log(date.getSeconds());
+
+        // 8.获取当前时间的 毫秒
+        console.log(date.getMilliseconds());
+
+        // 9.获取累积时间， 返回累计毫秒数(从1970/1/1 午夜开始计算)
+        console.log(date.getTime());
+
+    }
+
+</script>
+<body>
+    
+</body>
+</html>

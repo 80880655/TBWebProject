@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>根据图片文件个数动态生成li的个数</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        /* 1.ul 下面的li */
+
+        .box .uls {
+            position: absolute;
+            top: 370px;
+            left: 50%;
+
+            /* 动态居中对齐，参考下面的javascript 代码 */
+            /* margin-left: -52.5px; */
+
+            /* 1.子元素li 每个偏移5px, 5个就是5*5=25px;  每个16px, 16*5=80px; 总宽度就是 105px 
+                2.一半就是 52.5px
+            */
+        }
+
+        .box .uls li {
+            float: left;
+            background-color: #3E3E3E;
+            margin-right: 5px;
+            border-radius: 50%;
+            font-weight: bold;
+            color: #fff;
+
+            /*  去掉 li 前面的小圆点 */
+            list-style: none;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+        }
+
+        .box .uls li:hover {
+            background-color: #b61b1f;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+
+        window.onload = function () {
+
+            // 1.创建动态创建li的函数
+            function dyCreateLi(item) {
+                // 1.1 item 是需要创建的li 个数
+                var obj_uls = document.getElementById("uls");
+                var obj_box = document.getElementById("box");
+
+                var ml = 16 * item + 5 * item;
+
+                if (item) {
+                    for (var i = 0; i < item; i++) {
+                        var obj_lis = document.createElement("li");
+                        obj_lis.innerHTML = i + 1;
+                        obj_uls.insertBefore(obj_lis, null);
+                    }
+
+                    // 1.2 动态创建li的个数，并且要使用 ul 居中对齐
+                    obj_uls.style.marginLeft = "-" + ml / 2 + "px";
+                }
+            }
+
+            dyCreateLi(10);
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <div class="box" id="box">
+
+        <ul id="uls" class="uls">
+            <!-- <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li> -->
+        </ul>
+
+
+    </div>
+
+</body>
+
+</html>

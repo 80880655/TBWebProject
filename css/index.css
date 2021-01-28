@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+/*2018/7/25 14:58 背景底色*/
+body {
+    background-color: #f0f3ef;
+}
+
+/*2018/7/25 头部导航开始*/
+.shortcut {
+    height: 30px;
+    line-height: 30px;
+    background-color: #e3e4e5;
+    /*使用宽度100%主要是将整个宽度铺平，避免显示不全。*/
+    width: 100%;
+    /*background-color: red;*/
+}
+
+
+

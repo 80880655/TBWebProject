@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>38.放大镜JS 重做</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box1 {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            margin: 100px;
+            position: relative;
+        }
+
+        .small {
+            background: url('../Jd特效08/img/001.jpg') no-repeat;
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .big {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+            background: url('../Jd特效08/img/0001.jpg') no-repeat;
+            position: absolute;
+            top: 0;
+            left: 400px;
+        }
+
+        .mask {
+            width: 100px;
+            height: 100px;
+            background: rgb(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            /* 默认不显示 */
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="small">
+            <div class="mask" id="imask">
+            </div>
+        </div>
+        <div class="big">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // 时间：2019/12/09 10:56
+    // 1.这是自己做的放大镜示例，看看没有使用img标签会怎么样？
+    // 如果使用上述的html的方式，那么对于 “mask” 和 “small”将会都使用 绝对定位，所以这里需要中间穿插一个盒子才可以起到作用
+    var imask = document.getElementById('imask');
+    var ismall = imask.parentNode;
+
+    var x = 0, y = 0;
+
+    // console.log(ismall);
+    ismall.onmousemove = function (event) {
+        // 1.移动上去之后显示光标
+        // console.log(event.clientX);
+        // console.log(y);
+
+        imask.style.display = 'block';
+        var event = event || window.event;
+        x = event.clientX - ismall.offsetLeft - imask.offsetWidth / 2;
+        y = event.clientY - ismall.offsetTop - imask.offsetHeight / 2;
+
+        imask.style.top = y + 'px';
+        imask.style.left = x + 'px';
+
+        console.log(x + ',' + y);
+
+    }
+
+    ismall.onmouseout = function () {
+        imask.style.display = 'none';
+
+    }
+
+
+</script>

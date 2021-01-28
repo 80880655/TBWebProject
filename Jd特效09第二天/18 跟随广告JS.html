@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 跟随广告 JS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .box1 {
+            width: 132px;
+            height: 469px;
+            position: absolute;
+            left: 10px;
+            top: 50px;
+        }
+
+        .box2 {
+            margin: 0 auto;
+            width: 1000px;
+            /* background-color: yellow; */
+            text-align: center;
+        }
+    </style>
+
+    <script src="my.js" type="text/javascript"></script>
+    <script>
+        window.onload=function(){
+            // time:gaofeng 2020/3/3 14:28 
+            var ibox1 = $('ibox1');
+            var ibox2= $('ibox2');
+            var leader=0,target=0,timer=null;
+            var top=ibox1.offsetTop;    //获取当前图片的div距离TOP的距离
+            
+            // document.onscroll=function(){    //用window的原因是兼容性好，不是所有的浏览器都支持DTD，IE678不支持document.onscroll，
+            // 只能使用document.body.onscroll 的事件才可以
+            window.onscroll = function () {
+                target=scroll().top+top;
+                clearInterval(timer);   //清除定时器
+
+                timer=setInterval(function(){
+                    leader = leader + (target - leader) / 10;
+                    ibox1.style.top = leader + 'px';
+                },30)
+    
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box1" id="ibox1">
+        <img src="../Jd特效09第二天/images/aside.jpg" alt="">
+    </div>
+    <div class="box2" id="ibox2" >
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+        <p>天王盖地虎，小鸡炖蘑菇</p>
+    </div>
+
+</body>
+
+</html>
+
+<!-- <script src="my.js" type="text/javascript"></script>
+<script>
+    var ibox1=$('ibox1');
+
+    console.log(ibox1);
+
+</script> -->
+

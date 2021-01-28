@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Z-index</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            float: left;
+            width: 240px;
+            height: 100px;
+            border: 1px solid #666;
+            /*margin: 0 auto;*/
+            /*margin-right: -1px;*/
+            margin: 0px 0px 0px -1px;
+            /*background-color: yellow;*/
+        }
+
+        div:hover {
+            border: 1px solid #cc0000;
+            /*2018/8/8 9:50 鼠标移动上去之后右边的边框线没有，所以当鼠标移动上去之后动态的将这个盒子更改成相对定位。*/
+            position: relative;
+        }
+
+        span {
+            float: left;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div class="test"></div>
+<div class="test"></div>
+<div class="test"></div>
+<div class="test"></div>
+<div class="test"></div>
+
+<span>几个div盒子都加边框线之后，2个相邻的盒子之间就会变成比较粗的情况，通过2种办法来处理</span>
+
+</body>
+</html>

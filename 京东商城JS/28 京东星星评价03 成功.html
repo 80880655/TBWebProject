@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东星星评价03</title>
+    <style>
+        /* 时间：2019/1/7 17:48分 
+        1.这边使用5个span作为每个星星，并且用户点击的时候将数值之间的星星全部点亮 */
+
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .box {
+            height: 180px;
+            width: 230px;
+            margin: 150px auto;
+            border: 2px solid #ccc;
+            font-size: 0;
+        }
+
+        span {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            cursor: pointer;
+
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 0;
+        }
+
+        .box .star06 {
+            background-position: 0 -16px;
+        }
+    </style>
+
+    <script>
+
+        window.onload = function () {
+            obj_spans = document.getElementById("box").getElementsByTagName("span");
+            obj_span01 = document.getElementById("star01");
+
+            function funXinXin(params) {
+                for (var x = 0; x < params; x++) {
+                    // console.log("star0" + params);
+
+                    if (params > 1) {
+                        for (var y = 0; y < params; y++) {
+                            var arrySpans = document.getElementById("star0" + (params - y));
+                            arrySpans.style.backgroundPositionY = "-16px";
+                        }
+                    }
+                    else {
+                        var arrySpans = document.getElementById("star0" + params);
+                        arrySpans.style.backgroundPositionY = "-16px";
+                    }
+                }
+            }
+
+            for (var i = 0; i < obj_spans.length; i++) {
+                obj_spans[i].index = i + 1;
+                obj_spans[i].onclick = function () {
+                    // alert(this.index);
+
+                    // 1.要先清楚所有的backgroundPositionY 属性的值
+                    for (var z = 0; z < obj_spans.length; z++) {
+                        obj_spans[z].style.backgroundPositionY = "0";
+                    }
+                    funXinXin(this.index);
+                }
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span class="star01" id="star01"></span>
+        <span class="star02" id="star02"></span>
+        <span class="star03" id="star03"></span>
+        <span class="star04" id="star04"></span>
+        <span class="star05" id="star05"></span>
+    </div>
+</body>
+
+</html>

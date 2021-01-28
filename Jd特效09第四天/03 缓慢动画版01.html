@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 缓慢动画版</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* div {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            /* margin: 0 0 0 10px; 
+            position: absolute;
+            left: 0;
+        } */
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn200">200</button>
+    <button id="btn400">400</button>
+    <div id="box"></div>
+
+</body>
+
+</html>
+
+<script>
+    var btn200 = document.getElementById("btn200");
+    var btn400 = document.getElementById("btn400");
+    var box = document.getElementById("box");
+
+    // time:gaofeng 2020/4/7 14:58
+    // 1.缓慢匀速动画
+
+    btn200.onclick = function () {
+        animate(box, 200);
+    }
+
+    btn400.onclick = function () {
+        animate(box, 400);
+    }
+
+    // function animate(obj, target) {
+    //     clearInterval(obj.timer);
+    //     obj.timer = setInterval(function () {
+    //         var step = (target - obj.offsetLeft) / 10;
+
+    ////问题出在这里 2020/4/7  应该是 step=step > 0 ? Math.ceil(step) : Math.floor(step);
+    //         step > 0 ? Math.ceil(step) : Math.floor(step);
+
+    //         obj.style.left = obj.style.left + step + 'px';
+
+    //         if (obj.offsetLeft == target) {
+    //             clearInterval(obj.timer);
+    //         }
+
+    //     }, 30);
+    // }
+
+    function animate(obj, target) {  //  第一个参数 动谁   第二个参数  动多少
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            // 计算步长   动画的原理    盒子本身的位置  +  步长
+            var step = (target - obj.offsetLeft) / 10;  // 步长
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);  //  取整步长
+            // obj.style.left = 盒子本身的位置  +  步长
+            obj.style.left = obj.offsetLeft + step + "px";
+
+            // 有未除尽的数字，比如0.1.....这种情况，上面有向上取整和向下取整，所以这里只需要判断是否相等即可。
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+            }
+        }, 20)
+    }
+
+
+</script>

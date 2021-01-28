@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参显示盒子</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: #8a25c6;
+            margin: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="fun1('demo1');">显示第1个</button>
+    <button onclick="fun1('demo2');">显示第2个</button>
+    <button onclick="fun1('demo3');">显示第3个</button>
+    <button onclick="fun1('demo4');">显示第4个</button>
+
+    <div id="demo1">1</div>
+    <div id="demo2">2</div>
+    <div id="demo3">3</div>
+    <div id="demo4">4</div>
+
+    <script>
+        //时间：2018/10/11 16:49分
+        //说明：这里也可以将 script head 部分，因为这里没有需要初始化处理的动作，所以就可以写在head部分
+        function fun1(obj) {
+            var target = document.getElementById(obj);
+            target.style.display = 'block';
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input输入光标高度问题,使用padding 撑开撑大</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            margin: 50px auto;
+            width: 300px;
+            height: 200px;
+        }
+
+        #txt {
+            width: 100px;
+            height: 10px;
+
+            /*
+                时间：2018/11/13 10:57
+                input的高度是10px，使用padding & font-size 将input 撑开
+             */
+            padding: 10px 0px;
+            font-size: 12px;
+        }
+
+        #txt1 {
+            width: 100px;
+            height: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    <input type="text" name="" id="txt"/>
+
+    <input type="text" name="" id="txt1">
+
+</div>
+
+</body>
+</html>

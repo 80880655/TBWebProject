@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11 仿网易轮播图 02</title>
+
+    <style>
+        * {margin: 0px; padding: 0px;}
+
+        .slider {
+            width: 453px;
+            height: 248px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        .slider .slider_pic {
+            width: 100%;
+            height: 224px;
+            background-color: yellow;
+        }
+
+        /* 小圆点盒子 */
+        .slider .slider_focus {
+            width: 100%;
+            /* 这里是24px, 24才是最经典的，24和6 刚好是4倍 */
+            height: 24px;
+            /* background-color: blue; */
+
+            /* 小圆点居中 */
+            text-align: center;
+
+        }
+
+        .slider .slider_focus span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #888888;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 0px 4px;
+
+            vertical-align: center;
+
+            /* 小圆点变形 */
+            -moz-transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+        }
+
+
+        /* 这样写不能生效，因为 width 和 height 没有附加到指定的类上，所以这里需要提升 类 的等级 */
+        .slider .slider_focus .current {
+            width: 24px;
+            height: 6px;
+            background: #ff3333;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <!-- 轮播图 -->
+    <div class="slider" id="slider">
+        <!-- 图片 -->
+        <div class="slider_pic">
+
+        </div>
+
+        <!-- 下面按钮 -->
+        <div class="slider_focus" id='iFocus'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+    
+</body>
+</html>
+<script>
+
+    function $(id){return document.getElementById(id)};
+    // console.log($("slider"));
+
+    oSpan=$("iFocus").children;
+
+    var index;
+
+    console.log(oSpan);
+
+    for (var i = 0; i < oSpan.length; i++) {
+        // 获取span的序号
+        oSpan[i].index=i;
+        oSpan[i].onmousemove=function(){   
+            // 清除所有的类名 
+            for (var j = 0; j < oSpan.length; j++) {
+                oSpan[j].className="";
+            }
+            this.className="current";
+            // 获取span的序号
+            // alert(this.index);
+        }
+
+    }
+
+
+</script>
+ 

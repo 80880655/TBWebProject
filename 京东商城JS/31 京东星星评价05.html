@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东星星评价05- 使用2个span 来组合，通过更改宽度来显示星星</title>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .box {
+            height: 180px;
+            width: 230px;
+            margin: 150px auto;
+            border: 2px solid #ccc;
+            font-size: 0;
+            /* 子绝父相 */
+            position: relative;
+        }
+
+        .box span {
+            display: inline-block;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .box .star01,
+        .star02,
+        .star03,
+        .star04,
+        .star05 {
+            width: 16px;
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 0;
+        }
+
+        .box .star06 {
+            /* width: 80px; */
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -16px;
+
+            /* 子绝父相 */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var obj_star06 = document.getElementById("star06");
+            var obj_spans = document.getElementById("box").getElementsByTagName("span");
+
+            for (var i = 0; i < obj_spans.length; i++) {
+                obj_spans[i].index = i + 1;
+                if (i < 5) {
+                    obj_star06.style.width = "0px";
+                    obj_spans[i].onclick = function () {
+                        // alert(this.index);
+
+                        obj_star06.style.zIndex = "999";
+                        obj_star06.style.width = "0px";
+                        obj_star06.style.width = 16 * this.index + "px";
+
+                        // 时间：2019/1/7 19:02 
+                        // 1.使用这种做法就是 上下层 互相遮挡导致无法点击背景的星星。
+                        // 2.如果使用更改长度的形式来设置并且点亮背景图的星星，则这种方式 无论如何 都会保留最后一个星星。
+                        // 3.这就是这种代码和想法的问题和错误所在。
+
+
+                        if (obj_star06.style.zIndex > 0 && obj_star06.style.width == "16px") {
+                            obj_star06.style.width = "0px";
+                        }
+                    }
+                }
+
+                obj_spans[i].onmousemove = function () {
+                    // obj_star06.style.display="none";
+                    obj_star06.style.zIndex = "-1";
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span class="star01"></span>
+        <span class="star02"></span>
+        <span class="star03"></span>
+        <span class="star04"></span>
+        <span class="star05"></span>
+        </br>
+        <span class="star06" id="star06"></span>
+    </div>
+
+</body>
+
+</html>

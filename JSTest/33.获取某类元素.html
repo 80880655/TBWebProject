@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取某类元素</title>
+    <script>
+        window.onload = function () {
+            var lis = document.getElementsByTagName("li");
+
+            //1.查看lis数组元素里面的元素个数
+            // alert(lis.length);
+
+            //2.getElementsByTagName 获取某类元素，生成一个数组
+            //3.使用 innerHTML 来更改 li 标签 里面的所有的 value
+            for (var i = 0; i <= lis.length; i++) {
+                lis[i].innerHTML = "abc";
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

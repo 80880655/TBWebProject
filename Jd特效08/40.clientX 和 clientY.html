@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>40.clientX 和 clinetY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            background-color: plum;
+            margin: 100px;
+
+            /* position: relative; */
+        }
+
+        .box1 {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: purple;
+            margin: 20px;
+
+            /* position: absolute;
+            top: 2px;
+            left: 2px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box1" id="box1">
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var box1=document.getElementById('box1');
+    var box=box1.parentNode;
+    console.log(box);
+
+    box1.onmousemove=function(event){
+        var event=event||window.event;
+
+        var x = event.clientX - this.offsetLeft;
+        var y = event.clientY - this.offsetTop;
+        this.innerHTML = x + 'px;' + y + 'px';
+
+    }
+
+</script>

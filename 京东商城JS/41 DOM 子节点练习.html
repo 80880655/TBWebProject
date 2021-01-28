@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 子节点练习</title>
+
+    <script>
+        window.onload = function () {
+
+            // 1.时间：2019/1/17 兼容IE678 ， 第一个孩子 
+
+            var uls = document.getElementById("ul");
+
+            var firstLI = uls.firstElementChild || uls.firstChild;
+
+            firstLI.style.backgroundColor = "red";
+
+            var lastLI=uls.lastElementChild || uls.lastChild;
+
+            lastLI.style.backgroundColor = "pink";
+
+            console.log(firstLI);
+            console.log(lastLI);
+
+        }
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <ul id="ul">
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+        <li>33333333333333</li>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 JS </title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #box {
+            width: 200px;
+            height: 130px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            position: absolute;
+            opacity: 0.8;
+        }
+
+        button {
+            width: 140px;
+            height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn200">200</button>
+    <button id="btn400">400</button>
+
+    <div id="box">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var box = $('box');
+    var btn200 = $('btn200');
+    var btn400 = $('btn400');
+
+    // console.log(box);
+    // time:gaofeng 2020/4/9 9:49
+    // 1.步长：（ 目标位置 - 起始位置 ）/10 
+    // 2.向上取整，向下取整
+    // 3.封装运动函数
+    // 4.重新调整这个 函数，变成动态灵活的形式
+    // 5.使用 getCurrentStyle(box, 'left') 获取 box 对象的当前位置；这样就代替了  obj.offsetLeft
+
+    btn200.onclick = function () {
+        animation2(box, 200, 'top');
+
+
+        // 使用 getCurrentStyle(box, 'left') 获取 box 对象的当前位置 obj.style[attr] = obj.offsetLeft + step + 'px'; 
+        // 中的 obj.offsetLeft
+        // console.log(getCurrentStyle(box, 'left'));
+
+    }
+
+
+    btn400.onclick = function () {
+        animation2(box, 400, 'left');
+    }
+
+    // 改进函数，可以上下左右动
+    function animation2(obj, target, attr) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+
+            // 获取当前 box对象的位置，替代 obj.offsetLeft ; 注意单位的转换，单位会带上 px，所以使用 parseInt 转换。
+            var current = parseInt(getCurrentStyle(box, attr));
+
+            // var step = (target - parseInt(getCurrentStyle(box, attr))) / 10;
+            var step = (target - current) / 10;
+
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+            // obj.style[attr] = obj.offsetLeft + step + 'px';
+            obj.style[attr] = current + step + 'px';
+
+            // console.log('----:' + getCurrentStyle(box, 'left'));
+            if (current == target) {
+                clearInterval(obj.timer);
+            }
+        }, 25);
+    }
+
+    function getCurrentStyle(obj, attr) {
+        if (obj.currentStyle) {  //IE
+            return obj.currentStyle[attr];
+        }
+        else { //W3C
+            return window.getComputedStyle(obj, null)[attr];
+        }
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+</script>

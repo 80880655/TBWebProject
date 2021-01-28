@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20190911复习练习</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+    
+        .father {
+            margin: 50px auto;
+            border:  2px solid #ccc;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 120px;
+            background-color: #ccc;
+
+            float: left;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 120px;
+            background-color: red;
+            float: left;
+        }
+
+        /* 方法1： */
+        /* .clear {
+            clear: both;
+        } */
+
+        /* 方法2： 
+            将类 clearfix增加到html元素上即可。
+        */
+        .clearfix:after,.clearfix:before {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after{clear: both;}
+
+        .clearfix {
+            *zoom: 1;  /* IE6/7/8 */
+        }
+
+
+        /* 
+            时间：2019/9/11 14:16   如果2个子盒子都浮动了， 父盒子不浮动，则父盒子变成一条线
+            1.方法1： 在2个子盒子里面增加一个 空的盒子来清除浮动， 这种方法已经过时。
+            2.方法2： 使用伪元素来清除, 是添加到父盒子上的。
+        
+         */
+        
+    </style>
+</head>
+<body>
+    <div class="father clearfix">
+        <div class="box1">
+        
+        </div>
+        
+        <div class="box2">
+        
+        </div>
+
+        <!-- <div class="clear"></div> -->
+    </div>
+  
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 回调函数 CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .bigBox {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+
+            /* position: relative;
+            bottom: 0;
+            right: 0; */
+        }
+
+        .close {
+            display: block;
+            width: 30px;
+            height: 30px;
+            /* background-color: red; */
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bigBox">
+        <span id="close" class="close"></span>
+        <div class="box1">
+            <img src="../Jd特效09第四天/images/t.jpg" alt="">
+        </div>
+
+        <div class="box2">
+            <img src="../Jd特效09第四天/images/b.jpg" alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // time:gaofeng 2020/4/10 9:58
+    // 1、思路： 使用上下2个盒子，进行叠加，消失一个盒子之后，另外的盒子会因为特性自动掉下来，就实现了 360 开机模仿的效果。
+    // 2、2个盒子，需要第1个盒子动画完毕之后，在执行第2个盒子的动画，所以这里需要使用回调函数进行操作。
+    var close = document.getElementById('close');
+
+    // console.log(close);
+
+    close.onclick = function () {
+        alert('msg');
+    }
+
+
+</script>

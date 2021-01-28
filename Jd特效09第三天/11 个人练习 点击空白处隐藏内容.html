@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 个人练习 点击空白处隐藏内容</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background: url("../images/baidu/1.jpg") no-repeat;
+            width: 100%;
+            height:2000px;
+            min-height: 2000px;
+
+            /* //下面三句话是指让图片随着屏幕大小同步缩放，但是有部分可能被裁切，不过不至于会露白，下面两句为chrome 和 opera浏览器作兼容。 */
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+        }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+
+            /* 毛玻璃模糊效果 */
+            -webkit-filter: blur(5px);   /* Chrome, Opera */
+            -moz-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #show {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -150px 0 0 -150px;
+            display: none;
+        }
+    </style>
+    <script src="../my.js"></script>
+</head>
+
+<body>
+    <a href="javascript:;" id="login">注册</a>
+    <a href="javascript:;">登录</a>
+
+    <div id="mask"></div>
+    <div id="show"></div>
+
+</body>
+
+</html>
+
+<script>
+    // login 注册
+    // time:gaofeng 2020-03-20 14:49主要实现当用户点击“注册”按钮后，显示出相应的登录界面；当用户点击其他部分的时候，隐藏注册窗口恢复原样。
+    var login = $('login');
+    // console.log(login);
+
+    // 1.点击注册按钮,显示弹出盒子
+    login.onclick = function (event) {
+        $('mask').style.display = 'block';
+        $('show').style.display = 'block';
+
+        document.body.style.overflow='hidden'; //不显示滚动条
+
+        // //取消冒泡
+        // var event = event || window.event;
+        // if (event && event.stopPropagation) {
+        //     event.stopPropagation();
+        // }
+        // else {
+        //     event.cancelBubble = true;
+        // }
+
+        // 取消冒泡
+        stopPropagation();
+
+        // alert(getTargetId());
+    }
+
+    
+    // 2.用户点击非弹出的盒子,隐藏上面显示的盒子
+    document.onclick=function(){
+        if (getTargetId()!='show') {
+            $("mask").style.display = "none";
+            $("show").style.display = "none";
+            document.body.style.overflow = "visible"; // 显示滚动条
+
+            // alert(getTargetId());
+        } 
+    }
+
+
+</script>

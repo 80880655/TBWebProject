@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 毛玻璃效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .c_body {
+            background: url("../images/baidu/2.jpg") no-repeat;
+        }
+
+        .box {
+            margin: 40px auto;
+            width: 120px;
+            height: 80px;
+            border: 1px solid #ccc;
+            background-color: blue;
+        }
+
+        /* css 定义一个毛玻璃效果的类 */
+        .blue {
+            -webkit-filter: blur(5px);
+            /* Chrome, Opera */
+            -moz-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+    </style>
+</head>
+
+<body id="i_body" class="c_body">
+    <div class="box " id="i_box"></div>
+
+    <button id="btn">毛玻璃效果</button>
+</body>
+
+</html>
+
+<script>
+    var i_box = document.getElementById('i_box');
+    var btn = document.getElementById('btn');
+    var i_body = document.getElementById('i_body');
+    
+
+    btn.onclick = function () {
+        // 1.改变小窗口的 毛玻璃效果，可以实现
+        // if (i_box.className=='box') {
+        //     i_box.className = 'box blue';
+        // }
+        // else
+        // {
+        //     i_box.className = 'box';
+        // }
+
+
+        if (i_body.className=='c_body') {
+            i_body.className='c_body blue'
+        }
+        else{
+            i_body.className='c_body';
+        }
+        btn.className = '';
+    }
+
+</script>

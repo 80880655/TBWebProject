@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 兄弟节点</title>
+
+    <script>
+
+        window.onload = function () {
+
+            // 1.下一个兄弟 nextElementSibling & nextSibling
+            var obj_lis = document.getElementById("one");
+
+            var obj_brother = obj_lis.nextElementSibling || obj_lis.nextSibling;
+
+            obj_brother.style.backgroundColor = "red";
+
+
+            // 2.上一个兄弟 previousElementSibling  & previousSibling         
+            var obj_previou= obj_lis.previousElementSibling || obj_lis.previousSibling;
+
+            obj_previou.style.backgroundColor='purple';
+
+
+
+            // 3.注意，为了兼容 IE678 ，则需要注意一下， 一定是正常的ElementSibling方法在前，Sibling方法兼容IE678在后，否则就有问题。
+
+        }
+
+    </script>
+</head>
+
+
+<body>
+
+    <ul>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li id="one">1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+        <li>1212121</li>
+    </ul>
+
+</body>
+
+</html>

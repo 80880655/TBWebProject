@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置节点属性 01</title>
+    <script>
+        window.onload = function () {
+            var obj_box = document.getElementById("demo");
+
+            //1. 获取class 的名称 ，obj_box.getAttribute("class");
+            var txtid = obj_box.getAttribute("id");
+            var txtclass = obj_box.getAttribute("class");
+            var txttitle = obj_box.getAttribute("title");
+
+            // console.log(txtid);
+            // console.log(txtclass);
+
+            //2. obj_box.children 返回的是一个数组，序号为0代表取第一个；
+            var obj = obj_box.children[0].children;
+
+            console.log(obj);
+
+            console.log(txtid);
+            console.log(txtclass);
+            console.log(txttitle);
+
+            // alert(txtid);
+            // alert(txtclass);
+            // alert(txttitle);
+
+            // 3. 更改对象的属性信息。  原来class="box" ，现在将类名更改成 class="newBox".
+            obj_box.setAttribute("class", "newBox");
+
+            // 4.移除属性。 原来 div 中有 title="鼠标经过" 使用下面的语句可以移除。
+            obj_box.removeAttribute("title");
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="box" id="demo" title="鼠标经过">
+        <ul>
+            <li id="li01">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+
+</html>

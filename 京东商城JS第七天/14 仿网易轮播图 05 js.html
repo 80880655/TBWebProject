@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14 仿网易轮播图 05 JS</title>
+
+    <style>
+        * {margin: 0px; padding: 0px;}
+
+        /* 1.大盒子 */
+        .slider {
+            width: 453px;
+            height: 248px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        .slider .slider_pic {
+            width: 100%;
+            height: 224px;
+            background-color: yellow;
+
+            /* 重点:隐藏ol超出的部分，因为ol的宽度大于父亲，父亲直接使用 overflow: hidden 直接隐藏超出的部分 */
+            overflow: hidden;
+        }
+
+        /* 2.小圆点盒子 */
+        .slider .slider_focus {
+            width: 100%;
+            /* 这里是24px, 24才是最经典的，24和6 刚好是4倍 */
+            height: 24px;
+            /* background-color: blue; */
+
+            /* 小圆点居中 */
+            text-align: center;
+
+        }
+
+        .slider .slider_focus span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #888888;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 0px 4px;
+
+            vertical-align: center; 
+
+            /* 小圆点变形 */
+            -moz-transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            /* IE浏览器 10或以上 */
+            -ms-transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+        }
+
+
+        /* 这样写不能生效，因为 width 和 height 没有附加到指定的类上，所以这里需要提升 类 的等级 */
+        .slider .slider_focus .current {
+            width: 24px;
+            height: 6px;
+            background: #ff3333;
+        }
+
+
+        /* 3.图片处理 */
+        .slider .slider_pic ol {
+
+            /* 重点：父亲是100%宽度，儿子的宽度是4个图片的宽度，那么图片就会全部显示出来成一条直线 */
+            width: 1812px;
+            list-style: none;
+
+        }
+        .slider .slider_pic ol li{
+
+            /* 所有的li 浮动起来，这样图片就成一条线 */
+            float: left;
+        }
+
+        .slider .slider_pic ol li a img {
+            vertical-align: top;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- 轮播图 -->
+    <div class="slider" id="slider">
+        <!-- 图片 -->
+        <div class="slider_pic" id="slider_pic">
+            <ol>
+                <li><a href=""><img src="../京东商城JS第七天/网易轮播图/1.jpeg"></a></li>   
+                <li><a href=""><img src="../京东商城JS第七天/网易轮播图/2.jpeg"></a></li>
+                <li><a href=""><img src="../京东商城JS第七天/网易轮播图/3.jpeg"></a></li>
+                <li><a href=""><img src="../京东商城JS第七天/网易轮播图/4.jpeg"></a></li>
+                <li><a href=""><img src="../京东商城JS第七天/网易轮播图/1.jpeg"></a></li>
+                <li><a href=""><img src="../京东商城JS第七天/网易轮播图/2.jpeg"></a></li>
+            </ol>
+
+        </div>
+
+        <!-- 下面按钮 -->
+        <div class="slider_focus" id='iFocus'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+    
+</body>
+</html>
+<script>
+    // 时间：2019/5/23 17:45分 
+    // 功能说明：第13例子是直接更改img的src，主要是更换图片的效果，但是没有滑动的效果，这个例子将会做 滑动效果的例子。
+
+    function $(id){return document.getElementById(id)};
+
+    var oSpan=$("iFocus").children;
+    var images=$("slider_pic").children;
+
+    // console.log(images);
+    // console.log(oImg);
+    console.log(images.length);
+
+
+
+    // 2.轮播图下面的按钮
+    for (var i = 0; i < oSpan.length; i++) {
+        // 获取span的序号
+        oSpan[i].index=i;
+        oSpan[i].onmousemove=function(){   
+            // 清除所有的类名 
+            for (var j = 0,len=oSpan.length; j < len; j++) {
+                oSpan[j].className="";
+            }
+            this.className="current";
+        }
+    }
+
+    
+  
+
+</script>
+ 

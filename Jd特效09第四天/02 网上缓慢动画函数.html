@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 网上缓慢动画函数</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn">运动</button>
+
+    <div id='box'></div>
+
+</body>
+
+</html>
+
+<script>
+    // time:gaofeng 2020/4/7 12:10 测试网上现成的 缓动动画函数
+    var box=document.getElementById('box');
+    var btn=document.getElementById('btn');
+
+    btn.onclick=function(){
+        console.log(getStyle(btn,'backgroundColor'));
+
+        console.log(btn);
+        console.log(getStyle(btn, 0));
+
+        console.log(getStyle(btn, 'border'));
+    }
+
+    function perfectAnimate(tag, obj, fn) {// 传三个参数，运动的盒子，对象（可以传多个属性），回调函数（在执行完后可以再执行自定义的功能）
+        clearInterval(tag.timer);// 这里将定时器作为tag标签的属性保存，可以多次调用函数清除上一个定时器。
+        tag.timer = setInterval(function () {
+            var flag = true;
+            for (var k in obj) {
+                // 因为并不是所有属性都带px单位，所以这里进行判断分别设置 
+                if (k == 'opacity') {
+                    var currentDistance = getStyle(tag, k) * 100,
+                        target = obj[k] * 100,
+                        step = (target - currentDistance) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    currentDistance += step;
+                    tag.style[k] = currentDistance / 100;
+                } else if (k == 'zIndex') {
+                    tag.style[k] = obj[k];
+                }
+                else {
+                    var currentDistance = parseInt(getStyle(tag, k)) || 0,
+                        target = obj[k],
+                        step = (target - currentDistance) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    currentDistance += step;
+                    tag.style[k] = currentDistance + 'px';
+                }
+                if (target != currentDistance) {
+                    flag = false // 只要还有属性没有运动完成，就不会清楚定时器
+                }
+            }
+            if (flag) {
+                clearInterval(tag.timer)
+                fn && fn();// 所有定时器走完，这里执行回调函数，短路操作避免不传回调函数也不会报错。
+            }
+        }, 17);
+    }
+
+    // 获取样式的兼容函数，上面的缓动函数的依赖
+    function getStyle(tag, attr) {
+        if (tag.currentStyle) {
+            return tag.currentStyle[attr];
+        } else {
+            // return getComputedStyle(tag, null)[attr];
+            return getComputedStyle(tag, false)[attr];
+        }
+    }
+
+
+
+
+
+</script>

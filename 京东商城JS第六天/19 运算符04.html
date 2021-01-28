@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19 运算符04</title>
+    <script>
+        window.onload=function(){
+            // 时间：2019/4/17 14:38  
+            // 1.script 在前面和在 html 尾部结果不一样的问题。
+            var num = 10;
+            alert(1);
+            num = 20;
+            setTimeout("alert(num)", 0);
+
+            setTimeout("console.log(num)", 0);
+
+            alert(3);
+            num = 30;
+
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+<!-- <script>
+
+    var num=10;
+    alert(1);
+    num=20;
+    setTimeout("alert(num)",0);
+
+    alert(3);
+    num=30;
+
+</script> -->

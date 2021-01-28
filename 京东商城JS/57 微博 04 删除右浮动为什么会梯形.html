@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博-04 删除按钮右浮动为什么会呈现梯形</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+        
+        ul {list-style: none;}
+
+        .box {
+            width: 650px;
+            /* height: 230px; */
+            border: 1px solid #333;
+            margin: 50px auto;
+            padding-bottom: 20px;
+        }
+
+        button {
+            width: 120px;
+            height: 30px;
+            /* float: right; */
+        }
+
+        .box ul li {
+            line-height: 30px;
+            border-bottom: 1px dashed #ccc;
+
+            margin-left: 20px;
+            margin-right: 20px;
+
+        }
+
+        .box ul li a {
+            float:right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>321321
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>321321
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>321321
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>333333333333
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>图片文字对齐,水平垂直对齐
+                <img style="vertical-align:middle" src="../京东商城JS/images/commstar.png" alt="">
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

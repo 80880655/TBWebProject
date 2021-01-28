@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>24</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* 453 224 */
+        .box {
+            margin: 50px auto;
+            width: 453px;
+            height: 224px;
+            /* background-color: red; */
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        /* 1.图片滚动 */
+        .box .scrroll {
+            width: 400%;
+            height: 224px;
+            /* background-color: blue; */
+            position: relative;
+        }
+
+        .box .scrroll ul {
+            width: 400%;
+            list-style: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            /* 
+                时间：2019/9/23 10:30 
+                1.往左边切换的动态效果，均速。
+                2.此功能模仿 网易的轮播图 上的速度。
+             */
+            transition: left 0.3s linear 0s;
+        }
+
+        .box .scrroll ul li {
+            float: left;
+        }
+
+        .box .scrroll ul li img {
+            vertical-align: top;
+        }
+
+        /* 
+            时间：2019/9/19 23:35 分 明天需要处理网易得的轮播图切换速度。
+            3.切换类 
+            这样写不能生效，因为 width 和 height 没有附加到指定的类上，所以这里需要提升 类 的等级
+        */
+        /*
+            时间：2019/9/20 10:14
+            1.鼠标移动上去之后，切换一个图片的长度 453px 
+      */
+        .box .scrroll ul .roll {
+            transition: left 0.3s linear 0s;
+        }
+
+
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            function roll() {
+                num -= 453;
+                ul.style.left <= 1812 ? num = 0 : num;
+                ul.style.left = num + 'px';
+            }
+
+            var ul = $('scrroll').children[0];
+            var li = ul.children;
+            var num = 0;
+            var timer = null;
+
+            timer = setInterval(roll, 3500);
+
+            ul.onmousemove = function () {
+                clearInterval(timer);
+
+                // for (var i = 0; i < ul.children.length; i++) {
+                //         ul.children[i].className='';
+                // }
+                // this.className='roll';
+            }
+
+            ul.onmouseout = function () {
+                timer = setInterval(function roll() {
+                    num -= 453;
+                    num <= -1812 ? num = 0 : num;
+                    // ul.style.left <= -1812 ? num = 0 : num;
+                    ul.style.left = num + 'px';
+                    
+                    // for (var i = 0; i < ul.children.length; i++) {
+                    //     ul.children[i].className='';
+                    // }
+                    // this.className='roll';
+                }, 3500);
+
+            }
+
+
+
+
+
+
+
+
+            console.log(li);
+
+            console.log(ul.children.length);
+
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="scrroll" id="scrroll">
+            <ul>
+                <li>
+                    <a href=""><img src="../京东商城JS第七天/网易轮播图/1.jpeg" alt="" /></a>
+                </li>
+                <li>
+                    <a href=""><img src="../京东商城JS第七天/网易轮播图/2.jpeg" alt="" /></a>
+                </li>
+                <li>
+                    <a href=""><img src="../京东商城JS第七天/网易轮播图/3.jpeg" alt="" /></a>
+                </li>
+                <li>
+                    <a href=""><img src="../京东商城JS第七天/网易轮播图/4.jpeg" alt="" /></a>
+                </li>
+                <li>
+                    <a href=""><img src="../京东商城JS第七天/网易轮播图/1.jpeg" alt="" /></a>
+                </li>
+                <li>
+                    <a href=""><img src="../京东商城JS第七天/网易轮播图/2.jpeg" alt="" /></a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>

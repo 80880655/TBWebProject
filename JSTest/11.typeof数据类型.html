@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typeof</title>
+</head>
+<body>
+    <script>
+        // alert("111")
+        //字符串
+        var num="11";
+        console.log(typeof(num));
+        var num1=111;
+        console.log(typeof num1);
+        var num6=10.2131;
+        console.log(String(num6));
+        var num7=String(num6);
+        console.log(typeof num7);
+        console.log("---------------------");
+
+
+        //布尔值
+        var num2="123";
+        var num3=4433;
+        var num4=typeof !!num2;
+        console.log(typeof !!num2);
+        console.log(typeof !!num3);
+        if (num4==true)
+            console.log("true")
+        else
+            console.log("false");
+        console.log(num4);
+
+        console.log("布尔值的转换");
+        var num5=Boolean(5);
+        console.log(num5);
+        console.log(Boolean("5"));
+
+
+        //数值型
+        var num8=11.234;
+        console.log("------数值类型--------");
+        var num9=Number(num8);
+        console.log(num9);
+        console.log(typeof  num9);
+        var num9=010;
+        console.log(num9);
+        console.log("Number转换");
+        console.log(Number(num9));
+        var num10=0xb;
+        console.log(num10);
+        console.log(Number(num10));
+
+
+    </script>
+</body>
+</html>

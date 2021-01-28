@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 jQuery 实现04效果</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 200px;
+            width: 500px;
+            background-color: pink;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-left: 50px;
+            margin-bottom: 10px;
+            display: none;
+             
+            /* div盒子凸显效果 */
+            box-shadow: 2px 2px 5px #bbb;
+        }
+
+        #i_btn {
+            height: 40px;
+            width: 120px;
+            background-color: #2ccc;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.min.js"></script>
+
+    <script>
+        // 时间：2020/10/29 16:36分 解决了以下问题：
+        // 1、IE、谷歌、火狐等浏览器兼容性的问题。
+        // 2、缩减了代码量。
+
+        $(document).ready(function(){
+
+            $("#i_btn").click(function(){
+                // 2020/10/29 14:56 带有动画效果的显示
+                $("div").show(500).html("内容12121");
+            });
+
+        });
+        
+
+
+    </script>
+</head>
+
+<body>
+    <input type="button" value="点击显示div盒子" id="i_btn">
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab栏切换02</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 400px;
+            border: 1px solid #ccc;
+        }
+
+        .box #top {
+            text-align: center;
+        }
+
+        #bottom div {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ff0000;
+            display: none;
+        }
+
+        #bottom .show {
+            display: block;
+        }
+
+        #bottom .display {
+            display: none;
+        }
+
+    </style>
+
+    <script>
+
+        window.onload = function () {
+            var btns = document.getElementById("top").getElementsByTagName("button");
+            var divs = document.getElementById("bottom").getElementsByTagName("div");
+
+            // 2018/12/3 16:04 思路
+            // 1.循环所有的 div 和 button 按钮元素。
+            // 2.获取当前用户点击按钮的 序号id值。
+            // 3.用户点击某个按钮的时候,将该按钮对应的div显示出来，其他的全部屏蔽掉。
+
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].index = i;
+
+                btns[i].onclick = function () {
+                    for (var j = 0; j < btns.length; j++) {
+                        divs[j].className = "";
+                    }
+
+                    divs[this.index].className = "show";
+                }
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+<div class="box">
+    <div id="top">
+        <button>第1个按钮</button>
+        <button>第2个按钮</button>
+        <button>第3个按钮</button>
+        <button>第4个按钮</button>
+        <button>第5个按钮</button>
+    </div>
+
+    <div id="bottom">
+        <div class="show">第一页</div>
+        <div>第二页</div>
+        <div>第三页</div>
+        <div>第四页</div>
+        <div>第五页</div>
+    </div>
+</div>
+
+</body>
+</html>

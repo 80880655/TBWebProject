@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"> -->
+    <title>封装自己的class类 02， 多个类名的情况,需要兼容 IE678</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        div {
+            width: 120px;
+            height: 80px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var arr = [];
+
+
+            function getClass(_classname) {
+
+                var _txtArr = [];
+
+                if (document.getElementsByClassName) {
+                    return document.getElementsByClassName(_classname);
+                }
+
+                var dom = document.getElementsByTagName("*");
+
+                // if(dom.length>0)
+                // {
+                //     for(i=0;i<dom.length;i++)
+                //     {
+                //         // demo test one
+                //         _txtArr=dom[i].className.split(" ");
+                //         for (var j = 0;j < _txtArr.length; j++) {
+                //             if(_txtArr[j]==_classname)
+                //             {
+                //                 arr.push(_txtArr[j])
+                //             }
+                //         }                  
+                //     }
+                // }
+
+                for (i = 0; i < dom.length; i++) {
+                    // demo test one
+                    _txtArr = dom[i].className.split(" ");
+                    for (var j = 0; j < _txtArr.length; j++) {
+                        if (_txtArr[j] == _classname) {
+                            arr.push(_txtArr[j]);
+                        }
+                    }
+                }
+                return arr;
+            }
+
+
+            // getClass("test");
+            console.log(getClass("demo").length);
+
+            var test = getClass("test");
+            for (var x = 0; x < test.length; x++) {
+                // test[x].style.backgroundColor='#81afd5';
+
+                test[x].style.backgroundColor='red';
+                //test[x].style.background = '#81afd5 url() no-repeat 0 0';
+
+                // 需要注意一下 test[x].style.backgroundColor 在IE9是可以正常访问，但是IE8就有问题。
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <span>1.兼容向下浏览器，并且获取指定类名的数量</span>
+    <span>2.将某个类名的div的背景色变色，需要兼容 IE678</span>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="demo test"></div>
+    <div></div>
+    <div class="test"></div>
+    <div></div>
+    <div class="demo test one"></div>
+    <div></div>
+    <div class="demo"></div>
+    <div class="test"></div>
+
+</body>
+
+</html>

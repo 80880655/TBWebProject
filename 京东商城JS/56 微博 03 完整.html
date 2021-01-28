@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博03 </title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 650px;
+            /* height: 230px; */
+            border: 1px solid #333;
+            margin: 50px auto;
+            padding-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .box .content {
+            width: 460px;
+
+            /* background-color: red; */
+
+            margin-top: 10px;
+            margin-left: 100px;
+        }
+
+        .box .content ul li {
+            border-bottom: 1px dashed #ccc;
+
+            /* 重点：如果不添加下面的 line-height ，“删除”就呈现 梯形排列 */
+            line-height: 30px;
+        }
+
+        .box .content ul a {
+            float:right;
+        }
+
+
+        .box span {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .box textarea {
+            margin-top: 10px;
+            width: 450px;
+            /* 防止用户拖动 右下角 */
+            resize: none;
+        }
+
+        .box button {
+            width: 60px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            // 1.获得发表按钮,只有一个按钮，所以后面加上序号[0]
+            var btn = document.getElementsByTagName("button")[0];
+            var content=document.getElementById("content");
+            var newUl=document.createElement("ul");
+            content.appendChild(newUl);
+
+            // 2.点击“发表”按钮事件
+            btn.onclick=function(){
+                var txt=document.getElementsByTagName("textarea")[0];
+                if (txt.value=="") {
+                    alert("不允许为空");
+
+                    // 3.下面的return 不管是 false 或者是 true 都会跳出整个语句块
+                    return false;
+                }
+
+                // alert("33333333");
+                var newLis = document.createElement("li");
+
+                // 4.判断当前 li 有几个，如果有多个，则每次都需要插入到最后一个li的上面
+
+                
+
+                newLis.innerHTML=txt.value+"<a href ='javascript:;'>删除</a> ";
+                newUl.appendChild(newLis);
+
+                document.getElementsByTagName("textarea")[0].value="";
+            }
+
+
+            console.log(btn);
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="box">
+        <span>发表内容：</span>
+        <textarea name="" cols="30" rows="10"></textarea>
+        <button>发表</button>
+        <div class="content" id="content">
+            <!-- 预留ul & li -->
+
+        </div>
+    </div>
+</body>
+
+</html>

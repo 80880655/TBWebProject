@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>28 鼠标跟随 2</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .father {
+            position: relative;
+        }
+
+        .box {
+            width: 60px;
+            height: 75px;
+            background: url('../Jd特效08/img/img.jpg') no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="box" id="ibox">
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var ibox = document.getElementById('ibox');
+    var leaderX = 0, targetX = 0,
+        leaderY=0,targetY=0;
+
+    document.onclick=function(event){
+        var event=event||window.event;
+        targetX= event.clientX;
+        targetY=event.clientY;
+    }
+
+    setInterval(function(){
+        leaderX= leaderX+(targetX- leaderX)/10;
+        leaderY = leaderY + (targetY - leaderY) / 10;
+        // console.log(target);
+        ibox.style.left = leaderX + 'px';
+        ibox.style.top = leaderY + 'px';
+    }, 30);
+
+
+</script>

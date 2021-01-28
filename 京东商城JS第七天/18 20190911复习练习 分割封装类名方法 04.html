@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18 封装自己类名的方法</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            width: 90px;
+            height: 65px;
+
+            background-color: pink;
+            margin: 10px auto;
+        }
+    </style>
+
+    <script>
+        // 时间：2019/9/11 16:57 复习，如果有多个类名，使用分割类名的方法
+        // 比如：test 和  demo ； 正常情况下 一个标签元素不可能只有一个类名，所以要用到 分割的方法 来实现。
+        // 原因： getElementsByClassName 不支持 IE678，只有高级版本的才支持。
+        //  所有的浏览器都支持 getElementsByTagName 的方法。
+        window.onload = function () {
+
+            // 1.声明数组
+            var arr=[];
+            var dom = document.getElementById('body').getElementsByTagName('*');
+
+            var dom1= document.getElementById('body');
+            // 2.创建函数或方法
+            function getClassName(_className) {
+                
+                //看当前浏览器是否支持 getElementsByClassName 方法
+                if (dom.getElementsByClassName) {
+                    if (dom.getElementsByClassName!='') {
+                        return dom.getElementsByClassName(_className);
+                    }        
+                }
+
+                
+                for (var i = 0; i < dom.length; i++) {
+                    // 3.使用className 是否包含 变量指定的 _className 来判断.
+                    
+                    console.log(dom[i].className);
+                    if (dom[i].className.indexOf(_className)!=-1) {
+                        arr.push(dom[i]);
+                        console.log(dom[i].className);
+                    }
+
+
+                }
+                
+
+                for (var i = 0; i < dom1.getElementsByTagName('*').length; i++) {
+                    // 3.使用className 是否包含 变量指定的 _className 来判断.
+                    console.log(dom1[i].getElementsByTagName('*').className);
+                    console.log('----------');
+
+
+                }
+
+                return arr;
+            }
+
+            console.log(getClassName('demo').length);
+           
+
+        }
+    </script>
+</head>
+
+<body id="body">
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="test"></div>
+    <div></div>
+    <div class="demo test"></div>
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+
+</body>
+
+</html>

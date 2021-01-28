@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13 window.onscroll 01 </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    window.onscroll = function () {
+
+        // var title=null;
+
+        // console.log(1222121);
+
+        // 获取scrollTop的值
+
+        // 1.下面的方法 IE57891011 、火狐、谷歌都识别不了
+        // document.title = document.body.scrollTop;
+
+        // 2. 实际验证：IE7891011 和其他最新浏览器（谷歌 & 火狐） ， 通用
+        // document.title = document.documentElement.scrollTop;
+
+        // 3.IE9+以上版本 和其他最新浏览器 都可以识别
+        document.title = window.pageXOffset;  //水平
+        document.title = window.pageYOffset;
+
+        // 4.兼容性的写法
+        // var scrollTop=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+
+        // console.log(document.title);
+
+
+
+        // document.title=scrollTop;
+        // console.log(scrollTop);
+
+        console.log(document.title);
+    }
+
+</script>

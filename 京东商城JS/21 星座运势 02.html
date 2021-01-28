@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>星座运势02</title>
+    <style>
+        /* 时间：2018/12/19 17:55 备注说明：
+        1.使用 span标签 进行划分左右2个区域，并且写上相应的函数来执行动作。
+        2.使用 子绝父相 定位来设置 星星 的个数和大小。
+         */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin: 50px auto;
+            width: 500px;
+            height: 340px;
+            /* background-color: yellow; */
+            border: 1px solid #ccc;
+            /* overflow: hidden; */
+
+            /* 时间：2018/12/19 使用2个span并排显示，使用font-size：0px; 来处理，清除span之间的缝隙,这样下面2个span就并排了 */
+            font-size: 0px;
+        }
+
+        .box .left {
+            display: inline-block;
+            width: 250px;
+            height: 340px;
+            /* background-color: blue; */
+            /* w250 h340 */
+            background: url('../京东商城JS/images/十二星座02.jpg') no-repeat;
+            background-position: 0px 0px;
+        }
+
+        .box .right {
+            display: inline-block;
+            width: 249px;
+            height: 340px;
+            border-left: 1px solid #ccc;
+        }
+
+        .box .right .top {
+            height: 200px;
+            width: 249px;
+            float: left;
+        }
+
+        .box .right .top .sele {
+            height: 30px;
+            width: 249px;
+            text-align: center;
+            /* 垂直居中 */
+            /* margin: 85px auto; */
+            margin: 50px 0 10px 0;
+        }
+
+        /* 星星 */
+        .box .right .top .xinxin {
+            display: inline-block;
+            margin: 0 0 0 80px;
+            height: 16px;
+            width: 80px;
+
+            /* 让背景图重复5个宽度 每个 16*16 ,5个就是80px */
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 0;
+            position: relative;
+        }
+
+        .box .right .top .xinxin2 {
+            display: inline-block;
+            height: 16px;
+            /* width: 32px; */
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -16px;
+            /* background-color: red; */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .box .right .bottom {
+            height: 140px;
+            width: 249px;
+            float: left;
+            border-top: 1px solid #ccc;
+        }
+
+        .box .right .bottom span {
+            display: inline-block;
+            height: 140px;
+            width: 249px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            // background: url('../京东商城JS/images/十二星座02.jpg') no - repeat;
+            // background - position: 0px 0px;
+            var obj_sele = document.getElementById("sele");
+            var obj_xinzuo = document.getElementById("left");
+            var obj_option = document.getElementsByTagName("option");
+            var obj_xinxin2 = document.getElementById("xinxin2");
+
+
+            //默认值设置
+            function setDef(item) {
+                // 1.select 默认值
+                document.getElementsByName("sele")[0].value = item;
+                changeImgAndXinXin(item);
+
+            }
+
+            // // 切换图片函数 
+            // function changeImg(item) {
+            //     if (item) {
+            //         item = (item - 1) * 250;
+            //         obj_xinzuo.style.backgroundPosition = "-" + item + "px" + " -0px";
+            //     }
+            // }
+
+            // // 切换星星
+            // function changeXinXin(item) {
+            //     if (item > 5) {
+            //         item = item - 5;
+            //         obj_xinxin2.style.width = (item * 16) + "px";
+            //     }
+            //     obj_xinxin2.style.width = (item * 16) + "px";
+            // }
+
+            //将 星星切换函数 和 图片切换 函数整合在一起
+            function changeImgAndXinXin(item) {
+                var item2 = (item - 1) * 250;
+                if (item > 5) {
+                    item = item - 5;
+                    obj_xinxin2.style.width = (item * 16) + "px";
+                }
+                obj_xinxin2.style.width = (item * 16) + "px";
+                obj_xinzuo.style.backgroundPosition = "-" + item2 + "px" + " -0px";
+            }
+
+
+            // select 的切换更改背景图和星星
+            obj_sele.onchange = function () {
+                // alert(this.value);
+                // changeImg(this.value);
+                // changeXinXin(this.value);
+                changeImgAndXinXin(this.value);
+            }
+
+            //页面打开默认值
+            setDef(6);
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <!-- 左边 -->
+        <span class="left" id="left">
+        </span>
+
+        <!-- 右边 -->
+        <span class="right">
+            <div class="top">
+                <select name="sele" id="sele" class="sele">
+                    <!-- 使用 selected="selected" 默认选择 -->
+                    <!-- <option value="1" selected="selected">狮子座 1999-01-01~1999-02-02</option> -->
+                    <option value="1">狮子座 1999-01-01~1999-02-02</option>
+                    <option value="2">天平座 1999-01-01~1999-02-02</option>
+                    <option value="3">双子座 1999-01-01~1999-02-02</option>
+                    <option value="4">双鱼座 1999-01-01~1999-02-02</option>
+                    <option value="5">山羊座 1999-01-01~1999-02-02</option>
+                    <option value="6">巨蟹座 1999-01-01~1999-02-02</option>
+                    <option value="7">摩羯座 1999-01-01~1999-02-02</option>
+                    <option value="8">水瓶座 1999-01-01~1999-02-02</option>
+                </select>
+
+                <span class="xinxin" id="xinxin">
+                    <span class="xinxin2" id="xinxin2"></span>
+                </span>
+
+            </div>
+
+            <div class="bottom">
+            </div>
+
+        </span>
+    </div>
+
+</body>
+
+</html>

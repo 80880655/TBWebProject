@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 封装获取行样式和内嵌样式的信息 03</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box {
+            width: 200px;
+            height: 120px;
+            border: 1px solid #ccc;
+            position: absolute;
+            left: 10px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="top: 20px; margin: 0 auto;">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    var box = document.getElementById('box');
+
+    // time:gaofeng 2020/4/8 14:59 封装自己的获取样式函数
+
+
+    console.log(getStyle(box, 'width'));
+    console.log(getStyle(box, 'top'));
+    console.log(getStyle(box, 'position'));
+    console.log(getStyle(box, 'height'));
+    console.log(getStyle(box, 'margin'));
+
+    // 自定义封装获取 内嵌式和外链式 样式
+    function getStyle(obj, attr) {
+
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr];
+        }
+        else {
+            return window.getComputedStyle(obj, null)[attr];
+        }
+
+    }
+
+
+
+</script>

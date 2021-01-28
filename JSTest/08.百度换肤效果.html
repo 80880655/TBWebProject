@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*1.不加引号*/
+            /*background: url(../images/baidu/1.jpg) top center;*/
+            /*2.加单引号*/
+            background: url('../images/baidu/1.jpg') top center;
+            /*3.默认是双引号*/
+            /*background: url("../images/baidu/1.jpg") top center;*/
+        }
+
+        .box {
+            height: 150px;
+            background: rgba(255, 255, 255, .3);
+            /*box下面的img水平居中*/
+            text-align: center;
+
+            /*如果图片过大就不能使用line-height*/
+            /*line-height: 250px;*/
+            padding-top: 70px;
+        }
+
+        .box img {
+            width: 100px;
+
+            /*修改这个值可以改变图片显示放大的速度*/
+            transition: all 0.3s;
+        }
+
+        .box img:hover {
+            cursor: pointer;
+            /*下面这个值是改变图片当前的大小倍数*/
+            transform: scale(1.4);
+
+            /*鼠标经过图片的时候，将左右2边的外边距变大*/
+            margin-right: 20px;
+            margin-left: 20px;
+            /*1111*/
+        }
+    </style>
+
+    <script>
+        // 1.onload入口函数，有入口函数之后就可以将 script 脚本写在网页的最上面； 如果没有则只能写在 body 里面的最下面。
+        window.onload = function () {
+            // 1.先声明对象
+            var pic1 = document.getElementById("pic1");
+            var pic2 = document.getElementById("pic2");
+            var pic3 = document.getElementById("pic3");
+            var pic4 = document.getElementById("pic4");
+            var pic5 = document.getElementById("pic5");
+
+            pic1.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/1.jpg')";
+            }
+
+            pic2.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/2.jpg')";
+            }
+
+            pic3.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/3.jpg')";
+            }
+
+            pic4.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/4.jpg')";
+            }
+
+            pic5.onclick = function () {
+                document.body.style.backgroundImage = "url('../images/baidu/5.jpg')";
+            }
+        }
+
+
+    </script>
+</head>
+<body id="body">
+<div class="box" id="box">
+    <img id="pic1" src="../images/baidu/1.jpg"/>
+    <img id="pic2" src="../images/baidu/2.jpg"/>
+    <img id="pic3" src="../images/baidu/3.jpg"/>
+    <img id="pic4" src="../images/baidu/4.jpg"/>
+    <img id="pic5" src="../images/baidu/5.jpg"/>
+
+</div>
+
+</body>
+</html>

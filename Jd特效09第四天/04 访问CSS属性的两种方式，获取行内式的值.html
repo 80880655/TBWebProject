@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 访问CSS属性的两种方式，获取行内式的值</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 100px;
+            /* height: 100px; */
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box" style="height: 100px; position: absolute; left: 0px;"></div>
+    
+</body>
+</html>
+
+<script>
+    var box=document.getElementsByTagName('div')[0];
+
+    // console.log(box);
+
+    console.log('height:'+fn('height'));
+    
+    // time:gaofeng 2020.4.7 17:12  使用中括号获取对应的值
+    // 1、这种方式对于写在 style 里面的样式无法获取，只能获取行样式的值。
+    console.log('width:' + fn('width'));
+
+    console.log('left:' + fn('left'));
+
+    function fn(attr){
+        return box.style[attr];
+    }
+
+</script>

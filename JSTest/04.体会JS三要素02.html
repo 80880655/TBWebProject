@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #demo {
+            width: 200px;
+            height: 200px;
+            background-color: #009ae2;
+        }
+    </style>
+</head>
+<div id="demo"></div>
+<input id="nn" type="text" >
+<button id="btn" type="button" onclick="btnClik()">更改宽度和高度</button>
+<button id="btn2" type="button" onclick="btn2Change()">更改背景色</button>
+
+
+<script>
+    var demo=document.getElementById("demo");
+    var btn=document.getElementById("btn");
+    var btn2=document.getElementById("btn2");
+
+    // 下面的变量声明只是页面刷新的时候才有用，之后就需要重新刷新，比如下面使用 document.getElementById("nn").value 就是动态获取了。
+    var inputtext=document.getElementById("nn").value;
+
+    function btnClik() {
+        demo.style.width="300px";
+        demo.style.height="300px";
+    }
+
+    function btn2Change() {
+        demo.style.backgroundColor=document.getElementById("nn").value;
+    }
+
+</script>
+
+</body>
+</html>

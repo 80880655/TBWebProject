@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offSet 1 2个盒子都无定位</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            margin: 80px auto;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #cccc;
+            background-color: pink;
+            /* position:relative; */
+        }
+
+        .box2 {
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            border: 2px solid #ccc;
+            padding-top: 20px;
+
+            /* position: absolute;
+            top: 12px;
+            left: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="off1">
+        <div class="box2" id="off2"></div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    /*
+        时间：2019/9/27 9:02分 无定位
+        1.则就是获取距离到body的宽度.
+
+    */
+
+    console.log(off1.offsetLeft);
+    console.log(off2.offsetLeft);
+
+    console.log('off1:' + off1.offsetTop);
+    console.log('off2:' + off2.offsetTop);
+
+    console.log('off1 offsetHeight:' + off1.offsetHeight);
+    console.log('off2 offsetWidth:' + off2.offsetWidth);
+
+</script>

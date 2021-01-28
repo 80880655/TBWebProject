@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26 setTimeout复习</title>
+    <script>
+        window.onload=function(){
+
+
+            function alterFunc(){
+                alert('1');
+            }
+
+            //写法1：
+            // setTimeout(alterFunc, 2000);
+
+            // 写法2：
+            setTimeout(function(){
+                alterFunc();
+            },2000);
+    }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

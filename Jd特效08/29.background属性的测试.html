@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>29.background 属性测试</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /*
+            时间：2019/11/25 16:27分
+            1.关于 background 在IE 67891011上显示不了的问题。
+        */
+
+        .box {
+            /* width: 60px;
+            height: 75px; */
+
+            width: 103px;
+            height: 32px;
+            border: 1px solid #ccc;
+            /* background: url('../images/img.jpg') no-repeat;
+            background-size: contain; */
+
+            background-image: url('../images/mess4.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 130px;
+            background-image: url('../images/66.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .box2 {
+            width: 60px;
+            height: 75px;
+            /* border: 1px solid #ccc; */
+            /* background: url('../Jd特效08/img/img.jpg') no-repeat; */
+            background-image: url('../Jd特效08/img/img.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-color: red;
+        }
+
+        .box3 {
+            width: 60px;
+            height: 75px;
+            /* border: 1px solid #ccc; */
+            /* background: url('../Jd特效08/img/img.jpg') no-repeat; */
+            background-image: url('../Jd特效08/img/55.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <div class="box1">
+
+    </div>
+
+    <div class="box2"></div>
+
+    <div class="box3"></div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14 小米JS 03</title>
+    <style>
+        /* 时间：2019/3/26 11:45  
+            1.使用定位的上移或下移来展示和显示背景图的上动或者下滑动。
+            2.图片和外面的盒子 div 属于同一个级别，然后控制图片的 绝对定位的 top值 达到上下游滚动的效果。
+
+
+        */
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .demo {
+            width: 512px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 30px auto;
+            /* background: url('../京东商城JS第六天/images/mi.png') no-repeat; */
+            overflow: hidden;
+            position: relative;
+            top: 0px;
+
+        }
+
+        .demo span {
+            display: block;
+            width: 100%;
+            height: 200px;
+            position: absolute;
+        }
+
+        .demo .up {
+            top: 0;
+        }
+
+        .demo .down {
+            bottom: 0;
+        }
+
+        /* 图片 
+            图片和外面的盒子 div 属于同一个级别，然后控制图片的 绝对定位的 top值 达到上下游滚动的效果。
+        */
+        #pic {
+            position: absolute;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <img src="../京东商城JS第六天/images/mi.png" alt="" id="pic">
+        <span id="picUp" class="up"></span>
+        <span id="picDown" class="down"></span>
+    </div>
+
+</body>
+
+<script>
+    var num = 0;
+    var timer = null; //定时器
+
+    $('picUp').onmouseover = function () {
+        // alert("11");
+        // 1.首先需要先清除定时器
+        // 2.往上移动就是减少pic的top值，最大值为1070， 1470图片高度减去400显示高度    
+        clearInterval(timer);
+        timer = setInterval(function(){
+            num -= 5;
+            num >= -1070 ? $('pic').style.top = num + "px" : clearInterval(timer);
+        }, 30);
+
+        // timer = setInterval(function () {
+        //     num -= 4;
+        //     $('pic').style.top = num + "px";
+        //     if (num >= -1070) {
+        //         clearInterval(timer);
+        //     }
+        // }
+        //     , 30
+        // );
+    }
+
+    $('picDown').onmouseover = function () {
+        // alert("22");
+        // 1.首先需要先清除定时器
+        // 2.往上移动就是增加pic的top值，最大值为1070， 1470图片高度减去400显示高度  
+
+        clearInterval(timer);
+        timer = setInterval(function(){
+            num += 5;
+            num < 0 ? $('pic').style.top = num + "px" : clearInterval(timer);
+        }, 30);
+    }
+
+    function $(params) {
+        return document.getElementById(params);
+    }
+
+</script>
+
+
+</html>

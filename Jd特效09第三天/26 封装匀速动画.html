@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>26 封装匀速动画</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+
+            /* time:gaofeng 2020/3/31 下面的 margin 影响到了 匀速动画的计算，所以不能后退 */
+            /* margin: 0 0 0 10px; */
+
+            background-color: pink;
+            position: absolute;
+            /* top: 0px; */
+            left: 0px;
+        }
+
+        button {
+            width: 120px;
+            height: auto;
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn200">200</button>
+    <button id="btn400">400</button>
+
+    <div class="box">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    var box = document.getElementsByTagName('div')[0];
+    var btn200 = $('btn200');
+    var btn400 = $('btn400');
+
+
+    btn200.onclick = function () {
+        animate(box, 200);
+    }
+
+    btn400.onclick = function () {
+        animate(box, 400);
+    }
+
+
+    // time:gaofeng 2020/3/31 10:06 
+    // 1.封装匀速函数,三个参数； 更改成2个参数
+    // 2.点击之后最后回来
+    // 3.传递speed的值为 -5，就是倒退
+    // 4.移动到目标target位置之后就停止，当再次点击的时候进行回退。
+    // 5.obj.offsetLeft == target 可能永远无法相同，原因为 speed 的值和 目标target的值永远不相同，所以永远都不等，然后一直运动下去
+
+    // function animate(obj, target,speed){
+    function animate(obj, target) {
+        clearInterval(obj.timer);  // 先清除定时器
+        
+        var speed = obj.offsetLeft < target ? 5 : -5;
+
+        obj.timer = setInterval(function () {
+            // console.log('obj.offsetLeft:' + obj.offsetLeft);
+            // console.log('target:' + target);
+            // console.log('speed:' + speed);
+
+            // 这里之前是 obj.offsetLeft == target 不会相等； 如果更改成大于等于，则也不相等，因为 speed 是一个固定的值，会导致2个值之前有差异;
+            // 就不停的使用 target - obj.offsetLeft 得到差值，如果这个差值 小于等于 5 ；那么就停止定时器
+            // 这个result 有可能为正数  也有可能为负数，所以这里需要使用绝对值函数 Math.asb();  
+            // 比如： offsetLeft的值为195 ， 目标为200， 差值为 -5；
+            // 比如： offsetLeft的值为205 ， 目标为200， 差值为 5 ；
+
+            var result = target - obj.offsetLeft;
+
+            obj.style.left = obj.offsetLeft + speed + 'px';
+
+            // Math.abs()取绝对值
+            if (Math.abs(result) <= 5) {
+                clearInterval(obj.timer);
+
+                // 如果在这个差值范围内，则直接等于这个值就可以了
+                obj.style.left = target + 'px';
+            }
+        }, 30);
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+</script>

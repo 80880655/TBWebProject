@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 jQuery选择器</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            /* color: red; */
+            /* font-size: 15px; */
+        }
+
+
+    </style>
+
+    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            // id 选择器
+            // javaScript ： dom.style.backgroundColor="red";
+
+            // 方式1：
+            $("#b03").css("background","red");
+            console.log($("#b03"));
+
+            // 方式2： 如果只是给一个参数给到css会怎么样？
+            var br=$("#b02").css("color");
+            console.log(br);
+
+            // 方式3：获取字体大小; 如果去掉了CSS的样式，这里会得到默认值 16px
+            var fonts=$("#b02").css("font-size");
+            console.log(fonts);
+
+            // 方式4： 类 样式选择器
+            // $(".liItem").css("color","blue");
+            
+            // 方式5： 标签选择器;  jQuery 隐式迭代
+            $("li").css("background","pink");
+
+            // 方式6： * 号选择器; 通配符选择器
+            $("*").css("font-size","20px");
+
+            // 方式7： 逗号选择器“，”
+            $(".liItem,div").css("color","yellow");
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+
+    <ul>
+        <li class="liItem">内容1</li>
+        <li id="b02">内容2</li>
+        <li class="liItem" id="b03">内容3</li>
+        <li>内容4</li>
+        <li>内容5</li>
+        <li class="liItem">内容6</li>
+        <li>内容7</li>
+        <li>内容8</li>
+    </ul>
+
+    <div>我是div的内容</div>
+    
+</body>
+</html>
+
+

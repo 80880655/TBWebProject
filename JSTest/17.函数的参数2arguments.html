@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 时间：2018/10/10 fn.arguments 方法就是“实参”的备份。
+        function fn(a,b) {
+            if (fn.length == fn.arguments.length)
+            {
+                console.log(fn.length);
+                //arguments 显示 fn() 方法中的实参。
+                console.log(arguments);
+                console.log(a+b);
+            }
+            else
+            {
+                console.error("函数fn的形参数量不匹配，请重新输入！");
+            }
+        }
+
+        fn(1,1,1,11,1);
+        fn(3,3);
+
+    </script>
+</body>
+</html>

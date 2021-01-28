@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            /* background: url('../images/baidu/1.jpg') top center; */
+            /* background-image: url('../京东商城JS/images/1.jpg'); */
+            background: url('../京东商城JS/images/1.jpg') no-repeat;
+            /* background: url(..\) */           
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 100px;
+            height: 30px;
+            border: 1px solid #ccc;
+            
+
+            
+        }
+
+        .box .sele {
+            width: 100px;
+            height: 30px;
+
+            /* 这里想要将option中的值显示居中，首先需要使用 display 的属性转换成块级元素之后，再使用text-align才有效 */
+            display: inline-block;
+            text-align: center;
+        }
+
+        .box .sele option {
+            vertical-align: middle;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var target = document.getElementById("sele");
+            var obj_option = target.getElementsByTagName("option");
+            var obj_body=document.getElementById("body");
+
+            // for (var i = 1; i < obj_option.length; i++) {
+
+            //     // 时间：2018/12/06 这里不是 obj_option 的 onchange 事件，应该是 select的事件，这个对应的是 target
+            //     // obj_option[i].onchange = function () {
+            //     //     alert(this.value);
+            //     // }     
+
+            // }
+
+            // 区别备注：这里的意思是 target 是包含了所有对象，所以不需要使用 i 元素，也不需要放在 for 循环中
+            target.onchange = function () {
+                // alert(this.value+".jpg");
+                obj_body.style.backgroundImage="url('../京东商城JS/images/"+this.value+".jpg')";
+            }
+
+        }
+
+    </script>
+</head>
+
+<body id="body">
+    <div class="box" id="box">
+        <select name="sele" id="sele" class="sele">
+            <option value="1">春</option>
+            <option value="2">夏</option>
+            <option value="3">秋</option>
+            <option value="4">冬</option>
+        </select>
+    </div>
+
+</body>
+
+</html>

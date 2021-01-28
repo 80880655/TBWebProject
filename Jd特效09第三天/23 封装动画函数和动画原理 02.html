@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23 封装动画函数和动画原理 01</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 0 0 0 10px;
+            position: absolute;
+        }
+
+        button {
+            margin: 10px auto;
+            display: block;
+            width: 120px;
+            height: 30px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn200'>btn200</button>
+    <button id='btn400'>btn400</button>
+
+    <div class="box">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var box = document.getElementsByTagName('div')[0];
+    var btn200 = document.getElementById('btn200');
+    var btn400 = document.getElementById('btn400');
+    var timer = null;
+
+    // time:gaofneg 2020/3/27 15:50 自己编写的封装函数方法
+    // 1、目的：封装函数
+
+    animate(btn200, 200);
+    animate(btn400, 400);
+
+
+    /** 封装的函数
+     * @obj 传入需要执行的对象
+     * @target  传入的目标位置
+     */
+    function animate(obj, target) {
+        obj.onclick = function (event) {
+            timer = setInterval(function () {
+                var targetLeft = box.offsetLeft + 10;
+                box.style.left = targetLeft + 'px';
+
+                if (targetLeft < target) {
+                    box.style.left = targetLeft + 'px';
+                }
+                else if (targetLeft = target) {
+                    clearInterval(timer);
+                    box.style.left = target + 'px';
+                }
+            }, 10);
+        }
+    }
+</script>

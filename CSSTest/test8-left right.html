@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小圆点+左右箭头</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .father {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background: url(../images/slider1.jpg) no-repeat;
+
+            /*父亲相对定位*/
+            position: relative;
+        }
+
+        /*begin----小圆点*/
+        .father .list ul {
+            /*定位：子绝父相*/
+            position: absolute;
+            top: 382px;
+            left: 50%;
+            margin-left: -57px;
+        }
+
+        .father .list ul li {
+            float: left;
+            background-color: #3E3E3E;
+            margin-right: 5px;
+            border-radius: 50%;
+            font-weight: bold;
+            color: #fff;
+            /*first*/
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            /*second*/
+            text-align: center;
+        }
+
+        .father .list ul li:hover {
+            cursor: pointer;
+            background-color: #b61b1f;
+        }
+
+        .father .list ul .current {
+            background-color: #b61b1f;
+        }
+
+        /*end----小圆点*/
+
+        /*begin----小三角*/
+        /*.father .arrow {*/
+        /*height: 62px;*/
+        /*width: 28px;*/
+        /*background-color: rgba(0,0,0,.5);*/
+
+        /*position: absolute;*/
+        /*top:50%;*/
+        /*margin-top: -31px;*/
+
+        /*!*[重点]这里不能写在父亲的left值，如果写了2个小三角的属性就都是left,这里需要分开写一个左边，一个右边；*!*/
+        /*!*另外2个小三角继承了父亲的绝对定位，所以这里有继承性。*!*/
+        /*!*left: 0;*!*/
+
+        /*text-align: center;*/
+        /*line-height: 62px;*/
+        /*}*/
+
+        .father .arrow .arrow-left, .arrow-right {
+            height: 62px;
+            width: 28px;
+            background-color: rgba(0, 0, 0, .2);
+            position: absolute;
+            top: 50%;
+            margin-top: -31px;
+
+            text-align: center;
+            line-height: 62px;
+        }
+
+        /*!*[重点]这里不能写在父亲的left值，如果写了2个小三角的属性就都是left,这里需要分开写一个左边，一个右边；*!*/
+        /*!*另外2个小三角继承了父亲的绝对定位，所以这里有继承性。*!*/
+        /*!*left: 0;*!*/
+        .father .arrow .arrow-left {
+            left: 0;
+        }
+
+        .father .arrow .arrow-right {
+            right: 0;
+        }
+
+        .father .arrow a {
+            color: #ffffff;
+            font-size: 16px;
+            /*font-weight: bold;*/
+        }
+
+        .father .arrow a:hover {
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        /*end----小三角*/
+
+    </style>
+    <link rel="stylesheet" href="../css/base.css"></head>
+<body>
+    <div class="father">
+        <!--图片下面轮播图小圆点-->
+        <div class="list">
+            <ul>
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+
+        <!--左右小三角-->
+        <div class="arrow">
+            <a href="javascript:;" class="arrow-left">
+                <</a>
+                    <a href="javascript:;" class="arrow-right">></a>
+                </div>
+            </div>
+</body>
+</html>

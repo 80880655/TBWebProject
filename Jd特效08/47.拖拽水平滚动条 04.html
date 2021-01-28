@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>47.拖拽水平滚动条移动 04</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .scroll {
+            width: 400px;
+            height: 8px;
+            background-color: #ccc;
+            margin: 100px;
+            position: relative;
+        }
+
+        .bar {
+            height: 22px;
+            width: 10px;
+            background-color: #369;
+
+            position: absolute;
+            top: -7px;
+            left: 0px;
+            cursor: pointer;
+        }
+
+        .mask {
+            width: 0;
+            height: 100%;
+            background-color: #369;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll" id="iscroll">
+        <div class="bar" id="ibar"></div>
+        <div class="mask"></div>
+    </div>
+
+    <span>1 拖拽事件是 onmousedown & onmousemove的合集</span>
+</body>
+
+</html>
+
+<script>
+    var ibar = document.getElementById('ibar');
+    var iscroll = document.getElementById('iscroll');
+
+    //拖拽之后的进度显示条目
+    var mask= iscroll.children[1];
+
+    // 时间：2019/12/10 22:49
+    // 1.另外一种计算方法，具体参考有道笔记 特效01>23
+    // 2.拖拽鼠标之后，鼠标移走了还可以拖拽的解决方案
+    // window.getSelection ? window.getSelection().removeAllRanges() 
+    // document.selection.empty();
+
+    ibar.onmousedown = function (event) {
+        var event = event || window.event;
+        //起始位置
+        var leftVal = event.clientX - this.offsetLeft;
+
+        // 方便后面封装函数的时候使用，如果不使用that 则后面都是使用 ibar这种ID标签。
+        var that = this;
+
+        document.onmousemove = function (event) {
+            //拖动之后的位置，需要减去之前的“起始位置”
+            var event = event || window.event;
+            ibar.style.left = event.clientX - leftVal + 'px';
+
+            //获取行内式的值，显示的结果为：5px ;所以这里需要做处理。
+            // alert(that.style.left);
+
+            var val = parseInt(that.style.left);
+            // alert(val);
+
+            // 左右两边锁定好范围
+            if (val<0) {
+                that.style.left=0;
+            }
+            else if(val>390)
+            {
+                that.style.left='390px';
+            }
+
+            // 遮罩盒子的宽度，进度显示
+            mask.style.width=that.style.left;
+
+            //防止用户选择文字拖拽，导致选中了文字，不点击鼠标也可以拖拽的BUG； 所以需要清除选中的内容
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+        }
+
+        // 鼠标弹起
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+
+</script>

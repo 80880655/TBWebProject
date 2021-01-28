@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 获取当前浏览器可视的宽度</title>
+</head>
+
+<body>
+
+    <p>详细见console</p>
+</body>
+
+</html>
+
+<script>
+
+    // time:gaofeng 2020/3/18 11:07 onresize 为窗口缩放的事件，一个页面只能有一个这样的事件
+    window.onresize = function () {
+        console.log('clientWidth:' + document.body.clientWidth);
+
+        console.log('clientHeight:' + document.body.clientHeight);
+
+        document.write(document.body.clientWidth + ';' + document.body.clientHeight);
+
+
+        document.write(window.clientWidth + ';' + window.clientHeight);
+
+    }
+</script>

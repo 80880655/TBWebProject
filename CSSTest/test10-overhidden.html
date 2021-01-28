@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Over Hidden测试</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .div1 {
+            float: left;
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: pink;
+
+            /*第一种：会将超过出盒子的部分，隐藏掉；*/
+            /*第二种：也可以使用到 清除浮动 的操作*/
+            overflow: hidden;
+        }
+        .son1 {
+            width: 200px;
+            height: 100px;
+            background: red;
+            float: left;
+        }
+        .son2 {
+            width: 230px;
+            height: 131px;
+            background-color: yellow;
+            float: left;
+        }
+
+        .son3 {
+            width: 301px;
+            height: 68px;
+            float: left;
+            background-color: #1e96e8;
+        }
+
+    </style>
+</head>
+<body>
+<div class="div1">
+
+    <div class="son1"></div>
+    <div class="son2"></div>
+    <div class="son3"></div>
+
+</div>
+
+</body>
+</html>

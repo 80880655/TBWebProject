@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 浏览器宽度自检</title>
+    <script src="../my.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    var obj_body = document.getElementsByTagName('body')[0];
+
+    console.log(obj_body);
+
+    window.onresize=function(){
+        console.log(client().Width);
+        console.log(client().Height);
+        document.write('Width:'+ client().Width+';Height：'+ client().Height);
+
+        //下面错误2020/3/18 12:09 没有定义
+        console.log(obj_body.client().Width);
+    }
+
+    
+
+</script>

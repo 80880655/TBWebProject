@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>64 倒计时 01</title>
+
+    <style>
+        * {margin: 0px;padding: 0px;}
+
+        span {
+            display: block;
+        }
+    
+    </style>
+
+    <script>
+        window.onload=function(){
+            
+            var obj_body=document.getElementsByTagName("body");
+
+            var obj_span1=document.createElement("span");
+            var obj_span2 = document.createElement("span");
+            var obj_span3 = document.createElement("span");
+
+            // 0.给元素赋值id的值
+            obj_span1.id="span_001";
+
+            // 1.得到现在的时间对象
+            var _date=new Date();
+            obj_span1.innerHTML= "1. " +_date;
+            obj_body[0].insertBefore(obj_span1,null);
+            console.log(_date);
+
+            //2.得到最终确定的时间，比如想得到 距离 2019/12/12 的时间还剩下多少
+            var _endDate=new Date("2019/12/12");
+            var _endDate2 = new Date("2019/12/12 15:00");
+            obj_span2.innerHTML = "2. 距离2019/12/12 还剩下的时间： "+_endDate;
+            obj_body[0].insertBefore(obj_span2, null);
+
+            obj_span3.innerHTML = "3. " +_endDate2;
+            obj_body[0].insertBefore(obj_span3, null);
+
+        }
+    
+    
+    </script>
+</head>
+<body>
+
+   
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 根据页面大小不同，来改变页面颜色 2</title>
+    <script src="../my.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // time:gaofeng 2020/3/18 17:29 所有浏览器都可以兼容
+    // 有个问题，就是页面最初的时候是没有背景色的，所以这里需要封装里面的逻辑。
+
+
+    // 1.对比第5个页面，先执行一遍，这样页面在最初打开的时候就不会没有背景色； 这个函数只执行一次。
+    reSize();
+
+    // 2.可以直接使用 window.onresize=reSize  来实现； 这里的 reSize 函数是不能带上括号； 如果带上括号就是立即执行。 
+    // 屏幕大小发生变化就调用
+    window.onresize = reSize;
+    
+    // console.log(client().Width);
+
+    function reSize() {
+            var clientWidth = client().Width;
+
+            if (clientWidth > 960) {
+                document.body.style.backgroundColor = 'red';
+            }
+            else if (clientWidth > 640) {
+                document.body.style.backgroundColor = 'green';
+            }
+            else {
+                document.body.style.backgroundColor = 'blue';
+            }
+        }
+
+
+</script>

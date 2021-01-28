@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东星星评价</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        span {
+            font-size: 0px;
+        }
+
+        .box {
+            height: 180px;
+            width: 230px;
+            margin: 150px auto;
+            border: 2px solid #ccc;
+
+        }
+
+        .box .star01 {
+            display: inline-block;
+            width: 80px;
+            height: 16px;
+            background-color: red;
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 0;
+            cursor: pointer;
+
+            position: absolute;
+        }
+
+        .box .star02 {
+            display: inline-block;
+            width: 0px;
+            height: 16px;
+            /* background-color: yellow; */
+            cursor: pointer;
+
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -16px;
+
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<script>
+    window.onload = function () {
+        var obj_star01 = document.getElementById('star01');
+        var obj_star02 = document.getElementById('star02');
+
+        obj_star01.onclick=function(){
+            obj_star02.style.width="80px";
+        }
+    }
+
+</script>
+
+<body>
+
+    <div class="box">
+        <span class="star01" id="star01">
+            <span class="star02" id="star02"></span>
+        </span>
+
+    </div>
+
+</body>
+
+</html>

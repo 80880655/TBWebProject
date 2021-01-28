@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01 根据字符返回位置-从前面找和后面找</title>
+</head>
+<body>
+    <a>需要查找的字符串：</a>
+    <input type="text" id="input">
+
+    <a>查找某个具体字符：</a>
+    <input type="text" id="input2">
+
+    <button id="btn1">从前面开始查找</button>
+
+    <button id="btn2">从后面开始查找</button>
+    
+</body>
+</html>
+
+<script>
+    function $(id){return document.getElementById(id);}
+
+    // 时间：2019/4/19 14:48
+    // 1.indexOf 
+    // 描述：从左往右进行判断，只执行一次，并且返回需要查找第一次出现的字符，查找的只能是单个字符。
+    // 返回：如果查找不到结果，则返回 -1。
+    $("btn1").onclick=function(){
+        // 获取界面上的控件值
+        var txt= $("input").value;
+        alert(txt.indexOf($("input2").value));
+    }
+
+    
+
+    // 2.lastIndexOf 
+    // 描述：从右边往左边开始查找，只能执行单字符的查找，并返回第一次出现的字符。
+    // 返回： 返回结果还是从左边到右边。
+    // 例如： 字符adad1dq， 查找“a”，如果是执行 indexOf ，则返回是 0;
+    // 如果执行lastIndexOf 方法， 则返回是 2；
+    $("btn2").onclick=function(){
+        alert($("input").value.lastIndexOf($("input2").value));
+    }
+
+
+
+</script>

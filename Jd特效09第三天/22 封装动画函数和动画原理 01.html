@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22 封装动画函数和动画原理 01</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 0 0 0 10px;
+            position: absolute;
+        }
+
+        button {
+            margin: 10px auto;
+            display: block;
+            width: 90px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn200'>btn200</button>
+    <button id='btn400'>btn400</button>
+
+    <div class="box">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var box = document.getElementsByTagName('div')[0];
+    var btn200 = document.getElementById('btn200');
+    var btn400 = document.getElementById('btn400');
+    var timer = null;
+
+    // time:gaofeng 2020/3/27 14:13
+    // 1、点击按钮后移动盒子
+    // 2、封装移动盒子的函数
+
+    /**
+     * obj 传入对象
+     * target 传入移动的目标
+     */
+    btn200.onclick = function (event) {
+        timer = setInterval(
+            function () {
+                var target = box.offsetLeft + 10;
+                box.style.left = target + 'px';
+
+                if (target < 200) {
+                    box.style.left = target + 'px';
+                }
+                else if (target=200) {
+                    clearInterval(timer);
+                    box.style.left =200+'px';
+                }
+            },
+            10
+        );
+    }
+
+    btn400.onclick = function (event) {
+            timer = setInterval(
+                function () {
+                    var target = box.offsetLeft + 10;
+                    box.style.left = target + 'px';
+
+                    if (target < 400) {
+                        box.style.left = target + 'px';
+                    }
+                    else if (target = 400) {
+                        clearInterval(timer);
+                        box.style.left = 400 + 'px';
+                    }
+                },
+                10
+            );
+        }
+
+
+</script>

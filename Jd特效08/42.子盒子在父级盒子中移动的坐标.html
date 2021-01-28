@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>42.子盒子在父级别盒子中移动的坐标</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .father {
+            margin: 100px;
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            background-color: teal;
+
+            position: relative;
+
+            /* 超过就隐藏 */
+            overflow: hidden;
+        }
+
+        .son {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(255, 255, 0, 0.4);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: none;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father" id="father">
+        <div class="son" id="son">
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var son = document.getElementById('son');
+    var father=document.getElementById('father');
+    var x=0,y=0;
+
+    father.onmouseover = function () {
+        son.style.display='block'; 
+
+    }
+
+    father.onmouseout=function(){
+        son.style.display = 'none';
+    }
+
+    father.onmousemove = function (event) {
+            var event = event || window.event;
+
+            x = event.clientX - this.offsetLeft - son.offsetWidth / 2;
+            y = event.clientY - this.offsetTop - son.offsetHeight / 2;
+
+            // if(x<0)
+            // {
+            //     x=0;
+            // }
+            // else if(x > event.offsetWidth - son.offsetWidth){
+            //     x= event.offsetWidth - son.offsetWidth;
+            // }
+
+            // if (y < 0) {
+            //     y = 0;
+            // }
+            // else if (y> event.offsetHeight - son.offsetHeight) {
+            //     x = event.offsetHeight - son.offsetHeight;
+            // }
+ 
+            son.style.top = y + 'px';
+            son.style.left = x + 'px';
+
+            console.log(x);
+        }
+
+
+</script>

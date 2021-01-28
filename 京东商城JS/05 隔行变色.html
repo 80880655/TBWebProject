@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style>
+        li {
+            line-height: 30px;
+            list-style-type: none;
+        }
+
+        li span {
+            margin: 5px;
+        }
+
+        .box {
+            width: 300px;
+        }
+        
+        li.current {
+            /* 时间：2018/11/14 16：00
+                在原本有背景色的行上，在切换类 current 的时候，背景色发生改变，但是有些改变不了，因为“权重”的问题，*/
+            /*所以这里设置“最高无限权限” "!important"*/
+            background-color: red !important;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            //时间：2018/11/14 15：43   获取ul下面的所有li元素
+            var lis = document.getElementsByTagName("li");
+
+            // // 第一种写法：标准写法
+            // for (var i = 0; i < lis.length; i++) {
+            //     if (i % 2 == 0) {
+            //         lis[i].style.backgroundColor = "#ccc";
+            //     }
+            // }
+
+            // 第二种写法：使用变量来存储 lis.length 的值 ，这样就不会每次执行的时候都要执行 lis.length 的方法
+            // 注意，这里的 变量 i 和 lens 中间是逗号
+            for (var i=0,lens=lis.length;i<lens;i++){
+                if (i % 2 == 0) {
+                    lis[i].style.backgroundColor = "#ccc";
+                }
+
+                // 鼠标经过的时候， 事件是 onmouseover
+                // 鼠标经过的时候更改背景色，使用 this.backgroundColor="red"; 是执行不成功的，使用上面的 css 中的current 类的样式
+                //  时间：2018/11/14 16:07  下面中的 this.className 中的 this 是指事件的调用者 "lis[i]" 。
+                lis[i].onmouseover=function () {
+                    // lis[i].style.backgroundColor="red";
+                    // this.backgroundColor="red";
+
+                    // 2018/11/14 16:12 这里一定是this, 指向的是事件调用者，如果使用的是 lis[] 意思代表任何一个 lis
+                    this.className="current";
+                }
+
+                lis[i].onmouseout=function () {
+                    this.className="";
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+<div class="box">
+    <ul>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+        <li>
+            <span>上证指数</span><span>3641</span><span>10-5</span><span>0.16%</span>
+        </li>
+
+    </ul>
+</div>
+
+</body>
+</html>

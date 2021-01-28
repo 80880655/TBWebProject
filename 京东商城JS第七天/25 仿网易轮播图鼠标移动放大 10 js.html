@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>25 鼠标移动到图片上放大</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            margin: 80px auto;
+            width: 453px;
+            height: 224px;
+            /* background-color: pink; */
+            border: 1px solid #ccc;
+
+            overflow: hidden;
+            /* filter: alpha(opacity: 50);
+            -moz-opactiy: 0.5;
+            opacity: 0.5; */
+        }
+
+        div img {
+            transition: all 0.6s;
+        }
+
+        div img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div><img src="../京东商城JS第七天/网易轮播图/4.jpeg" alt="" /></div>
+</body>
+
+</html>

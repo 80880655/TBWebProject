@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 回顾js</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 200px;
+            background-color: pink;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #i_btn {
+            height: 40px;
+            width: 120px;
+            background-color: #2ccc;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var i_btn = document.getElementById("i_btn");
+            var divs = document.getElementsByTagName("div");
+
+            i_btn.onclick = function () {
+                for (let i = 0; i < divs.length; i++) {
+
+                    divs[i].style.display = "block";
+                    divs[i].innerText = "内容内容内容" + i.toString();
+
+                }
+
+            }
+        }
+
+        // 时间：2020/10/29 14:38分 回顾JS代码和区别
+        // 2.1 只能有一个 windows.onload的事件，如果有多个，则会导致后面的事件会替换前面的onload。
+        // 2.2 如果获取一个按钮的对象，如果id输入错了，会导致报错，容错性差。
+        // 2.3 不同的浏览器打开效果也不一样，浏览器兼容性的问题。
+        // 2.4 书写很繁琐，代表量多。
+        // 2.5 动画效果，我们很难实现。
+
+
+        window.onload=function(){
+
+            alert("212121");
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <input type="button" value="点击显示div盒子" id="i_btn">
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+
+</html>

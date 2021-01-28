@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Client</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: pink;
+            border: 10px solid #ccc;
+            padding-left: 20px;
+
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var div = document.getElementsByTagName('div')[0];
+
+    console.log(div);
+
+    // time:gaofeng 2020/3/18 15:24
+    // 1. offsetWidth: width + padding + border
+    console.log('offset:' + div.offsetHeight + ';' + div.offsetWidth);
+
+    // 2.clientWidth: width + padding  不包含 border
+    console.log('client:' + div.clientHeight + ';' + div.clientWidth);
+
+    // 3.scroll的区别就是填充的内容； div.scrollHeight 就是文字的内容;
+    // 就算是 overflow: hidden 了 ; scrollHeight 显示的依然是内容撑大之后的内容高度或宽度
+    console.log('scroll:' + div.scrollHeight + ';' + div.scrollWidth);
+
+</script>

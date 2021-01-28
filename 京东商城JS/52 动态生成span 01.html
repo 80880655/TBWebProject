@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态生成span 2019/1/22</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul,ol {list-style: none}
+
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 30px auto;
+            border: 1px solid #ccc;
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        
+
+        .box .slider ul {
+            list-style: none;
+        }
+
+        .box .circle {
+            
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -50px;
+        }
+
+        .box .circle span {
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #3E3E3E;
+            margin-right: 5px;
+            
+            color: #ccc;
+            font-weight: 700;
+            font-size: 15px;
+
+            /* 水平和垂直居中 */
+            line-height: 18px;
+            text-align: center;
+
+            cursor: pointer;
+        }
+    
+    </style>
+
+    <script>
+        window.onload=function(){
+
+
+        }
+    
+    </script>
+</head>
+<body>
+
+    <div class="box">
+        <div class="slider">
+            <ul>
+                <li><img src="../京东商城JS/Dyimages/1.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/2.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/3.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/4.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/5.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/6.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/7.jpg" /></li>
+            </ul>
+        </div>
+
+        <div class="circle">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+        </div>
+    </div>
+    
+</body>
+</html>

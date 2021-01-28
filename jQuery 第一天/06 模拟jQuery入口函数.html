@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 模拟jQuery入口函数</title>
+
+    <!-- <script src="../jQuery 第一天/jquery-3.5.1.js"></script> -->
+
+    <script>
+
+        // 方法1：jQuery 入口函数
+        // $(document).ready(function () {
+        //     // 方式1：jQuery方式
+        //     $("#btn").click(function () {
+        //         alert("jQuery方式点击按钮");
+        //         // console.log("12121");
+        //     });
+        // });
+
+
+
+        // 方法2：JS入口函数
+        window.onload = function () {
+
+            // 第一步，这个iQuery 本身定义的就是一个函数，所以调用的时候需要加上 括号。
+            var iQuery = function () {
+
+                // 第二步，声明一个匿名的函数
+                var obj = {
+                    ready: function () {
+                        alert("iQuery 自己封装的JS方法，模拟jQuery的入口函数");
+                    },
+                    click: function () {
+                        alert("iQuery 自己封装的JS方法，自定义的 clik 点击事件");
+                    }
+                };
+                return obj;
+
+                // 下面的这种写法，最后“点”属性的时候点不出来。
+                // return {
+                //     read : function(){
+                //         console.log("iQuery 自己封装的JS方法，模拟jQuery的入口函数");
+                //     }
+                // };
+            };
+
+            iQuery().ready();
+
+           
+            // iQuery().click();
+
+            // var o_btn = document.getElementById("btn");
+            // console.log(o_btn);
+            
+
+            var o_btn = document.getElementById("btn");
+            o_btn.onclick=function(){
+                iQuery().click();
+            }
+            
+
+
+
+
+        };
+
+    </script>
+</head>
+
+<body>
+
+    <input type="button" value="点击" id="btn">
+
+</body>
+
+</html>

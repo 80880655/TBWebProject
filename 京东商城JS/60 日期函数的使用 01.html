@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日期函数的使用 01</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+
+        .box {
+            width: 420px;
+            height: 230px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+    </style>
+
+    <script>
+        window.onload=function(){
+            var obj_box=document.getElementById("box");
+            
+            var obj_spans=[];
+
+            // 时间：2019/2/15 13：51 声明一个日期对象
+            var _date=new Date();
+
+            for (var i = 0; i < 3; i++) {
+                obj_spans[i]=document.createElement("span");
+                // obj_spans[i].innerHTML= _date+"</br>";
+
+                switch (i) {
+                    case 0:
+                        obj_spans[i].innerHTML = _date + "</br>";
+                        break;
+                    case 1:
+                        obj_spans[i].innerHTML = _date.getTime() + "</br>";
+                        break;
+                    case 2:
+                        obj_spans[i].innerHTML=_date.valueOf() + "</br>";
+                        break;
+                    default:
+                        break;
+                }
+                obj_box.appendChild(obj_spans[i]);
+            }
+
+            console.log("new date + " +_date);
+
+            console.log("getTime + "+_date.getTime());
+            console.log("valueOf" + _date.valueOf());
+            // console.log("Date.Now" + new Date.now());
+            // 错误： console.log("Date.Now" + _date.now());
+            console.log("+new Date()" + +new Date());
+            console.log("valueOf" + _date.valueOf());
+            console.log("getDate" + _date.getDate());
+            console.log("getDay" + _date.getDay());
+
+            console.log("getMonth" + _date.getMonth());
+            console.log("getFullYear" + _date.getFullYear());
+            console.log("getUTCFullYear" + _date.getUTCFullYear());
+        }
+    
+    
+    </script>
+</head>
+<body>
+    <div class="box" id="box">
+        
+
+    </div>    
+</body>
+</html>

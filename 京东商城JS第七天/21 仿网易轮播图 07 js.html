@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21 网易轮播图</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 600px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 80px auto;
+
+            /* 隐藏多余的 */
+            overflow: hidden;
+
+            /* 显示滚动条 */
+            /* overflow:auto; */
+
+            position: relative;
+        }
+
+        /* 清除li前面的小圆点 */
+        div ul {
+            list-style: none;
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        div ul li {
+            float: left;
+        }
+
+        img {
+            /* 3像素 */
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="scroll">
+        <ul>
+            <li><img src="../京东商城JS第七天/images/01.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/02.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/03.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/04.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/01.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/02.jpg" alt=""></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var scroll = document.getElementById('scroll');
+    var ul = scroll.children[0];
+    var timer = null;
+    var num = 0;
+
+    // 时间：2019/9/18 17:41
+    // 这里是开始执行的起点
+
+    // background: #eeeeee url('https://static.ws.126.net/163/f2e/www/index20170701/images/imgdf.png') no - repeat center center;
+
+    timer = setInterval(roll, 30);
+
+    function roll() {
+        num--;
+        // if (num <= -1200) {
+        //     ul.style.left = 0;
+        // }
+        // else {
+        //     ul.style.left = num + 'px';
+        // }
+        num <= -1200 ? num = 0 : num;
+        ul.style.left = num + 'px'
+    };
+
+    scroll.onmouseover = function () {
+        clearInterval(timer);
+    }
+
+    scroll.onmouseout = function () {
+        timer = setInterval(roll, 5);
+    }
+
+
+</script>

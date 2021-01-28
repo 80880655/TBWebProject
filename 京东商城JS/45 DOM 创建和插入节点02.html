@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 创建和插入节点</title>
+    <script>
+        window.onload=function(){
+            
+            // 时间：2019/1/17 14:25分
+            // 1. insertBefore(插入的节点，参照节点) ， 子节点 添加孩子
+            // 参数：参照节点为null， 则默认插入到最后一行中
+
+            var obj_box=document.getElementById("box");
+            var lis=document.getElementsByTagName("li");
+            var obj_newLi=document.createElement("li");
+            obj_newLi.innerHTML="插入的新的li";
+
+            var obj_newLi2=document.createElement("li");
+            obj_newLi2.innerHTML="insertBefore 第2个参数设置为null,将会显示在最后";
+
+            obj_box.insertBefore(obj_newLi,lis[1]);
+            obj_box.insertBefore(obj_newLi2,null);
+        }
+    
+    
+    </script>
+</head>
+
+<body>
+
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组join 把数组转换成字符串</title>
+</head>
+
+<body>
+
+    <script>
+        // 时间：2019/1/11 10:32
+        // join 作用是将数组各个元素是通过指定的分隔符进行连接成一个字符串。
+        // 1. arrayObject.join(separator)
+        // 2.参数separartor 可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符。
+        var arr = [1, 2, 3];
+
+        var arr1 = arr.join("-");
+
+        // 结果显示： arr1 显示的是 1-2-3， 再次输出 arr 结果依然是 [1,2,3] 不受影响
+        console.log(arr1);
+
+        console.log(arr);
+
+    </script>
+
+</body>
+
+</html>

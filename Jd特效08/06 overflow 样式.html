@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06 overflow样式</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+
+        div {
+            width: 100px;
+            height: 300px;
+            border: 1px solid red;
+            overflow-x: scroll;
+            overflow-y: scroll;
+            margin: 50px auto;
+        }
+    
+        /* 
+            时间：2019/10/07 15:55 滚动条设置
+            1.滚动条设置样式
+         */
+
+        /* 1. google 样式设置 */
+         /* 设置滚动条的样式 */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background-color: aqua;
+        }
+
+        /* 滚动槽 */
+        ::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
+
+        /* 滚动条滑块 */
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color:#5a76cd;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #181c32;
+        }
+
+
+        /* 2.IE8的设置滚动条 */
+        body {
+            /* 
+                //立体滚动条的颜色（包括箭头部分的背景色）
+                scrollbar-face-color: color; 
+
+                //立体滚动条亮边的颜色
+                scrollbar-3dlight-color: color; 
+
+                //滚动条的高亮颜色（左阴影？）
+                scrollbar-highlight-color: color; 
+
+                //立体滚动条阴影的颜色
+                scrollbar-shadow-color: color; 
+
+                //立体滚动条外阴影的颜色
+                scrollbar-darkshadow-color: color; 
+
+                //立体滚动条背景颜色
+                scrollbar-track-color: color; 
+
+                //滚动条的基色
+                scrollbar-base-color:color; 
+            */
+
+            scrollbar-arrow-color: #181c32;
+            scrollbar-shadow-color:#181c32;
+            scrollbar-3dlight-color: #181c32;; 
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="div1">
+        请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS
+        3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS 3,
+        JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS
+        3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。
+        小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS
+        3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS
+        3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的
+        实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS
+        3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS
+        3,JavaScript,JQuery等。除此之外，还
+        包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS 3,JavaScript,JQuery等。除此之外，还
+        包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。小天地，大世界是一个Web前端的技术博客。 主要是关于
+        HTML 5,CSS 3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。
+        小天地，大世界是一个Web前端的技术博客。 主要是关于HTML 5,CSS 3,JavaScript,JQuery等。除此之外，还包含一些PHP语言等的实用例子。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。
+        小天地，大世界是一个Web前端的技术博客。 主要是关于请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。请选择Webkit内核的浏览器才可以正常的看到滚动条的变化。
+        小天地，大世界是一个Web前端的技术博客。 主要是关于
+        HTML 5,CSS 3,JavaScript,JQuery等。除此之外，还
+        包含一些PHP语言等的实用例子。
+        小天地，大世界是一个Web前端的技术博客。 主要是关于
+        HTML 5,CSS 3,JavaScript,JQuery等。除此之外，还
+        包含一些PHP语言等的实用例子。
+        HTML 5,CSS 3,JavaScript,JQuery等。除此之外，还
+        包含一些PHP语言等的实用例子。
+        ————————————————
+        版权声明：本文为CSDN博主「风铭大师」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+        原文链接：https://blog.csdn.net/weixin_42839080/article/details/81572047
+    </div>
+    
+</body>
+</html>

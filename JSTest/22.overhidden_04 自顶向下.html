@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>盒子自顶向下</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box {
+            width: 360px;
+            height: 70px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            background-color: pink;
+            /*background: url(../images/鼠标/01big.jpg) ;*/
+            background: url(../images/鼠标/01big.jpg) no-repeat;
+            /*
+                1.使用 padding-top 内边距=360px 将盒子撑大，将内容撑下来。
+                2.上面的 背景色， background-color 的背景色是覆盖所有区域。
+                3.使用background 的属性设置背景图的时候，如果不no-repeat清除重复，那么整个区域包括padding都是背景图。
+            */
+            padding-top: 360px;
+        }
+
+        #box ul {
+            list-style: none;
+        }
+
+        #box ul li {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

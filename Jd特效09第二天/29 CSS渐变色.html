@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29 渐变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 基础线性渐变 */
+        .simple-linear {
+            background: linear-gradient(blue, pink);
+        }
+
+        /* 渐变提示 */
+        .color-hint {
+            background: linear-gradient(blue, 10%, pink);
+        }
+
+        /* 改变渐变色方向 */
+        .horizontal-gradient {
+            background: linear-gradient(to right, blue, pink);
+        }
+
+        /* 对角线渐变 */
+        .diagonal-gradient {
+            background: linear-gradient(to bottom right, blue, pink);
+        }
+
+        /* 设置渐变角度 */
+        .angled-gradient {
+            background: linear-gradient(70deg, blue, pink);
+        }
+
+        .box1 {
+            margin: 5px auto;
+            width: 700px;
+            height: 200px;
+        }
+
+        .box2 {
+            margin: 5px auto;
+            width: 700px;
+            height: 200px;
+        }
+
+        .box3 {
+            margin: 5px auto;
+            width: 700px;
+            height: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box1 diagonal-gradient">
+
+    </div>
+
+    <div class="box2 angled-gradient">
+    
+    </div>
+
+    <div class="box3 horizontal-gradient">
+    
+    </div>
+
+</body>
+
+</html>

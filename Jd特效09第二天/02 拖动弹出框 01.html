@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02 拖动弹出框 CSS 01</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            margin: 50px auto;
+            width: 300px;
+            height: 200px;
+            /* background-color: yellow; */
+            border: 5px solid #eee;
+
+            /* 添加阴影 */
+            box-shadow: 2px 2px 2px 2px #666;
+            cursor: move;
+        }
+
+        span {
+            display: block;
+            width: 300px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            /* position: absolute; */
+            background-color: #eee;
+        }
+
+        .d_box {
+            width: 300px;
+            height: 180px;
+            /* background-color: blue; */
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span>注册窗口111</span>
+        <div class="d_box" id="d_box"></div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    //时间：2019/12/18 15:55  
+    // 不能拖动，无法移动，问题在那里？
+
+    var box = document.getElementById('box'); //大盒子
+    var d_box = document.getElementById('d_box'); //小盒子
+
+    startDrop(d_box, box);
+
+    function startDrop(current, move) {
+        current.onmousedown = function (event) {
+            var event = event || window.event;
+            var x = event.clientX - box.offsetLeft;
+            var y = event.clientY - box.offsetTop;
+
+            document.onmousemove = function (event) {
+                var event = event || window.event;
+                move.style.left = event.clientX - x + 'px';
+                move.style.top = event.clientY - y + 'px';
+
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            }
+        }
+
+    }
+
+
+
+
+
+</script>

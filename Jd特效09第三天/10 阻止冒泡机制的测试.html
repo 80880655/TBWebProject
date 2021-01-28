@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 阻止冒泡机制的测试</title>
+</head>
+<body>
+    <!-- <input type="button"> -->
+    <button id="btn">冒泡机制测试</button>
+</body>
+</html>
+<script>
+    var btn=document.getElementById('btn');
+
+    document.onclick=function(){
+        alert('document 点击空白处');
+    }
+
+    btn.onclick=function(event){
+        alert('BTN');
+
+        // // modify:gaofeng 2020/3/19 16:28 增加阻止冒泡的机制
+        // 1.需要在增加event
+        // 2.需要使用 event
+        var event=event || window.event;
+
+        // //IE 取消冒泡的方法
+        // event.cancelBubble=true;
+        
+        // //W3C 取消冒泡的方法
+        // event.stopPropagation();
+
+        if(event && event.stopPropagation)
+        {
+            event.stopPropagation();
+        }
+        else
+        {
+            event.cancelBubble=true;
+        }
+        
+    }
+
+</script>

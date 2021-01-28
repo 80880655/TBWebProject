@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27 鼠标跟随</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .father {
+            position: relative;
+        }
+
+        .box {
+            width: 60px;
+            height: 75px;
+            /* border: 1px solid #ccc; */
+            /* background: url('../Jd特效08/img/img.jpg') no-repeat; */
+            background-image: url('../Jd特效08/img/img.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            vertical-align: middle;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="box" id="ibox">
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var ibox = document.getElementById('ibox');
+
+    document.onclick = function (event) {
+        // console.log(event.clientX);
+        // console.log(event.pageX);
+
+        ibox.style.top=event.pageY +'px';
+        ibox.style.left = event.pageX + 'px';
+
+        console.log(event.clientX);
+    }
+
+</script>

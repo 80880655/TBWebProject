@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javaScript变量提升</title>
+</head>
+<body>
+    <script>
+        //2018/10/9 17:13 变量的提升
+
+        var num=9;
+        fun1();
+
+        function fun1() {
+            console.log(num);
+            var num=20;
+        }
+
+        // 变量的提升意思是指，上面的函数fun1() 系统会将上述的函数翻译成下面的代码;
+        // 这个只是javascript 的特性， 默认将函数fun中的变量num提升到最上面，这里只是var num 声明但是没有赋值，所以就是 undefined;
+        function fun2() {
+            var num;
+            console.log(num);
+            num=20;
+        }
+
+    </script>
+</body>
+</html>

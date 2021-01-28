@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23 检测字符串长度03-区分英文和汉字</title>
+    
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 1.时间：2019/4/18 需要区分汉字和字母
+
+    var txt="abdcasd而且我IE噢我劝你";
+    var len=txt.length;
+
+    for (var i = 0; i < len; i++) {
+        if (txt.charCodeAt(i)>64 & txt.charCodeAt(i)<173) {
+            console.log("第"+i+"条记录是英文，显示结果是："+txt.charAt(i));
+        }
+        else if(txt.charCodeAt(i)>177)
+        {
+            console.log("第" + i + "条记录是汉字，显示结果是：" + txt.charAt(i));
+        }
+    }
+
+    console.log("中".length);
+
+    console.log("a".length);
+
+</script>

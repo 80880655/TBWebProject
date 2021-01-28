@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 孩子节点 childNodes</title>
+
+    <script>
+        window.onload=function(){
+
+            var uls=document.getElementById("ul");
+
+            var obj_childs=uls.childNodes;
+
+            var arr_childs = [];
+
+            console.log(obj_childs.length);
+
+            console.log(obj_childs);
+
+
+            // 1.时间：2019/1/17 10:56分
+            // 2.因为 IE8或以下的版本 不会将 “换行符” 计算在内，如果是高级版本或其他浏览器 则会计算“换行符”。
+            // 3.注释代码 在childNodes中也算成一个，所以我们使用 nodeType==1 来判断是否是节点。
+
+            for (var i = 0; i < obj_childs.length; i++) {
+                if (obj_childs[i].nodeType == 1) {
+                    arr_childs.push(obj_childs[i]);
+                }
+            }
+            
+            console.log(arr_childs.length);
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <ul id="ul">
+        <li>s1212111111111</li>
+        <li>12121</li>
+        <li>3333</li>
+        <!-- 12121 -->
+    </ul>
+
+</body>
+
+</html>

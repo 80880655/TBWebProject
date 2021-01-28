@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17 offsetLeft & offsetRight???</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            margin: 50px auto;
+            width: 400px;
+            height: 270px;
+            border: 1px solid #ccc;
+            background-color: #883;
+            padding-top:30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father" id="box1">
+        <div class="son"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    var box1 = document.getElementById('box1');
+
+    console.log(box1.offsetLeft);
+    console.log(box1.offsetTop);
+</script>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 JSON 封装缓慢动画函数-传递多个JSON属性 02 </title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #box {
+            width: 200px;
+            height: 130px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            opacity: 0.8;
+            position: absolute;
+
+        }
+
+        button {
+            width: 140px;
+            height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn200">200</button>
+    <button id="btn400">400</button>
+
+    <div id="box">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var box = $('box');
+    var btn200 = $('btn200');
+    var btn400 = $('btn400');
+
+    var json = { width: 200, top: 100 };
+    // var json= { width: 200, height: 100, Top: 50 };
+
+    // time:gaofeng 2020/4/9 23:12 传递多个参数到运动函数中
+    // 1、需要注意 JSON格式中的 属性名称的大小写。
+    // 2、主要是注意 定时器状态传递。
+
+    btn200.onclick = function () {
+        // animation2(box, { width: 200, top: 100 });
+
+        animation2(box, { width: 200, top: 100, left: 300 });
+
+        // for(k in json){
+        //     console.log(json[k]);
+        // }
+    }
+
+
+    btn400.onclick = function () {
+        // animation2(box, { width: 100, height: 300, Top: 250 });
+
+        animation2(box, { width: 300, height: 300, top: 100, left: 500 });
+    }
+
+    function animation2(obj, json) {
+        clearInterval(obj.timer);
+
+        // var flag = false;
+
+        obj.timer = setInterval(function () {
+            var flag = true;
+
+            for (k in json) {
+                var current = parseInt(getCurrentStyle(obj, k));
+                var step = (json[k] - current) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                obj.style[k] = current + step + 'px';
+
+                if (current != json[k]) {
+                    flag = false;
+                }
+            }
+
+            // 用来传递当前JSON传递的参数是否已经执行完毕，如果 flag = true ，则说明执行完毕清除定时器。
+            if (flag) {
+                clearInterval(obj.timer);
+            }
+        }, 25);
+
+        // // 用来传递当前JSON传递的参数是否已经执行完毕，如果 flag = true ，则说明执行完毕清除定时器。
+        // if (flag) {
+        //     clearInterval(obj.timer);
+        // }
+    }
+
+
+
+
+    // 改进函数，可以上下左右动
+    // function animation2(obj, target, attr) {
+    //     clearInterval(obj.timer);
+    //     obj.timer = setInterval(function () {
+    //         var current = parseInt(getCurrentStyle(box, attr));
+    //         var step = (target - current) / 10;
+    //         step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+    //         obj.style[attr] = current + step + 'px';
+
+    //         if (current == target) {
+    //             clearInterval(obj.timer);
+    //         }
+    //     }, 25);
+    // }
+
+    function getCurrentStyle(obj, attr) {
+        if (obj.currentStyle) {  //IE
+            return obj.currentStyle[attr];
+        }
+        else { //W3C
+            return window.getComputedStyle(obj, null)[attr];
+        }
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+</script>

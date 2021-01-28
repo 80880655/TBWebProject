@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19 选中文字弹出提示框-选中的文字 JS 03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 400px;
+            height: 500px;
+        }
+
+        #demo {
+            /* width: 100px;
+            height: 100px; */
+
+            /* 使用自适应flex */
+            width: 200px;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: blueviolet;
+
+            /* 透明度 */
+            /* filter: alpha(opacity=60); */
+            /*IE */
+            /* -moz-opacity: 0.6; */
+            /*mozilla firefox火狐浏览器 */
+            /* opacity: 0.6; */
+            /*对除IE外所有浏览器支持包括谷歌 */
+
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 选中弹出的小盒子 -->
+    <span id="demo">
+    </span>
+
+    <div class="box1" id="test1">
+        财务评估将更加有效
+        得益于物联网，金融风险将大大降低，从而在上述数据收集的基础上，提供更好的信贷和贷款选择。由于物联网技术将收集大量个人金融数据，银行将更容易知道向您推荐哪些产品。决定信用评分的因素将进行彻底检查，包括一种新的评估，称为“生活模式”或POL分析。根据Crediful的说法，信用不良的人也可以选择向银行和更大的债权人借款，如果他们愿意的话。
+        这对那些信用记录有限或根本没有信用记录的新客户群最为有效，因为它给银行提供了其他因素来确定他们是否值得信用。另一个有趣的事情是，债权人可以与制造商合作，为那些注意到他们从制造商那里购买的产品已经失败的客户提供量身定制的报价。那些从事房地产业务的人也将能够更准确地向租户支付他们使用便利设施和损坏的费用。
+    </div>
+    <div class="box2" id="test2">
+        客户服务将变得更加精确
+        物联网收集的数据也将使客户服务部门能够密切关注客户关注的问题。这意味着客户服务将更加精准，使用诸如深度学习等人工智能技术为消费者问题开发更好的解决方案。这将导致开发友好的客户服务人工智能，它将非常容易地解决任何可能出现的技术问题，而且不仅仅是个人金融领域。
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    /**
+     * time:gaofeng 2020/3/25 11:46
+     * 1.鼠标选中文字，然后将用户选中的文字显示出来。
+     * 2.事件：鼠标弹起后重置弹出框span 的定位。 因为是在test1中进行选中文字，所以鼠标弹起的事件是针对于 test1的。
+     *      鼠标弹起的时候，demo应该出现在光标的下面，所以是在test1的事件对象中。
+     *      
+     *      一定要搞清楚事件的分解步骤。 方法等是怎么设置在里面的
+     * 3.显示文字：
+     */
+    var demo = document.getElementById('demo');
+    var test1 = document.getElementById('test1');
+    var txt = "";
+
+    test1.onmouseup = function (event) {
+        var event = event || window.event;
+        /**
+        * time:gaofeng 2020/3/27 9:59
+        * 1.显示出选中的文字
+        */
+        // 兼容性写法
+        if (window.getSelection) {
+            txt = window.getSelection().toString();
+        }
+        else {
+            //IE 写法
+            txt = document.selection.createRange().text.toString();
+        }
+
+        // 如果有选中的内容，则执行setMouseCoordinates 函数
+        // 所有的字符串都为真， 如果字符串为""则为假。
+        if (txt) {
+            setMouseCoordinates(event.clientX, event.clientY, txt);
+        }
+    }
+
+    // 点击空白处隐藏; 通过判断选中的元素id来决定是否隐藏或显示
+    document.onclick=function(event){
+        var event=event||window.event;
+        var targetId = event.target ? event.target.id : event.srcElement.id;
+
+        // 如果用户选中的不是弹出来的 demo ，那么就隐藏
+        if (targetId!="demo") {
+            demo.style.display='none';
+        }
+    }
+
+    // 鼠标光标位置函数; 需要搞清楚具体的时间分解和步骤; 增加用户选中文字之后有延迟的感觉，之前是直接弹出来
+    function setMouseCoordinates(mouseX, mouseY, contentText) {
+        var event = event || window.event;
+
+        // setTimeout 只弹出来一次，setInterval 是反复弹出来
+        setTimeout(function () {
+            if (demo != null) {
+                // demo.style.display = 'block';
+                demo.style.display = 'flex';
+                demo.style.top = mouseY + 'px';
+                demo.style.left = mouseX + 'px';
+                demo.innerText = contentText;
+            }
+        }, 300);
+    }
+
+</script>

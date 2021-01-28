@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tab栏切换05 20181206复习</title>
+</head>
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .box {
+        margin: 100px auto;
+        width: 320px;
+        height: 400px;
+        border: 1px solid #ccc;
+    }
+
+    .box .mt {
+        height: 30px;
+        /* font-size: 这里设置是为了修复span和span之间有空隙的问题。
+            在子盒子中再设置字体的大小就可以修复这span间隙的问题。
+         */
+        font-size: 0%;
+    }
+
+    .box .mt span {
+        display: inline-block;
+        font-size: 16px;
+        text-align: center;
+        height: 30px;
+        width: 80px;
+        line-height: 30px;
+        /* background-color:purple; */
+        cursor: pointer;
+    }
+
+    .box .mt .show {
+        background-color: purple;
+        color: #ccc;
+        font-weight: 700;
+    }
+
+    .box .mb {
+        overflow: hidden;
+        height: 370px;
+    }
+
+    .box .mb .current {
+        display: block;
+    }
+
+    .box .mb div {
+        height: 100%;
+        background-color: purple;
+        display: none;
+    }
+</style>
+
+<script>
+    window.onload = function () {
+        var obj_divs = document.getElementById("mb").getElementsByTagName("div");
+        var obj_spans = document.getElementById("mt").getElementsByTagName("span");
+
+        for (var i = 0; i < obj_spans.length; i++) {
+            obj_spans[i].index = i;
+
+            obj_spans[i].onmousemove = function () {
+                for (var j = 0; j < obj_spans.length; j++) {
+                    obj_spans[j].className = "";
+                    obj_divs[j].className = "";
+                }
+                // 这里直接是指定className即可，不需要在使用i 或index
+                this.className = "show";
+                obj_divs[this.index].className = "current";
+            }
+        }
+    }
+</script>
+
+<body>
+    <div class="box">
+        <div class="mt" id="mt">
+            <span class="show">新闻</span>
+            <span>英文</span>
+            <span>运动</span>
+            <span>娱乐</span>
+        </div>
+
+        <div class="mb" id="mb">
+            <div class="current">新闻</div>
+            <div>英文</div>
+            <div>运动</div>
+            <div>娱乐</div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offSet 1 2个盒子有定位</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            margin: 80px auto;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #cccc;
+            background-color: pink;
+            position: relative;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            border: 2px solid #ccc;
+            padding-top: 20px;
+            
+        }
+
+        .box3 {
+            width: 100px;
+            height: 50px;
+            background-color: blue;
+            border: 1px solid red;
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="off1">
+        <div class="box2" id="off2">
+            <div class="box3" id="off3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    console.log(off3.offsetHeight);
+
+    console.log(off2.offsetHeight);
+
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 JSON遍历</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    var json = { width: 200, height: 100, Top: 50 }
+
+    // time:gaofeng 2020/4/9 15:43
+    // 1.遍历json
+
+    for (var  k in json) {
+        
+        // 1.得到JSON所有的 名称
+        console.log(k);
+        
+        // 2.得到所有的JSON对应的值
+        // console.log(json.k);    //错误
+        console.log(json[k]);
+    }
+
+</script>

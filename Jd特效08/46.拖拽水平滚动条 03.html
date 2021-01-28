@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>46.拖拽水平滚动条移动 03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .scroll {
+            width: 400px;
+            height: 8px;
+            background-color: #ccc;
+            margin: 100px;
+            position: relative;
+        }
+
+        .bar {
+            height: 22px;
+            width: 10px;
+            background-color: #369;
+
+            position: absolute;
+            top: -7px;
+            left: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll" id="iscroll">
+        <div class="bar" id="ibar"></div>
+    </div>
+
+    <span>1 拖拽事件是 onmousedown & onmousemove的合集</span>
+</body>
+
+</html>
+
+<script>
+    var ibar = document.getElementById('ibar');
+    var iscroll = document.getElementById('iscroll');
+
+    // 时间：2019/12/10 22:32
+    // 1.另外一种计算方法，具体参考有道笔记 特效01>23
+   
+
+    ibar.onmousedown = function (event) {
+        var event = event || window.event;
+        //起始位置
+        var leftVal = event.clientX - this.offsetLeft;
+
+        document.onmousemove = function (event) {
+            //拖动之后的位置，需要减去之前的“起始位置”
+            var event = event || window.event;
+            ibar.style.left = event.clientX - leftVal + 'px';
+        }
+
+        
+    }
+
+    //鼠标弹起，这样写也是可以的
+    ibar.onmouseup=function(){
+        document.onmousemove=null;  //弹起不做任何处理
+    }
+
+</script>

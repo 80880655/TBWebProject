@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试dom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        div {
+            width: 120px;
+            height: 80px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 10px auto;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            var arr = [];
+
+            function getClass(_classname) {
+
+                var _txtArr = [];
+
+                if (document.getElementsByClassName) {
+                    return document.getElementsByClassName(_classname);
+                }
+                var dom = document.getElementsByTagName("*");
+                return dom;
+            }
+
+            console.log(getClass("test"));
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="demo test"></div>
+    <div></div>
+    <div class="test"></div>
+    <div></div>
+    <div class="demo test one"></div>
+    <div></div>
+    <div class="demo"></div>
+    <div class="test"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11 绝对定位复习 01</title>
+    <style>
+        /* 时间：2019/3/20 10:57分 绝对定位的复习 和 span的宽高设置影响*/
+        /* 1. 使用绝对定位之后的span ，看看设置宽高是否有影响？ */
+        /* 2.输出span对象看看里面的结构，是否有发现？ */
+
+        /* 结论：看HTML的标签，如果HTML的标签在后面，2个span进行重叠显示，当鼠标移动到某个标签上的时候，
+            就会触发最末尾的一个标签的事件。
+         */
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .demo {
+            width: 300px;
+            height: 100px;
+            border: 1px solid #ccc;
+            background-color: red;
+            margin: 40px auto;
+
+            position: relative;
+        }
+
+        /* div span {
+            height: 250px;
+            width: 100px;
+            background-color:rgba(166, 255, 0, 0.808);
+            display: inline-block;  
+        } */
+
+        div span {
+            height: 50px;
+            width: 100px;
+            background-color: rgba(166, 255, 0, 0.808);
+            display: block;
+        }
+
+        #span01 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #span02 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            var obj_span01 = $("span01");
+            var obj_span02 = $("span02");
+
+            obj_span01.onmouseover = function () {
+                alert('span01');
+            }
+
+            obj_span02.onmouseover = function () {
+                alert('span02');
+            }
+
+
+            function $(id) {
+                return document.getElementById(id);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="demo">
+        <span id="span02">333333333333</span>
+        <span id="span01">12121</span>
+    </div>
+
+</body>
+
+</html>

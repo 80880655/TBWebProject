@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 获取行样式和内嵌样式的信息 02</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box {
+            width: 200px;
+            height: 120px;
+            border: 1px solid #ccc;
+            position: absolute;
+            left: 10px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box" style="top: 20px; margin: 0 auto;">
+
+    </div>
+</body>
+</html>
+
+<script>
+    var box=document.getElementById('box');
+
+    // time:gaofeng 2020/4/8 14:35 
+    // 1.IE 567891011 以上都支持 currentStyle[attr] 方法
+
+    // // IE支持
+    // console.log(box.currentStyle['margin']);
+    // console.log(box.currentStyle['left']);
+
+    //非IE
+    console.log(getComputedStyle(box,null)['margin']);
+
+    console.log(getComputedStyle(box, null)['height']);
+    console.log(getComputedStyle(box, null)['top']);
+    console.log(getComputedStyle(box, null)['left']);
+
+
+
+</script>

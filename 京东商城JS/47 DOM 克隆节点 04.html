@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>克隆节点 04  cloneNode </title>
+    <script>
+    
+        window.onload=function(){
+            var uls=document.getElementById("uls");
+
+            var cloneObj=uls.cloneNode(true);
+
+            // 1.这里的插入是在 子节点中插入, 一个 克隆的对象 只能使用一次，比如下面的第2点也使用了克隆对象，那个语句在最后面就生效那个
+            // uls.insertBefore(cloneObj,null);
+
+
+            // 2.在同级中进行克隆
+            var box=document.getElementById("box");
+
+            box.insertBefore(cloneObj,null);
+
+
+            // 3.浅度克隆
+            var cloneObj2=uls.cloneNode(false);
+
+            box.insertBefore(cloneObj2, null);
+            
+        }
+    
+    
+    </script>
+</head>
+<body>
+
+    <div id="box">
+        <ul id="uls">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+    </div>
+    
+    
+</body>
+</html>

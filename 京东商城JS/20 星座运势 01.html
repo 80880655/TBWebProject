@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>星座运势01</title>
+    <style>
+        /* 时间：2018/12/19 17:55 备注说明： 当前练习使用div来划分区域
+        1.使用 div 标签 进行划分左右2个区域，并且写上相应的函数来执行动作。
+        2.使用鼠标移动来动态获取当前星星个数和大小。 */
+
+        * {
+            margin: 0;
+            padding: 0px;
+        }
+
+        span {
+            display: inline-block;
+            font-size: 0px;
+        }
+
+        .box {
+            width: 500px;
+            height: 340px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        .box .left {
+            float: left;
+            width: 250px;
+            height: 100%;
+            background: url('../京东商城JS/images/十二星座02.jpg') no-repeat;
+            background-position: 0px 0px;
+        }
+
+        .box .right {
+            float: left;
+            width: 250px;
+            height: 100%;
+        }
+
+        .box .right .top {
+            height: 170px;
+            width: 250px;
+            /* background-color:blue; */
+        }
+
+        .box .right .top .commstar {
+            height: 16px;
+            width: 80px;
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 0;
+            margin: 50px 0 0 85.5px;
+        }
+
+        .box .right .top .commstar .star {
+            display:inline-block;
+            background: url('../京东商城JS/images/commstar.png');
+        }
+
+        .box .right .top .commstar span {
+            height: 16px;
+            width: 16px;
+            display:none;
+            /* background-color: yellow; */
+        }
+
+        .box .right .top .commstar .star1 {
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -16px;
+        }
+
+        .box .right .top .commstar .star2 {
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -32px;
+        }
+
+        .box .right .top .commstar .star3 {
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -48px;
+        }
+
+        .box .right .top .commstar .star4 {
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -64px;
+        }
+
+        .box .right .top .commstar .star5 {
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -80px;
+        }
+
+        .box .right .bottom {
+            height: 170px;
+            width: auto;
+            background-color: pink;
+        }
+
+
+    </style>
+
+    <script>
+        window.onload=function(){
+            var obj_commstar=document.getElementById("commstar");
+            var obj_spans= document.getElementById("commstar").getElementsByTagName("span");
+
+            function funXinXin(item){          
+                return item = -(item * 16);
+            }
+
+            function funClassName(_className){
+                
+            }
+
+            // alert(obj_commstar.length);
+            for (var i = 0; i < obj_spans.length; i++) { 
+                obj_spans[i].index=i+1;
+                
+                obj_spans[i].onmouseover=function(){
+                    
+                    alert(this.index);
+                    this.style.cursor="pointer";
+                    // this.style.backgroundColor="blue";
+                    // this.className="star";
+                    // this.style.display="inline-block";
+                    this.style.background.position="0 "+funXinXin(this.index)+"px";
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left">
+        </div>
+
+        <div class="right">
+
+            <div class="top">
+                <span class="commstar" id="commstar">
+                    <!-- <span class="star star1"></span>
+                    <span class="star star2"></span>
+                    <span class="star star3"></span>
+                    <span class="star star4"></span>
+                    <span class="star star5"></span> -->
+
+                    <span class="star1"></span>
+                    <span class="star2"></span>
+                    <span class="star3"></span>
+                    <span class="star4"></span>
+                    <span class="star5"></span>
+                </span>
+
+            </div>
+
+            <div class="bottom">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

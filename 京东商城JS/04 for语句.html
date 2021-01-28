@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for语句</title>
+    <script>
+
+        window.onload = function () {
+
+            var arry = [1, 2, 3, 4, 5, 6];
+            // console.log(arry.length);
+            // 时间2018/11/14 14:50 下面2种for方法是有区别的，第一种使用原始的形式来用处for的方法，
+            // 下面第二种则是，使用变量来存储 arry.length 的值，这样就避免了每执行一次for语句都需要
+            // 重新执行arry.length 的方法。
+
+            // 第一种
+            for (i = 0; i < arry.length; i++) {
+                console.log(arry[i]);
+            }
+
+            console.log("-----------");
+
+            // 第二种
+            for (i = 0, len = arry.length; i < len; i++) {
+
+                console.log(arry[i]);
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

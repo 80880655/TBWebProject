@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+    <script>
+
+        // 函数分为3种写法
+        // 1.声明自定义函数
+        // function fun(){
+        //     alert("自定义函数！");
+        // }
+        // fun();
+
+
+        // 2.第二种方式,函数直接量声明
+        var fun1=function(){
+            alert("第二种方式的写法，函数直接量声明");
+        }
+        fun1();
+
+        //3.第三种函数的写法,使用new关键字来声明
+        var fun2=new Function("var a=10;var b=21;alert(a+b)");
+        fun2();
+
+
+    </script>
+
+</body>
+</html>

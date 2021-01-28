@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>innerHTML和innerText</title>
+</head>
+<body id="innerHTML">
+<input type="text" id="value"/>
+</br>
+<input type="button" onclick="test1()" value="value"/>
+</br>
+<input type="button" onclick="test2()" value="innerHTML"/>
+</br>
+<input type="button" onclick="test3()" value="innerText"/>
+</br>
+<input type="text" id="version" style="width: 200px"/>
+
+<script>
+    var sys = getBrowserInfo();
+
+    function test1() {
+        alert(document.getElementById("value").value);
+    }
+
+    function test2() {
+        alert(document.getElementById("innerHTML").innerHTML);
+        // document.getElementById("innerHTML").innerHTML="!!!!!!!!!!!!!";
+        document.getElementById("version").value = sys.browser + "的版本是：" + sys.ver;
+    }
+
+    function test3() {
+        alert(document.getElementById("innerText").innerText);
+    }
+
+    // 获取当前浏览器的版本
+    function getBrowserInfo() {
+        var Sys = {};
+        var ua = navigator.userAgent.toLowerCase();
+        var re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+        var m = ua.match(re);
+        Sys.browser = m[1].replace(/version/, "'safari'");
+        Sys.ver = m[2];
+        return Sys;
+    }
+
+
+</script>
+</body>
+</html>

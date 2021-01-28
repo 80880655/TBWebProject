@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 封装动画函数和动画原理 03</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 0 0 0 10px;
+            position: absolute;
+        }
+
+        button {
+            margin: 10px auto;
+            display: block;
+            width: 120px;
+            height: 30px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn200'>btn200</button>
+    <button id='btn400'>btn400</button>
+
+    <div class="box">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var box = document.getElementsByTagName('div')[0];
+    var btn200 = document.getElementById('btn200');
+    var btn400 = document.getElementById('btn400');
+    // var timer = null;
+
+    // time:gaofneg 2020/3/27 16:11 自己编写的函数
+    // 1、目的：封装函数
+    // 2、指定对象的定时器 timer
+    // 3、自定义属性，和变量，详细见 练习25
+
+
+    btn200.onclick = function () {
+        animate(box, 200);
+        // alert('msg');
+    }
+
+    btn400.onclick = function () {
+        animate(box, 400);
+    }
+
+    /** name:   封装的函数
+     * @obj:     传入需要移动的对象
+     * @target:  传入的目标位置
+     */
+    // function animate(obj, target) {
+    //     // obj.onclick = function (event) {
+    //     //     // timer = setInterval(function () {
+    //     //     //     var targetLeft = box.offsetLeft + 10;
+    //     //     //     box.style.left = targetLeft + 'px';
+
+    //     //     //     if (targetLeft < target) {
+    //     //     //         box.style.left = targetLeft + 'px';
+    //     //     //     }
+    //     //     //     else if (targetLeft = target) {
+    //     //     //         clearInterval(timer);
+    //     //     //         box.style.left = target + 'px';
+    //     //     //     }
+    //     //     // }, 10);
+    //     // }
+
+    function animate(obj, target) {
+        // obj.timer 是重点，自定义变量
+        obj.timer = setInterval(function () {
+            if (obj.offsetLeft > target) {
+                clearInterval(obj.timer);
+            }
+            obj.style.left = obj.offsetLeft + 10 + 'px';
+        }, 30);
+    }  
+
+    function $(id){
+        return document.getElementById(id);
+    }
+
+
+    console.log($('btn200'));
+
+</script>

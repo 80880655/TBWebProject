@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动测试</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .father {
+            background-color: yellow;
+            /*height: 80px;*/
+        }
+
+        .div1 {
+            margin: 0px auto;
+            background-color: pink;
+            width: 900px;
+            /*height: 80px;*/
+        }
+
+        .son1 {
+            float: left;
+            background-color: red;
+            height: 80px;
+            width: 200px;
+        }
+
+        .son2 {
+            float: right;
+            background-color: blue;
+            height: 80px;
+            width: 200px;
+        }
+
+        .son4 {
+            float: right;
+            background-color: purple;
+            height: 40px;
+            width: 500px;
+        }
+
+        .son3 {
+            float: right;
+            background-color: skyblue;
+            height: 40px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="father">
+    <div class="div1">
+        <div class="son1">son1</div>
+        <div class="son2">son2</div>
+        <div class="son3">son3</div>
+        <div class="son4">son4</div>
+    </div>
+</div>
+
+</body>
+</html>

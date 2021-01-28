@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab 栏切换</title>
+</head>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .box {
+        margin: 100px auto;
+        height: 700px;
+        width: 400px;
+        /*background-color: pink;*/
+        /*border: 1px solid #aeb5ad;*/
+    }
+
+    .box .top {
+        width: 400px;
+        height: 30px;
+        /*background-color: pink;*/
+        border: 1px solid #aeb5ad;
+        border-bottom: none;
+        text-align: center;
+    }
+
+    .box .top button {
+        height: 30px;
+        width: 76px;
+        line-height: 30px;
+        /*background-color: red;*/
+        /*border:1px solid #aeb5ad;*/
+        /*border-right: 1px solid #aeb5ad;*/
+    }
+
+    .box .bottom div {
+        height: 650px;
+        width: 400px;
+        border: 1px solid #aeb5ad;
+        display: none;
+    }
+
+    /*时间:2018/11/30 11:25 这里是创建的一个类，如果前面不增加 .box .bottom 那么级别就没有上面的 div 高，这样就导致无法生效display:block 的效果。*/
+    .box .bottom .show {
+        display: block;
+    }
+
+    .box .bottom .block {
+        display: none;
+    }
+</style>
+
+<script>
+    window.onload = function () {
+        var obj_btn = document.getElementById("top").getElementsByTagName("button");
+        var obj_box = document.getElementById("bottom").getElementsByTagName("div");
+
+        for (var i = 0; i < obj_btn.length; i++) {
+            obj_btn[i].index = i;
+
+            obj_btn[i].onclick = function () {
+
+                for(var j=0;j<obj_box.length;j++){
+                    obj_box[j].className="";
+                }
+
+                obj_box[this.index].className = "show";
+                alert(this.index);
+            }
+        }
+    }
+
+</script>
+
+<body>
+
+<div class="box">
+    <!--顶部-->
+    <div class="top" id="top">
+        <button>第一个</button>
+        <button>第二个</button>
+        <button>第三个</button>
+        <button>第四个</button>
+        <button>第五个</button>
+    </div>
+
+    <!--底部-->
+    <div class="bottom" id="bottom">
+
+        <div class="show">第一个tab</div>
+        <div>第二个tab</div>
+        <div>第三个tab</div>
+        <div>第四个tab</div>
+        <div>第五个tab</div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

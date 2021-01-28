@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态生成span 2019/1/22</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul,
+        ol {
+            list-style: none
+        }
+
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 30px auto;
+            border: 1px solid #ccc;
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .box .slider ul {
+            list-style: none;
+        }
+
+        .box .circle {
+
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+
+            /* 见下面的 javascript 的语法，动态居中。 */
+            /* margin-left: -50px; */
+        }
+
+        .box .circle span {
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #3E3E3E;
+            margin-right: 5px;
+
+            color: #ccc;
+            font-weight: 700;
+            font-size: 15px;
+
+            /* 水平和垂直居中 */
+            line-height: 18px;
+            text-align: center;
+
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        // 实现目标： 关于span 数字部分根据 html 中的 img 个数动态生成 span 的排序号，使用 节点属性和创建属性来动态生成。
+        window.onload = function () {
+            var obj_box = document.getElementById("id_box");
+
+            // 1.创建序号部分的div， 下面的 document.createElement("div") 已经创建了对象，所以不需要在使用id来获取
+            var circle = document.createElement("div");
+            circle.setAttribute("class", "circle");
+            circle.setAttribute("id", "circle");
+            obj_box.appendChild(circle);
+
+            // 2.获取 slider 里面的所有 li 对象 和 个数
+            var obj_divs = obj_box.getElementsByTagName("div");
+
+            for (var i = 0; i < obj_divs.length; i++) {
+
+                // 2.1 通过上面的方法获取下面所有的div，然后通过判断div的className名字来获取下面的ul & li 的个数
+                if (obj_divs[i].className == "slider") {
+                    var obj_lis = obj_divs[i].getElementsByTagName("li");
+
+                    var obj_circle=document.getElementById("circle");
+                    // 2.2 obj_lis.length  结果等于7 ，需要创建 7个 li
+                    for (var x = 0; x < obj_lis.length; x++) {
+                        var obj_spans=document.createElement("span");
+
+                        obj_spans.innerHTML=x+1;
+
+                        // 根据li 的个数自动将整体居中对齐， 后面一定要附上 "px" 这个单位。
+                        circle.style.marginLeft= "-" + (x * 18 + x * 5) / 2 + "px";
+                                             
+                        // 2.3 这里可以不需要重新创建一个对象 obj_circle 来用来添加 span; 直接使用 前面创建的 circle 对象
+                        // obj_circle.appendChild(obj_spans);
+
+                        circle.appendChild(obj_spans);
+                    }
+                }
+
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="box" id="id_box">
+        <div class="slider">
+            <ul>
+                <li><img src="../京东商城JS/Dyimages/1.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/2.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/3.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/4.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/5.jpg" /></li>
+                <li><img src="../京东商城JS/Dyimages/6.jpg" /></li> 
+                <li><img src="../京东商城JS/Dyimages/7.jpg" /></li>
+            </ul>
+        </div>
+
+        <!-- <div class="circle">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+        </div> -->
+    </div>
+
+</body>
+
+</html>

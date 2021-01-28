@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17 封装自己类名的方法</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            width: 90px;
+            height: 65px;
+
+            background-color: pink;
+            margin: 10px auto;
+        }
+    </style>
+
+    <script>
+        // 时间：2019/9/12 11:33
+        window.onload = function () {
+
+            var arr=[];
+
+            function getClass(className){
+
+                //1.支持高版本的浏览器
+                if(document.getElementsByClassName){
+                    return document.getElementsByClassName(className);
+                    // alert('121');
+                }
+                
+                // 上述只是判断方法是有效，如果没有效，则使用下面的方法；
+                // 2.支持IE678浏览器
+                var _objDivs= document.getElementById('body').getElementsByTagName('*');
+                for (var i = 0; i < _objDivs.length; i++) {
+                    if (_objDivs[i].className==className) {
+                        arr.push(_objDivs[i]);
+
+                        // console.log(_objDivs[i].className);
+                    } 
+                }        
+                return arr;          
+            }
+            console.log(getClass('demo').length);
+        }
+    </script>
+</head>
+
+<body id="body">
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+
+</body>
+
+</html>

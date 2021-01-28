@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 个人作业-点击空白处隐藏内容02 JS </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 2000px;
+        }
+
+        #show {
+            /* 将登陆窗口定位在浏览器中心位置 */
+            margin: -150px 0 0 -150px;
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid red;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            display: none;
+        }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+            /*半透明*/
+            filter: alpha(opacity=40);
+            /*ie 6半透明*/
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;" id="login">注册</a>
+    <a href="javascript:;">登陆</a>
+
+    <!-- modify:gaofeng 2020.3.24 15:09 这里需要重点主要一下 show 在下面，mask在上面； 否则会将show的盒子挡住 -->
+    <div id="mask"></div>
+    <div id="show"></div>
+</body>
+
+</html>
+
+<script>
+    // create:gaofeng 2020/3/24 14:30 
+    // 1.原因：和上面自己做的13有点差异，现在重新做。
+    // 2.先做CSS部门
+    // 3.填充JS部分
+    // 4.实现目标：点击注册按钮之后，弹出注册界面；点击空白处恢复。
+    var login = document.getElementById('login');
+    var mask = document.getElementById('mask');
+    var show = document.getElementById('show');
+    // console.log(login);
+    login.onclick = function (event) {
+        // 不显示垂直滚动条
+        document.body.style.overflow = 'hidden';
+
+        mask.style.display = 'block';
+        show.style.display = 'block';
+
+        var event = event || window.event;
+        if (event && event.stopPropagation) {
+            event.stopPropagation();
+        }
+        else {
+            event.cancelBubble = true;
+        }
+    }
+
+    // 点击空白处隐藏
+    document.onclick = function (event) {
+        var event = event || window.event;
+
+        // 获取用户点击事件的 targetId;返回某个对象的ID名; 火狐：event.target.id ; IE：event.srcElement.id
+        var targetId = event.target ? event.target.id : event.srcElement.id;
+        if (targetId != 'show') {
+            show.style.display = 'none';
+            mask.style.display = 'none';
+            //显示滚动条
+            document.body.style.overflow = 'visible';
+        }
+    }
+
+
+
+</script>

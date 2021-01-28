@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15.筋斗云 JS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .nav {
+            height: 42px;
+            width: 800px;
+            margin: 80px auto;
+            background: #fff url('../Jd特效08/img/rss.png') no-repeat right center;
+            /* 小圆角 */
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .clound {
+            width: 83px;
+            height: 42px;
+            background: url('../Jd特效08/img/cloud.gif') no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .nav ul li {
+            float: left;
+            width: 83px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav" id='nav'>
+        <span class="clound"></span>
+        <ul>
+            <li>首页新闻</li>
+            <li>师资力量</li>
+            <li>活动策划</li>
+            <li>企业文化</li>
+            <li>招聘信息</li>
+            <li>公司简介</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+<script>
+    var lis=document.getElementById('nav').children[1].children;
+    var clound= document.getElementById('nav').children[0];
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index=i;
+        lis[i].onmouseover=function(){
+            
+            clound.style.left= parseInt(83*this.index)+"px";
+        }
+    }
+
+    // console.log(lis);
+    console.log(clound);
+
+</script>

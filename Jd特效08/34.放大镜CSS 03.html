@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34.放大镜CSS 03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #ccc;
+            float: left;
+            background: url('../Jd特效08/img/001.jpg');
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bigBox {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #ccc;
+            float: left;
+            background: url('../Jd特效08/img/0001.jpg');
+        }
+
+        /* 放大镜 */
+        .zoom {
+            display: none;
+            cursor: move;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="ibox">
+        <div class="zoom" id="izoom"></div>
+    </div>
+
+    <div class="bigBox"></div>
+</body>
+
+</html>
+<script>
+    var izoom = document.getElementById('izoom');
+    var ibox = document.getElementById('ibox');
+    // 时间：2019/11/26 10:31 放大镜跟随鼠标移动
+
+    ibox.onmouseover=function(event){
+        izoom.style.display='block';
+        var event=event||window.event;
+
+    }
+
+    ibox.onmouseout=function(){
+        izoom.style.display='none';
+    }
+
+</script>

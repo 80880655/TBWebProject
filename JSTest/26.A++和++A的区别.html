@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26.A++和++A的区别</title>
+</head>
+
+<body>
+
+
+    <script>
+        //时间：2018/10/26 10：23分
+        //注意一下，下面的console.log(i++); 和console.log(++i); 单独执行的时候 结果分别是：0 和 1，但是放置在一起的时候结果就是：0 和 2.
+        var i = 0;
+        console.log(i++); //输出结果是0，先运算之后在加1，所以当前输出是0
+        console.log(i); //经历过上面的i++之后，因为上一句是 console.log(i++) 所以输出显示就是0； 但是i的值已经发生变化成了i=1,所以后面加上
+        // console.log(i)之后，输出结果就是 i=1;
+        console.log(++i); //下一句在接i++的时候，就是i=0+1
+
+        console.log("------------------分割线1----------------------");
+        var a = 0;
+        console.log(++a);
+        console.log(a++);
+
+        console.log("------------------分割线2----------------------");
+        var c = 0;
+        console.log(c++);
+
+        console.log("------------------分割线3----------------------");
+        var b = 0;
+        console.log(++b);
+        console.log(b++);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+
+    
+    window.onload = function () {
+        var j = 1;
+        var sum=0,sum1=0,sum2=0;
+
+        // 1.while循环
+        while (j<=100) {
+            sum1+=j;
+            j++;
+        }
+
+        //2.for 循环
+        for (var i = 0; i <= 100; i++) {
+            sum2 += i;
+        }
+
+        //3.do while 至少执行一次       
+        var k=1;
+        do {
+            sum+=k;
+            k++
+        } while (k<=100);
+
+        console.log(j);
+        console.log(sum1);
+        console.log(sum2);
+        console.log(sum);
+    }
+
+</script>
+
+<body>
+
+</body>
+
+</html>

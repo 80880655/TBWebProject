@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16 运算符02 几个相关的面试题</title>
+    <script>
+        window.onload = function () {
+
+            //时间：2019/4/8 运算符 “||” 和 “&&”
+            // 1. && 前真返后，前假返前。
+
+            var aa=0&&1;
+            console.log('0&&1,前假返前,无论后面是真还是假都返回前面的：'+aa);        
+     
+            var bb=1&&'';
+            console.log("1&&'',前真返后,无论后面是真还是假都返回后面的：" + bb);
+
+
+            // 2.|| 前真返前，前假返后。
+            // 只要“||”前面为false, 不管“||”后面是true还是false，都返回“||”后面的值。
+            // 只要“||”前面为true, 不管“||”后面是true还是false，都返回“||”前面的值。
+
+            var cc=0||1;
+            console.log('0||1,|| 前真返前，前假返后:'+cc);
+
+
+            // 3.重点： && 的运算符级别比 || 高，所以先计算 && 后计算 ||
+
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

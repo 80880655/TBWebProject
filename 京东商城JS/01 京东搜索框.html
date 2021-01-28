@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东搜索框</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            margin: 50px auto;
+            width: 300px;
+            height: 200px;
+
+            position: relative;
+        }
+
+        #txt {
+            width: 193px;
+            height: 20px;
+
+            /*2018/11/13 不同的浏览器显示 鼠标的光标 和字体的大小不一样，这种情况下就使用 font-size + padding = height 的方式来实现
+                这种方式可以挤压和排序的使用
+            */
+            font-size: 15px;
+            padding: 2.5px 0 2.5px 5px;
+
+            /*这里出错了，input & label 都是 div的孩子，所以遵循 子绝父相 的原则， 设置 相对定位 应该设置在父亲div里面*/
+            /*position: relative;*/
+        }
+
+        #label {
+            color: #ccc;
+            font-size: 15px;
+            position: absolute;
+            top: 2.5px;
+            left: 5px;
+
+            /*2018/11/13 需要增加鼠标移动到label 的标签上的时候也出现 光标的情况
+            */
+
+            cursor: text;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            //onpropertychange 是 兼容IE678 以下的版本。
+            //oninput 大部分浏览器支持， 检查用户表达你输入内容
+
+            // 2018/11/13 这里的意思是说
+            $("txt").oninput = $("txt").onpropertychange = function () {
+                if (this.value == "") {
+                    $("label").style.display = "block";
+                }
+                else {
+                    $("label").style.display = "none";
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+
+<div>
+    <input type="text" name="" id="txt"/>
+
+    <!--2018/11/13 15:57 for的意思-->
+    <!--如果这里不使用 for 关键字，则会出现以下情况：-->
+    <!--1.点击 “荒废的大品牌” 的时候，背后的 text 控件无法选中。-->
+    <!--2.如果设置了 for 的关键字，当用户点击 lable 控件的时候，也同时选中了 text 控件。-->
+
+    <label for="txt" id="label">荒废的大品牌</label>
+
+    <!--<label  id="label">荒废的大品牌</label>-->
+
+    <br/>
+
+    <input type="radio" name="gender" id="gender_1" value="男"/>
+    <label for="gender_1">男</label>
+
+    <input type="radio" name="gender" id="gender_2" value="女"/>
+    <label for="gender_2">女</label>
+
+</div>
+
+</body>
+</html>

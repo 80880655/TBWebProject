@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab栏切换03</title>
+
+    <style>
+        * {margin: 0px; padding: 0px;}
+
+        .box {
+            margin: 150px auto;
+            width: 403px;
+            height: 500px;
+            border: 1px solid #aeb5ad;
+        }
+
+        .box .top ul li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-right: 1px solid #cccccc;
+            cursor: pointer;
+
+            display: inline-block;
+        }
+
+        .show {
+            background-color: purple;
+            display: block;
+        }
+
+        .display {
+            display: none;
+        }
+
+        .box .top #li_04 {
+            border: none;
+        }
+
+        .bottom div {
+            /*隐藏*/
+            /*visibility: hidden;*/
+            float: left;
+            width: 403px;
+            height: 470px;
+        }
+
+
+
+
+    </style>
+
+    <script>
+
+        window.onload=function () {
+            var obj_uls=document.getElementById("uls").getElementsByTagName("li");
+            var obj_divs=document.getElementById("divs").getElementsByTagName("div");
+
+            for (var i=0;i<obj_uls.length;i++){
+                obj_uls[i].index=i;
+
+                obj_divs[i].className="display";
+                obj_uls[i].class="";
+
+                obj_uls[i].onmousemove=function () {
+                    this.className="show";
+                    obj_divs[this.index].className="show";
+                }
+
+                obj_uls[i].onmouseout=function () {
+                    this.className="";
+                    obj_divs[this.index].className="";
+                    obj_divs[this.index].className="display";
+                }
+            }
+
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+    <div class="box">
+        <div class="top" >
+            <ul id="uls">
+                <li class="show">新闻</li>
+                <li>体育</li>
+                <li>女性</li>
+                <li id="li_04">股票</li>
+            </ul>
+        </div>
+
+        <div class="bottom" id="divs">
+            <div class="show">新闻</div>
+            <div>体育</div>
+            <div>女性</div>
+            <div>股票</div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

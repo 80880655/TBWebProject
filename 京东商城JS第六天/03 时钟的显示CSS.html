@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03 时钟的显示JS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 600px;
+            height: 600px;
+            background: yellow;
+            margin: 0 auto;
+            background: url('../京东商城JS第六天/images/clock.jpg') no-repeat;
+            position: relative;
+        }
+
+        .box div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 时间：2019/2/28 10:41  
+            1.权重问题， 默认样式 < 标签 < 类选择 < id 选择器 < 行内样式 < !important
+            2.设置 background 的 center & center 的属性，将图片排列在正中央
+        */
+
+        .box .h {
+            background: url('../京东商城JS第六天/images/hour.png') no-repeat center center;
+        }
+
+        .box .m {
+            background: url('../京东商城JS第六天/images/minute.png') no-repeat center center;
+        }
+
+        .box .s {
+            background: url('../京东商城JS第六天/images/second.png') no-repeat center center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="m"></div>
+
+        <div class="h"></div>
+
+        <div class="s"></div>
+
+    </div>
+
+    <script>
+    
+        var date=new Date();
+
+        var im=date.getHours()%12;
+
+        var im2=date.getHours();
+
+        console.log(im2);
+        console.log(im);
+    
+    </script>
+
+</body>
+
+</html>

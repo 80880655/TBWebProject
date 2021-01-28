@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+<script>
+    window.onload=function(){
+        var btns = document.getElementById('btn').children;
+
+        var btns1=document.getElementById('btn').getElementsByTagName('button');
+
+        // for (var i = 0; i < btns.length; i++) {
+        //     btns[i].index=i;
+
+        //     btns[i].onclick=function(){
+
+        //         alert(btns[i].index);
+        //     }
+        // }
+
+
+        //  var btns1 = document.getElementById('btn').getElementsByTagName('button');
+        // ?	var btns = document.getElementById('btn').children
+        // ?????????index ???
+
+        for (var i = 0; i < btns1.length; i++) {
+            btns1[i].index=i;
+            btns1[i].onclick=function(){       
+                alert(this.index);
+            }
+        }
+
+        console.log(btns1.length);
+
+        
+    }
+
+
+</script>
+
+<body>
+
+    <div id="btn"> 
+        <button>1</button>
+        <button>1</button>
+        <button>1</button>
+        <button>1</button>
+        <button>1</button>
+    </div>
+    
+</body>
+</html>
+
+<!-- <script>
+    var btns=document.getElementById('btn').children;
+
+    console.log(btns);
+
+    for (var i = 0; i < btns.length; i++) {
+        // btns[i].index=i;
+
+        btns[0].onclick=function(){
+            // alert(btns[i].index);
+            alert('1');
+        }
+    }
+
+</script> -->

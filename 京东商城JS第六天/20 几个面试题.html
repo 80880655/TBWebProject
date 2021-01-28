@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20 几个面试题</title>
+    <script>
+        window.onload = function () {
+
+
+            //    时间：2019/4/17 && 和 ||
+
+            // 1.a为真，返回b
+            var a = 10;
+            var b = 20;
+
+            console.log("1.a=10,b=20,a&&b,结果是什么？" + (a && b));
+
+            // 2.a1为假，返回b1
+            var a1 = 0;
+            var b1 = 1;
+            console.log("2.a1=0,b1=1,a1&&b1,结果是什么？" + (a1 && b1));
+
+            //3. a2为假，返回b2
+            var a2 = 0;
+            var b2 = 1;
+            console.log("3.a2=0,b2=1,a2||b2,结果是什么？" + (a2 || b2));
+
+
+            //4. a3为真，返回a3
+            var a3 = 1;
+            var b3 = 0;
+            console.log("4.a3=1,b3=0,a3||b3,结果是什么？" + (a3 || b3));
+
+            //5. &&  和 || 一起使用，就需要考虑优先级顺序的问题，  && 优先级大于 || 的顺序。
+            var a = 1, b = 2, c = 3, d = 1
+
+            //6. 对于 && 只要有一边为 0 ， 则所有都返回 0.
+            console.log(a && b || c);
+            console.log('------');
+            console.log(0 && 1);
+            console.log(1 && 1);
+            console.log(1 && 0);
+
+            //7. 对于 || 符号，0 或上任何一个数字，就是另外一个数字。
+            console.log('------');
+            console.log(0 || 1);
+            console.log(1 || 0);
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

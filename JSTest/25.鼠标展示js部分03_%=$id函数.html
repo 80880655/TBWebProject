@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25.$id函数</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <div id="test"></div>
+    <div id="another"></div>
+
+    <script>
+        // 时间：2018/10/17 16：50分 美元符号的函数 $id, 封装一个 return 的函数，方便以后使用
+        // 美元符号 $  是一个合法的变量名，也是一个合法的函数名，这里的意思是指“美元符号的函数”
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        $("demo").style.backgroundColor = "red";
+        $("test").style.backgroundColor = "bule";
+        $("another").style.backgroundColor = "#ccc";
+    </script>
+</body>
+
+</html>

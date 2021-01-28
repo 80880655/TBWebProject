@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04 操作字符串 slice 01</title>
+    <!-- 
+        时间：2019/4/24 17：34 
+        1.因为slice(3,6),中的6是指6个字符长， 字符串是按照序号为0 开始计算序号的。 
+    
+        2.默认是左边开始数，如果slice（）里面为负数，则是从右边往左边开始取数。
+    -->
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div span {
+            display: inline-block;
+            background-color: yellow;
+            width: 120px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="txt">
+        <button>slice</button>
+        </br>
+        <span id="span"></span>
+        <input type="text" id="txt1">
+        <input type="text" id="txt2">
+    </div>
+
+</body>
+
+</html>
+<script>
+    function $(id) { return document.getElementById(id) }
+
+    var txt=$("txt").value;
+
+
+    var btn=$("txt").nextElementSibling || $("txt").nextSibling;
+
+    console.log(btn);
+
+    btn.onclick=function(){
+
+        $("span").innerHTML = txt.slice($("txt1").value, $("txt2").value);
+    }
+
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14 筋斗云 js 获取索引2</title>
+</head>
+<script>
+    window.onload=function(){
+        var btns = document.getElementById('btn').children;
+
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].index=i;
+            btns[i].onclick=function(){
+                
+                alert(this.index);
+            }
+        }
+
+        console.log(btns.length);
+
+
+        
+    }
+
+</script>
+
+<body>
+
+    <div id="btn"> 
+        <button>1</button>
+        <button>1</button>
+        <button>1</button>
+        <button>1</button>
+        <button>1</button>
+    </div>
+    
+</body>
+</html>
+
+<!-- <script>
+    var btns=document.getElementById('btn').children;
+
+    console.log(btns);
+
+    for (var i = 0; i < btns.length; i++) {
+        // btns[i].index=i;
+
+        btns[0].onclick=function(){
+            // alert(btns[i].index);
+            alert('1');
+        }
+    }
+
+</script> -->

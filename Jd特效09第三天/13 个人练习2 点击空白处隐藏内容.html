@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 点击空白处隐藏内容-个人练习2</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+
+        body {
+            /* width: 100%; */
+            height: 2000px;
+        }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+
+            /* 半透明 */
+            opacity: 0.4;
+            /* ie 6半透明 */
+            filter: alpha(opacity=40);
+            /*ie 6半透明*/
+            background-color: black;
+
+            /* 定位 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #show {
+            /* margin: 50px auto; */
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid red;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+
+            margin: -150px 0 0 -150px;
+            display: none;
+        }
+    </style>
+    <script src="../my.js"></script>
+</head>
+
+<body>
+    <a href="javascript:;" id="login">注册</a>
+    <a href="javascript:;">登录</a>
+
+    <!-- modify:gaofeng 2020.3.24 15:09 这里需要重点主要一下 show 在下面，mask在上面； 否则会将show的盒子挡住 -->
+    <div id="mask"></div>
+    <div id="show"></div>
+</body>
+
+</html>
+
+<script>
+    /*
+     * time:2020/3/23 10:46
+     *  1.点击注册发生遮盖效果。
+     *  2.点击空白处清除遮盖效果。
+     *  3.出现遮盖效果之后，屏蔽浏览器的右边的下拉框。
+     */
+    var login = $('login');
+    var show = $('show');
+    var mask = $('mask');
+
+    login.onclick = function (event) {
+
+        // 如果是小手，使用a标签就可以了
+        // login.style.cursor='pointer';
+        show.style.display = 'block';
+        mask.style.display = 'block';
+        document.body.style.overflow = 'hidden'; //不显示滚动条
+
+        // 取消冒泡
+        var event = event || window.event;
+        if (event && event.stopPropagation) {
+            event.stopPropagation();
+        }
+        else {
+            event.cancelBubble = true;
+        }
+    }
+
+
+    // 点击空白处隐藏
+    document.onclick = function (event) {
+        var event = event || window.event;
+        var targetId = event.target ? event.target.id : event.srcElement.id;
+
+        if (targetId != 'show') {
+            show.style.display = 'none';
+            mask.style.display = 'none';
+            //显示滚动条
+            document.body.style.overflow = 'visible';
+        }
+    }
+
+
+</script>

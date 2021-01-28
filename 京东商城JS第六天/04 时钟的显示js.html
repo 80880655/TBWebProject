@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04 时钟的显示JS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 600px;
+            height: 600px;
+            background: yellow;
+            margin: 0 auto;
+            background: url('../京东商城JS第六天/images/clock.jpg') no-repeat;
+            position: relative;
+        }
+
+        .box div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 时间：2019/2/28 10:41  
+            1.权重问题， 默认样式 < 标签 < 类选择 < id 选择器 < 行内样式 < !important
+            2.设置 background 的 center & center 的属性，将图片排列在正中央
+        */
+        .box .h {
+            background: url('../京东商城JS第六天/images/hour.png') no-repeat center center;
+        }
+
+        .box .m {
+            background: url('../京东商城JS第六天/images/minute.png') no-repeat center center;
+        }
+
+        .box .s {
+            background: url('../京东商城JS第六天/images/second.png') no-repeat center center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="h" id="ih"></div>
+        <div class="m" id="im"></div>
+        <div class="s" id="is"></div>
+    </div>
+</body>
+
+<script>
+    // // 1.获取对象
+    // var hour = document.getElementById("ih");
+    // var minute = document.getElementById("im");
+    // var second = document.getElementById("is");
+
+    // // 2.时间
+    // var date = new Date();
+    // var ih = date.getHours();
+    // var im = date.getMinutes();
+    // var is = date.getSeconds();
+
+    // //获取当前实际的秒数，可能当前是1秒，但是实际的时间是大于1秒的，因为毫秒快很多。
+    // var inow = date.getMilliseconds();
+
+    // //3.计算
+
+    // // 3.1当前秒
+    // is = is + (inow / 1000);
+
+    // // 3.2 当前分钟
+    // im = im + is / 60;
+
+    // // 3.3 当前小时
+    // ih = ih + (im / 60);
+
+    //4.定时
+    // 4.1 如果不将上面的获取时间的方法放置在定时器中，那么界面上的时间不会发生任何的改变
+    // setInterval(function () {
+    //     hour.style.transform = "rotate(" + ih * 6 + "deg)";
+    //     minute.style.transform = "rotate(" + im * 6 + "deg)";
+    //     second.style.transform = "rotate(" + is * 6 + "deg)";
+    // }, 500);
+
+
+    // ---------------------------------------------
+
+    function _time() {
+        var date = new Date();
+
+        var hour = document.getElementById("ih");
+        var minute = document.getElementById("im");
+        var second = document.getElementById("is");
+
+        // 可以将声明放在外面
+        var inow = date.getMilliseconds();
+        var ih = date.getHours();
+        var im = date.getMinutes();
+        var is = date.getSeconds();
+
+        is = is + (inow / 1000);
+        im = im + is / 60;
+        //因为钟盘上是12个数字，所以这余一个12，这样得到的数永远不会超过12；否则就有13点出现，这样计算就不对了。
+        ih = ih % 12 + (im / 60);       
+
+        hour.style.transform = "rotate(" + ih * 30 + "deg)";
+        minute.style.transform = "rotate(" + im * 6 + "deg)";
+        second.style.transform = "rotate(" + is * 6 + "deg)";
+
+        // 时间2019/2/28 16:49分 小时这里为什么是30
+        // 因为这里是时针， 一圈是360度，一共12个小时，每个小时之间间隔30度，每个小时走30度；比如12点到1点，走了30度
+        // 将当前“小时+已走的分钟换算成小时”*“30度” 就为 当前实际的时钟的位置
+        hour.style.webkitTransform = "rotate(" + ih * 30 + "deg)";
+        minute.style.webkitTransform = "rotate(" + im * 6 + "deg)";
+        second.style.webkitTransform = "rotate(" + is * 6 + "deg)";
+
+        // alert("222");
+    };
+
+    //5.正确写法
+
+    // 5.1 正确 ，填写完整的函数和参数，则需要使用双引号
+    // setInterval("_time()", 100);
+
+    // 5.2 正确， 写名字不用双引号
+    setInterval(_time, 100);
+
+    // 5.3 正确 ， 直接写入逻辑，不使用任何的函数名称
+    // setInterval(function(){ 直接填写逻辑 },1000);
+
+
+    // console.log(date);
+    // console.log("ih:" + ih);
+    // console.log("im:" + im);
+    // console.log("is:" + is);
+    // console.log("inow:" + inow);
+
+
+</script>
+
+</html>

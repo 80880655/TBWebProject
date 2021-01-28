@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03 轮播图 3</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* 1226 * 460 */
+        .box {
+            position: relative;
+        }
+
+        .box .box_top {
+            margin: 10px auto;
+            width: 700px;
+            height: 262px;
+            border: 1px solid #ccc;
+            /* background-color: pink; */
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .box .box_bottom {
+            margin: 0 auto;
+            list-style: none;
+            width: 52px;
+            /* background-color: red; */
+
+            position: absolute;
+            left: 48%;
+            bottom: 10px;
+
+        }
+
+        .box div ul {
+            width: 400%;
+            list-style: none;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+
+            transition: left 0.3s linear 0s;
+        }
+
+        .box div ul li {
+            float: left;
+        }
+
+        .box div ul li a img {
+            /* display: block; */
+            width: 100%;
+            max-width: 700px;
+            vertical-align: top;
+        }
+
+        .box div ol {
+            list-style: none;
+            width: 64px;
+            text-align: center;
+        }
+
+        .box div ol li {
+            float: left;
+            margin-right: 4px;
+            width: 12px;
+            height: 18px;
+            line-height: 18px;
+            /* background-color:pink; */
+            cursor: pointer;
+
+        }
+
+        .current {
+            background-color: rgb(224, 91, 113);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="scroll">
+        <div class="box_top">
+            <ul>
+                <li><a href=""><img src="../Jd07/img/1.jpg" alt=""></a></li>
+                <li><a href=""><img src="../Jd07/img/2.jpg" alt=""></a></li>
+                <li><a href=""><img src="../Jd07/img/3.jpg" alt=""></a></li>
+                <li><a href=""><img src="../Jd07/img/4.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="box_bottom">
+            <ol type="1">
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ol>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    // 时间：2019/9/25 16:11
+    // 1.和前面的轮播图有区分，这里使用  transition: left 0.3s linear 0s; 来实现，而不是使用公式计算来切换。
+    // 2.这种实现方式会简单很多。
+    var ul = document.getElementById('scroll').children[0].getElementsByTagName('ul')[0];
+    var ol= document.getElementById('scroll').children[1].getElementsByTagName('ol')[0];
+    var lis = document.getElementById('scroll').children[1].getElementsByTagName('li');
+    var num = 0;
+    var target = 0;   // 一个图片宽度为：700px;
+
+    var timer=null;
+    timer = setInterval(function () {
+            target -= 700;
+            target <= -2800 ? target = 0 : target;
+            ul.style.left = target + 'px';
+
+            //清除
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = "";
+            }
+
+            lis[parseInt(0 - (target / 700))].className = 'current';
+            // console.log(target);
+            // console.log(parseInt(0 - (target / 700)));
+        }, 3000);
+
+    // 1.动态写入img的值
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+        lis[i].onmouseover = function () {
+            for (var j = 0; j < lis.length; j++) {
+                lis[j].className = '';
+            }
+            this.className = 'current';
+            target = -this.index * 700;
+            ul.style.left = target + "px"; 
+        }
+    }
+
+    //可以这样写
+    ol.onmouseover=ul.onmouseover=function(){
+        clearInterval(timer);
+    }
+
+    ol.onmouseout=ul.onmouseout=function(){
+        timer = setInterval(function () {
+            target -= 700;
+            target <= -2800 ? target = 0 : target;
+            ul.style.left = target + 'px';
+
+            //清除
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = "";
+            }
+
+            lis[parseInt(0 - (target / 700))].className = 'current';
+            // console.log(target);
+            // console.log(parseInt(0 - (target / 700)));
+        }, 3000);
+    }    
+
+
+
+</script>

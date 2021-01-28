@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关闭二维码</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            width: 296px;
+            height: 296px;
+            border: 1px solid #ccc;
+
+            margin: 50px auto;
+
+            position: relative;
+        }
+
+        #close {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+
+            position: absolute;
+            top: 0px;
+            left: 296px;
+
+            cursor: pointer;
+        }
+
+        #close:hover {
+            cursor: pointer;
+            background-color: red;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var obj_close = document.getElementById("close");
+
+            // 时间：2019/1/15 16:42  parentNode --代表父节点
+            // 表示 当前点击的按钮 x 的时候，关闭 x 标签元素的父亲节点 box。
+            obj_close.onclick = function () {
+                this.parentNode.style.display="none";
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <img src="images/erweima.png">
+        <span id="close">X</span>
+    </div>
+
+</body>
+
+</html>

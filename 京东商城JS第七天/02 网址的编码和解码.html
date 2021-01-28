@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02 网址的编码和解码</title>
+</head>
+<body>
+
+    
+</body>
+</html>
+<script>
+    var url="http://www.itcast.cn?name=andy";
+    console.log("编码："+encodeURIComponent(url));
+
+
+    // 编码之后： http%3A%2F%2Fwww.itcast.cn%3Fname%3Dandy
+    // 解码之后： http://www.itcast.cn?name=andy
+    var afterUrl=encodeURIComponent(url);
+    console.log("解码："+ decodeURIComponent(afterUrl));
+
+</script>

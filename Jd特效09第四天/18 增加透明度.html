@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 JSON 封装缓慢动画函数-传递多个JSON属性 02 </title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #box {
+            width: 200px;
+            height: 130px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            /* opacity: 0.8; */
+            position: absolute;
+        }
+
+        button {
+            width: 140px;
+            height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn200">200</button>
+    <button id="btn400">400</button>
+
+    <div id="box">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var box = $('box');
+    var btn200 = $('btn200');
+    var btn400 = $('btn400');
+
+    var json = { width: 200, top: 100 };
+    // var json= { width: 200, height: 100, Top: 50 };
+
+    // time:gaofeng 2020/4/9 23:12 传递多个参数到运动函数中
+    // 1、需要注意 JSON格式中的 属性名称的大小写。
+    // 2、主要是注意 定时器状态传递。
+
+    btn200.onclick = function () {
+        animation2(box, { width: 200, top: 100, left: 300, opacity: 0.3 });
+    }
+
+
+    btn400.onclick = function () {
+        animation2(box, { width: 300, height: 300, top: 100, left: 500, opacity: 0.3 });
+    }
+
+
+    // time:gaofeng 2020/4/15 15:46 加入透明度
+    function animation2(obj, json) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var flag = true;
+            for (k in json) {
+                // 透明度对于不同的浏览器有不同数值显示，有些是小数，之前的IE则是50 这样的数值
+                var current = 0;
+                if (k == 'opacity') {
+                    current = Math.round(parseInt(getCurrentStyle(obj, k) * 100));
+                    console.log(current);
+                } else {
+                    current = parseInt(getCurrentStyle(obj, k) * 100);
+                }
+
+                // var current = parseInt(getCurrentStyle(obj, k));
+                var step = (json[k] - current) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                if (k == 'opacity') {
+                    if ('opacity' in obj.style) {
+                        obj.style.opacity = (current + step) / 100;
+                    }
+                    else {
+                        obj.style.filter = "alpha(opacity = " + (current + step) * 10 + ")";
+                    }
+                }
+                else if (k == "zIndex") {
+                    obj.style.zIndex = k[k];
+                }
+                else {
+                    obj.style[k] = current + step + "px";
+                }
+
+                obj.style[k] = current + step + 'px';
+
+                if (current != json[k]) {
+                    flag = false;
+                }
+            }
+            // 用来传递当前JSON传递的参数是否已经执行完毕，如果 flag = true ，则说明执行完毕清除定时器。
+            if (flag) {
+                clearInterval(obj.timer);
+            }
+        }, 25);
+
+    }
+
+    function getCurrentStyle(obj, attr) {
+        if (obj.currentStyle) {  //IE
+            return obj.currentStyle[attr];
+        }
+        else { //W3C
+            return window.getComputedStyle(obj, null)[attr];
+        }
+    }
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+</script>

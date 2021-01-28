@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19 getElementsByClassName 和 getElementsByClassName 的方法</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            width: 90px;
+            height: 65px;
+
+            background-color: pink;
+            margin: 10px auto;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            var dom1 = document.getElementsByTagName('*');
+
+            if (document.getElementsByClassName) {
+                var dom2 = document.getElementsByClassName('demo');
+            }
+
+            var dom3 = document.getElementById('body');
+
+            var dom4 = document.getElementById('body').getElementsByTagName('div');
+
+            console.log(dom1);
+            console.log(dom1.length);
+
+            console.log('------getElementsByClassName, IE678 不支持-----');
+            
+            if (dom2) {
+                console.log(dom2.length);
+            }
+
+            console.log('------getElementById-----');
+            console.log(dom3);
+
+            console.log('----------------------');
+            console.log(dom4);
+            console.log(dom4.length);
+
+            for (var i = 0,len=dom4.length; i < len; i++) {
+                console.log(dom4[i].className);
+            }
+        }
+
+    </script>
+</head>
+
+<body id="body">
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="test"></div>
+    <div></div>
+    <div class="demo test"></div>
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+
+</body>
+
+</html>

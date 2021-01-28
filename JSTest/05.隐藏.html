@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隐藏</title>
+    <style>
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 50px 0 0 50px;
+        }
+
+        /*1.隐藏，如果使用 display 下面的盒子就会顶上来。*/
+        .div1 {
+            display: none;
+        }
+
+        /*2. visibility:hidden / visible : 位置不动，不会自动顶上去，停职留薪 */
+        /*.div1 {*/
+            /*visibility: hidden;*/
+        /*}*/
+
+        /*3. overflow:hidden 只会隐藏超出的部分 */
+        /*.div1 {*/
+            /*overflow: hidden;*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+
+<div class="div1">1</div>
+<div class="div2">2</div>
+</body>
+</html>

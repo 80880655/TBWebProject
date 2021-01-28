@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07 SetTimeout</title>
+    <style>
+        * {padding: 0px;margin: 0px;}
+        
+        .box {
+            margin: 40px auto;
+            width: 400px;
+            height: 120px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" name="" id="txt">
+        </br>
+        <button id="btn01">倒计时setTimeout</button>
+        </br>
+        <button id="btn02">倒计时setInterval</button>
+    </div>
+    
+
+    <script>   
+        //1. setTimeout 只执行一次
+        var btn01=document.getElementById("btn01");
+        var btn02=document.getElementById("btn02");
+        var count=10;
+
+
+        // 2.setInterval 会一直执行下去
+        setInterval(function () {
+            count--;
+            btn02.innerHTML="倒计时setInterval,还剩下"+count+"秒";
+        },1000)
+
+        setTimeout(function(){
+            btn01.innerHTML= "倒计时setTimeout,还剩下" + count + "秒";
+        },1000);
+
+    
+    </script>
+</body>
+</html>

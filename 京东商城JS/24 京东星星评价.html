@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东商城星星评价-打星</title>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .box {
+            width: 400px;
+            height: 230px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+        }
+
+        .box .commstar {
+            width: 80px;
+            height: 16px;
+            margin: 100px auto;
+
+            /* 消除span之间间隔 */
+            font-size: 0px;
+            position: absolute;
+            left: 45%;
+        }
+
+        .box .commstar span {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            background-color: red;
+
+            /* position: relative; */
+
+            /* 用户点击之后 */
+            background: url('../京东商城JS/images/commstar.png');
+            /* background-position: 0 -16px; */
+
+            /* 用户点击之前 ， 应该是白色 */
+            background-position: 0 0px;
+
+            cursor: pointer;
+        }
+
+
+        .box .commstar #star6 {
+            
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -16px;
+            position: relative;
+            top: -16px;
+
+            display: none;
+        }
+
+        /* .box .commstar .starClick {
+            background: url('../京东商城JS/images/commstar.png');
+            background-position: 0 -16px;
+        } */
+        
+    </style>
+
+    <script>
+        window.onload = function () {
+            var obj_spans = document.getElementsByTagName("span");
+            var obj_spanStar6=document.getElementById("star6");
+            var j=0;
+
+            // 1.定义一个函数，每次根据用户点击的index * 16 并带上负数。
+            function funStar(item) {
+                return item =item * 16;
+            }
+
+            for (var i = 0, n = obj_spans.length; i < n; i++) {
+                obj_spans[i].index = i + 1;
+
+                obj_spans[i].onclick = function () {
+                    // alert(this.index);
+                    obj_spanStar6.style.display = "inline-block";
+                    for (var x = 0; x < obj_spans.length; x++) {
+                        // obj_spanStar6.style.width = 0;
+                        j = funStar(this.index);
+                        if (this.index <= 5) {
+                            obj_spanStar6.style.width = j + "px";     
+                        }  
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="commstar">
+            <span id="star1" class="star1"></span>
+            <span id="star2" class="star2"></span>
+            <span id="star3" class="star3"></span>
+            <span id="star4" class="star4"></span>
+            <span id="star5" class="star5"></span>
+            <span id="star6" ></span>
+        </div>
+    </div>
+
+</body>
+
+</html>

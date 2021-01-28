@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08 上下滚动 JS 02</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            /* 时间：2019/1/6 17:12 如果后面增加了auto，在上下滚动的时候就动态变宽 */
+            margin: 30px;
+            width: 300px;
+            height: 500px;
+            border: 1px solid #ccc;
+            /* background-color: yellowgreen; */
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .content {
+            /* width: 100%;  使用padding就会将它们挤出来 */
+            /* height: 100%; */
+
+            /* padding-right: 18px; */
+
+            /* 如果使用上面的，那么最后底部的文字内容会有点显示不出来。 */
+            padding: 5px 18px 5px 5px;
+
+            height: auto;
+            /* background-color: blue; */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .scroll {
+            width: 18px;
+            height: 100%;
+            background-color: #ccc;
+            position: absolute;
+            top: 0;
+            right: 0px;
+        }
+
+        .bar {
+            /* 时间：2020/1/6  11:04 如果这里是auto 那么就会消失； 这里应该设置成100% 就没有问题。 */
+            /* width: auto; */
+            width: 100%;
+            height: 50px;
+            background-color: red;
+            border-radius: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            /* 在大盒子scroll（scroll已经有定位了） 里面，所以这里使用left */
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <!-- 左边 -->
+        <div class="content">
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+            文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文
+
+        </div>
+
+        <!-- 右边 -->
+        <div class="scroll">
+            <!-- 上下滚动条 -->
+            <div class="bar">
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    // 时间：2019/1/6 14:06 看视频重新学习
+    // 1.先计算出上下滚动条的高度，高度随着内容的变化而动态变化
+    var box = document.getElementById('box');
+    var content = box.children[0];
+    var scroll = box.children[1];
+    var bar = scroll.children[0];
+
+    var heightAuto = box.offsetHeight * (box.offsetHeight / content.offsetHeight);
+    bar.style.height = heightAuto + 'px';
+
+    // // 2.拖拽动作
+    // bar.onmousedown = function (event) {
+    //     var event = event || window.event;
+    //     var t = event.clientY - this.offsetTop;
+    //     document.onmousemove = function (event) {
+    //         var event = event || window.event;
+    //         bar.style.top = event.clientY - t + 'px';
+    //         content.style.top = heightAuto + 'px';
+    //         window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+    //     }
+    //     document.onmouseup = function () {
+    //         document.onmousemove = null;
+    //     }
+    // }
+
+
+    // 第一个参数是 拖动的盒子； 第二个参数是 内容的盒子
+    startScroll(bar, content);
+
+    function startScroll(obj, target) {
+        obj.onmousedown = function (event) {
+            var event = event || window.event;
+            var t = event.clientY - this.offsetTop;
+            // 使用that来代替this
+            var that = this;
+
+            document.onmousemove = function (event) {
+                var event = event || window.event;
+                var barTop = event.clientY - t;
+
+                // 上下拖拽和内容的上下移动关系的计算
+                // var contentTop = (target.offsetHeight - box.offsetHeight) / (box.offsetHeight - that.offsetHeight) * barTop;
+                var contentTop = (target.offsetHeight - target.parentNode.offsetHeight) / (target.parentNode.offsetHeight - that.offsetHeight) * barTop;
+
+                if (barTop < 0) {
+                    barTop = 0;
+                }
+                //大于 大盒子的高度-红色盒子的高度
+                // else if (barTop > box.offsetHeight - that.offsetHeight) {
+                else if (barTop > target.parentNode.offsetHeight - that.offsetHeight) {
+                    // barTop = box.offsetHeight - that.offsetHeight;
+
+                    barTop = target.parentNode.offsetHeight - that.offsetHeight;
+                }
+                else {
+                    // 往上走是负值
+                    target.style.top = -contentTop + 'px';
+                }
+                that.style.top = barTop + 'px';
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            }
+        }
+
+        // 这里是document,不是别的
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+
+</script>

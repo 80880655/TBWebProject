@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25 pageX, pageY</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 120px;
+            border: 1px solid #ccc;
+            background-color: green;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1" id="ibox1">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    var ibox1 = document.getElementById('ibox1');
+
+    // 时间：2019/11/20 8:53
+    // IE678 没有pageX 和 pageY
+    document.onclick = function (event) {
+        var event = event || window.event;
+        console.log('---pageX pageY--------');
+        console.log(event.pageX);
+        console.log(event.pageY);
+
+    }
+
+</script>

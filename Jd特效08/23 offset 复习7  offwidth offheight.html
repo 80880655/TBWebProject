@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23 offset 的offwidth offheight的区别和用法</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box1 {
+            margin: 50px auto;
+            width: 320px;
+            height: 180px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            padding: 3px;
+            position: relative;
+        }
+
+        .box2 {
+            width: 190px;
+            height: 110px;
+            border: 2px solid #333;
+            background-color: green;
+            position: relative;
+        }
+
+        .box3 {
+            width: 110px;
+            height: 80px;
+            border: 1px solid #ccc;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1" id="ibox1">box1
+        <div class="box2" id="ibox2">box2
+            <div class="box3" id="ibox3">box3</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    var ibox1 = document.getElementById('ibox1');
+    var ibox2 = document.getElementById('ibox2');
+    var ibox3 = document.getElementById('ibox3');
+    // 时间：2019/11/19 14:22
+    // offsetTop 自身距离body的距离
+    // offsetHeight 自身的高度，包含border 和 自身的padding
+    // offsetWidth 自身的高度，包含border 和 自身的padding
+    // 如果前面的父辈都没有定位，则返回body， 如下所示，对于box2 增加定位;
+
+    // 总结：返回距离最近的 带有定位的父辈 标签元素
+    console.log(ibox1);
+    console.log(ibox1.offsetTop);
+    console.log(ibox1.offsetHeight);
+    console.log(ibox1.offsetWidth);
+
+    console.log('-----------2019/11/19 offsetParent返回对象-------------');
+    console.log(ibox3.offsetParent);
+
+
+</script>

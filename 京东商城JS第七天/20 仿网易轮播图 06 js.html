@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>20 网易轮播图</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 600px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 80px auto;
+
+            /* 隐藏多余的 */
+            /* overflow: hidden; */
+
+            /* 显示滚动条 */
+            /* overflow:auto; */
+
+            position: relative;
+        }
+
+        /* 清除li前面的小圆点 */
+        div ul {
+            list-style: none;
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        div ul li {
+            float: left;
+        }
+
+        img {
+            /* 3像素 */
+            vertical-align: top;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box" id="scroll">
+        <ul>
+            <li><img src="../京东商城JS第七天/images/01.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/02.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/03.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/04.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/01.jpg" alt=""></li>
+            <li><img src="../京东商城JS第七天/images/02.jpg" alt=""></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var scroll=document.getElementById('scroll');
+    var ul= scroll.children[0];
+    var timer=null;
+    var num=0;
+
+    console.log(ul);
+
+    function roll() {
+        num--;
+
+        ul.style.left= num+'px';
+
+    }
+
+    setInterval(roll,30);
+
+    
+
+</script>

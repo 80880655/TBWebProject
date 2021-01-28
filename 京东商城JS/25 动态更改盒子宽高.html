@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态更改盒子宽高</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            width: 200px;
+            height: 30px;
+        }
+
+        #box {
+            margin: 50px auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            background-color: red;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+
+            function $(id){
+                return document.getElementById(id);
+            }
+
+            var obj_box=$("box");
+            var obj_add= $("add");
+            var obj_reduce = $("reduce");
+
+            obj_add.onclick=function(){
+                obj_box.style.width="400px";
+                obj_box.style.height = "400px";
+            }
+
+            obj_reduce.onclick=function(){
+                obj_box.style.width="250px";
+                obj_box.style.height = "250px";
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <button id="add">增加</button>
+    <button id="reduce">减少</button>
+
+    <div id="box">
+
+    </div>
+</body>
+
+</html>

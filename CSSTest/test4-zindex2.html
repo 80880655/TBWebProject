@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Z-index2</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        div {
+            float: left;
+            width: 240px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 50px 0px 0px -1px;
+
+            /*将所有的盒子都更改成相对定位；*/
+            position: relative;
+        }
+        /*上面一个，是使用的是相对定位来处理这个问题，方法二：使用hover改变z-index的值来处理。
+        只有定位的盒子才有z-index, 在hover属性上来设置，当鼠标移动上去之后就提升z-index的值。
+        */
+        div:hover {
+            border: 1px solid #cc0000;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="test"></div>
+<div class="test"></div>
+<div class="test"></div>
+<div class="test"></div>
+<div class="test"></div>
+
+
+</body>
+</html>

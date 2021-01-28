@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.求在某个盒子内部的坐标</title>
+    <style>
+        * {margin: 0px; padding: 0px;}
+    
+        .box {
+            width: 300px;
+            height: 160px;
+            border: 1px solid #ccc;
+            margin: 50px 0 0 50px;
+            background-color: pink;
+        }    
+    </style>
+</head>
+<body>
+    <div class="box" id="ibox">
+
+    </div>
+</body>
+</html>
+
+<script>
+    /**
+     * 时间： 2019/11/25 16:32 
+       在盒子内部的坐标， 等于 当前鼠标的坐标减去在盒子内部的高和宽。
+     */
+    var ibox=document.getElementById('ibox');
+    var x=0,y=0;
+    // document.onclick=function(event){
+    //     var evnet=event || window.event;
+
+    //     // console.log(ibox.offsetTop);
+    //     // console.log(ibox.offsetLeft);
+    //     // console.log(event.clientX);
+    //     // console.log(event.clientY);
+
+    //     // x= event.clientX- ibox.offsetLeft;
+    //     // y= event.clientY- ibox.offsetTop;
+    //     // ibox.style.innerHTML=x +';'+y;
+
+    // }
+
+    ibox.onmousemove=function(event){
+        var event=event||window.event;
+        var x= event.clientX-this.offsetLeft;
+        var y=event.clientY-this.offsetTop;
+        this.innerHTML=x+'px;'+y+'px';
+    }
+
+
+
+</script>

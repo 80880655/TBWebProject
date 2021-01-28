@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>短信验证开始 02</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 280px;
+            height: 20px;
+            margin: 20px auto;
+            line-height: 30px;
+        }
+
+        .box button {
+            width: 100px;
+        }
+
+        .box input {
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <input type="text">
+        <button id="btn">点击发送短信</button>
+
+        <input type="button" disabled="false" value="测试按钮的disabled=false属性">
+
+        <button disabled="false">测试按钮的disabled=false属性</button>
+
+        <input type="button" disabled="disabled" value="测试按钮的disabled=disabled">
+        <button disabled="false">测试按钮的disabled=disabled</button>
+
+    </div>
+
+    <script>
+        // alert("111");
+        // 时间：2019/3/19 9:49分
+        //1.用户点击按钮之后。
+        //2.按钮屏蔽
+        //3.文字显示变成还剩下多少秒。
+        //4.启动定时器，当时间为0的时候终止定时器，并且按钮文字显示为"重新发送"。
+        //5.这里需要注意一下关于this的练习和指定。
+        //6.关于定时器的清除，   如果定时器不清除，定时器将会不停的执行。
+        var obj_btn = document.getElementById("btn");
+        var icount = 5;
+        //定时器的名字
+        var timer = null;
+
+        obj_btn.onclick = function () {
+            console.log(this);
+            this.disabled = true;
+
+            // 用来传递在 函数 里面的对象，这里 that=this 就是传递 button 对象给到变量 that 对象。
+            var that = this;
+
+            timer = setInterval(sendTextMessage, 1000);
+
+            // 7.【重点】如果需要使用 that 来传递 button ，则这里必须是将函数的代码 放置在 button 的 onclick 事件中。
+            function sendTextMessage() {
+
+                icount--;
+
+                if (icount > 0) {
+
+                    obj_btn.innerHTML = "还剩下" + icount + "秒";
+                }
+                else {
+                    obj_btn.innerHTML = "点击重新发送";
+                    that.disabled = false;
+                    clearInterval(timer);
+                    icount = 5;
+                    // 这里需要传递按钮，然后恢复按钮的点击，所以这里不能使用this,因为 this 是指向事件的触发对象
+                }
+            }
+        }
+
+
+        // function sendTextMessage() {
+        //     if (icount>0) {
+        //         icount--;
+        //         obj_btn.innerHTML = "还剩下" + icount + "秒";
+        //     }       
+        //     else
+        //     {
+        //         obj_btn.innerHTML = "点击重新发送";
+        //         clearInterval(timer);
+        //         icount=5;
+        //         that.disabled="show";
+
+        //         // 这里需要传递按钮，然后恢复按钮的点击，所以这里不能使用this,因为 this 是指向事件的触发对象
+        //     }
+        // }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25 小火箭返回顶部 CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 1000px;
+            height: 3000px;
+        }
+
+        .top {
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+            display: none;
+            cursor: pointer;
+            /* display: null; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gotop" class="top">
+        <img src="../Jd特效09第二天/images/Top.jpg" alt="">
+    </div>
+
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+    <p>我是内容部分，有很多恩多很多</p>
+
+</body>
+
+</html>
+
+<script src="my.js"></script>
+<script>
+    var goto = $('gotop');
+    // leader 起始位置  target  目标位置
+    var leader = 0, target = 0, timer = null;
+
+    window.onscroll = function () {
+
+        // console.log(goto);
+        // 1.看一下页面卷进去多少，来判断 小火箭是否显示
+        // console.log(scroll().top);
+        scroll().top > 0 ? show(goto) : hide(goto);
+
+        leader = scroll().top;
+    }
+
+    // 2.点击小火箭,页面返回顶部
+    goto.onclick = function () {
+        target=0;
+
+        timer=setInterval(function(){
+            leader = leader + (target - leader) / 10;       //这个值不停的变化，所以在 setInterval 里面不停的进行计算。
+
+            // 点击之后指定去往 页面中的某个位置
+            window.scrollTo(0, leader);
+
+            // 返回了顶部之后就需要清楚定时器，否则鼠标滚轮滚不动
+            if(leader== target){
+                clearInterval(timer);
+            }
+
+        },20);
+
+        console.log(leader);
+    }
+
+
+</script>

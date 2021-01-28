@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态更改span的宽度</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .box {
+        margin: 50px auto;
+        width: 200px;
+        height: 180px;
+        border: 1px solid #ccc;
+    }
+
+    .box .span1 {
+        display: inline-block;
+        width: 150px;
+        height: 16px;
+        background-color: blue;
+    }
+
+    .box .span2 {
+        display: inline-block;
+        width: 180px;
+        height: 16px;
+        background-color: red;
+    }
+</style>
+
+<script>
+    window.onload = function () {
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        var obj_add = $("add");
+        var obj_reduce = $("reduce");
+        var obj_reduce2 = $("reduce2");
+        var obj_span1 = $("span1");
+        var obj_span2 = $("span2");
+
+        obj_add.onclick = function () {
+
+            obj_span1.style.width="200px";
+        }
+
+        obj_reduce.onclick=function(){
+            obj_span2.style.width = "80px";
+        }
+
+        obj_reduce2.onclick = function () {
+            obj_span2.style.width = "180px";
+        }
+    }
+
+</script>
+
+<body>
+    <button id="add">增加</button>
+    <button id="reduce">减少</button>
+    <button id="reduce2">减少2</button>
+
+    <div class="box">
+        <span class="span1" id="span1"></span>
+        <span class="span2" id="span2"></span>
+    </div> 
+    
+</body> 
+</html>

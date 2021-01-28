@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>访问关系 父子关系-兼容写法 nextElementSibling 和 nextSibling</title>
+    
+    <script>
+
+        window.onload = function () {
+            var one = document.getElementById("one");
+
+            // 时间：2018/12/14 nextElementSibling兄弟的下一个
+            // 兼容性的写法，主要是对 IE 678 的版本。
+            // IE678 中使用 nextSibling
+            // IE11 或 其他浏览器使用 nextElementSibling
+            // 兼容写法，使用“||” 符号，或者的意思， 当满足其中一个则就返回 true， 1个真和1个真返回真，
+            // 1个假，1个真返回真，2个假返回假
+            var div = one.nextElementSibling || one.nextSibling;
+            div.style.backgroundColor = "red";
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <!-- 使用 1.parentNode 的属性直接关闭父亲的盒子 -->
+    <ul>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li id="one">1212121</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+    </ul>
+
+</body>
+
+</html>

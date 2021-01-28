@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28 轮播图 CSS 02</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-size: 14px;
+            font-family: Arial, '宋体';
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 7px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .all .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* 6张图，6个宽 */
+            width: 3000px;
+        }
+
+        .all .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+
+            /* 注意这里的图片需要浮动 */
+            float: left;
+            list-style: none;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            list-style: none;
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* .current {
+            background:yellow;
+        } */
+
+        .all ol li.current {
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        function animate(obj, target) {
+            clearInterval(obj.timer);  // 先清除定时器
+            var speed = obj.offsetLeft < target ? 15 : -15;  // 用来判断 应该 +  还是 -
+            obj.timer = setInterval(function () {
+                var result = target - obj.offsetLeft; // 因为他们的差值不会超过5
+                obj.style.left = obj.offsetLeft + speed + "px";
+                if (Math.abs(result) <= 15)  // 如果差值不小于 5 说明到位置了
+                {
+                    clearInterval(obj.timer);
+                    obj.style.left = target + "px";  // 有5像素差距   我们直接跳转目标位置
+                }
+            }, 15)
+        }
+
+
+
+
+        window.onload = function () {
+            // time:gaofeng 2020/4/1 15:56 
+            // 1.参考27 轮播图CSS 01例子，其他的示例使用js动态添加。
+            // 2.这个案例需要2个定时器，一个控制动画的，一个控制序号切换动画的。
+            var ul = document.getElementById('ul');
+            var all = document.getElementById('all');
+            var ulLis = ul.children;
+
+            // console.log(ul);
+
+            // 1.获取当前所有的图片 ul.children.length
+            // console.log(ul.children.length);
+
+            // 2.克隆图片中的第一个图片,添加孩子放置盒子的最后面。
+            ul.appendChild(ul.children[0].cloneNode(true));
+
+            // 3.动态生成ol,图片的序号部分;  这里需要注意一下，如果 “克隆”在前面，那么  ul.children.length 就是6，如果在后面则为5，这里有个语句先后的顺序问题
+            var ol = document.createElement('ol');     //生成ol标签元素
+            all.appendChild(ol);
+            for (var i = 0; i < ul.children.length - 1; i++) {
+                var li = document.createElement('li');
+                li.innerHTML = i + 1;
+                ol.appendChild(li);
+            }
+
+            // 4.动画部分
+
+            // 4.1 获取上面的ol元素
+            var olLis = ol.children;
+            for (var i = 0; i < olLis.length; i++) {
+                // 获取当前序号
+                olLis[i].index = i;
+
+                console.log(olLis[i].index);
+
+                // 鼠标移动到ol 中的li 上，发生序号的颜色变化
+                olLis[i].onmouseover = function () {
+                    for (var j = 0; j < olLis.length; j++) {
+                        olLis[j].className = '';
+                    }
+                    this.className = 'current';
+
+                    animate(ul, -this.index * 500);
+                    square = key = this.index;  // 当前的索引号为主
+                }
+            }
+
+            // 4.2 添加定时器
+            var timer = null;   //轮播图定时器
+            var key = 0;        //控制播放张数
+            var square = 0;     //控制小方块
+            
+            function autoplay() {
+                key++;  // 先 ++
+                if (key > ulLis.length - 1)  // 后判断
+                {
+                    ul.style.left = 0;  // 迅速调回
+
+                    // time:gaofeng 2020/4/2 14:20 显示最后一张后，迅速跳回到第2张，而不是第1张。
+                    key = 1;  // 因为第6张就是第一张  第6张播放 下次播放第2张，索引号为1
+                }
+                animate(ul, -key * 500);  // 再执行
+
+                // 小方块
+                square++;
+                if (square > olLis.length - 1) {
+                    square = 0;
+                }
+                for (var i = 0; i < olLis.length; i++)   // 先清除所有的
+                {
+                    olLis[i].className = "";
+                }
+                olLis[square].className = "current";  // 留下当前的
+            }
+
+            timer = setInterval(autoplay, 2500);
+
+            //last最后  鼠标经过大盒子要停止定时器
+            all.onmouseover = function () {
+                clearInterval(timer);
+            }
+            all.onmouseout = function () {
+                timer = setInterval(autoplay, 2500);  // 开始轮播图定时器
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="all" id="all">
+        <div class="screen">
+            <ul id='ul'>
+                <li><img src="../Jd特效09第三天/images/1.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/2.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/3.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/4.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/5.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

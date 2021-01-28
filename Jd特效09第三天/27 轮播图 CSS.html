@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27 轮播图 CSS 01</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-size: 14px;
+            font-family:Arial,  '宋体';
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 7px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .all .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* 6张图，6个宽 */
+            width: 3000px;
+        }
+
+        .all .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+
+            /* 注意这里的图片需要浮动 */
+            float: left;
+            list-style: none;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;      
+        }
+
+        .all ol li {
+            list-style: none;
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .current { background-color: yellow;}
+
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="screen">
+            <ul>
+                <li><img src="../Jd特效09第三天/images/1.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/2.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/3.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/4.jpg" alt=""></li>
+                <li><img src="../Jd特效09第三天/images/5.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+
+    <div class="box">
+        1231dasdsadsadsadsa
+    </div>
+</body>
+
+</html>

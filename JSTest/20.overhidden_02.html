@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overhidden</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        ul {list-style: none;}
+
+        #box {
+            height: 70px;
+            width: 360px;
+            padding-top: 360px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+            background: url(../images/鼠标/01big.jpg) no-repeat;
+        }
+
+        #box ul {
+            overflow: hidden;
+            border-top: 1px solid #ccc;
+        }
+
+        #box li {
+            float: left;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box">
+
+        <ul>
+            <li><img src="../images/鼠标/01.jpg" /></li>
+            <li><img src="../images/鼠标/02.jpg" /></li>
+            <li><img src="../images/鼠标/03.jpg" /></li>
+            <li><img src="../images/鼠标/04.jpg" /></li>
+            <li><img src="../images/鼠标/05.jpg" /></li>
+        </ul>
+    </div>
+
+</body>
+</html>

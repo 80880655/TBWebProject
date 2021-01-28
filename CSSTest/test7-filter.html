@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>毛玻璃效果图</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .windows {
+            width: 640px;
+            height: 400px;
+            margin: 0 auto;
+            background:url(../images/slider1.jpg) no-repeat;
+
+            /*position: relative;*/
+            padding: 1px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .windows:hover {
+            content: "";
+            width: 640px;
+            height: 400px;
+            /*position: absolute;*/
+            left: 50%;
+            top: 0;
+            background: url(../images/slider1.jpg) no-repeat;
+            filter: blur(2px);
+            z-index: 2;
+        }
+
+
+
+
+
+        </style>
+
+</head>
+<body>
+
+<div class="windows">
+
+</div>
+
+</body>
+</html>

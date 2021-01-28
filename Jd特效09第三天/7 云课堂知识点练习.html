@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 云课堂知识点练习</title>
+    <link rel="stylesheet" type="text/css" href="" id="styleCss">
+    <script src="../my.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+
+    var body = document.getElementsByTagName('body');
+    var stylecss = document.getElementById('styleCss');
+
+    // console.log(stylecss);
+    // console.log(clientWidth);
+
+    function reSize() {
+        var clientWidth = client().Width;
+
+        if (clientWidth > 900) {
+            stylecss.href = '/Jd特效09第三天/07 云课堂响应式练习/css/index.css';
+
+            document.write(stylecss.href);
+            document.write(clientWidth);
+        }
+        else if (clientWidth < 640) {
+            stylecss.href = '/Jd特效09第三天/07 云课堂响应式练习/css/mobile.css';
+
+            document.write(stylecss.href);
+            document.write(clientWidth);
+        }
+    }
+
+    reSize();
+    window.onresize = reSize;
+
+
+
+
+</script>

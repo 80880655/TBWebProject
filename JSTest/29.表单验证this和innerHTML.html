@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证、this、innerHTML等用法</title>
+    <style>
+        .box {
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        span {
+            display: inline-block;
+            width: 150px;
+            height: 20px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: left;
+            padding-left: 20px;
+            background-color: #eee;
+            color: #999;
+        }
+
+        .right { /*正确的*/
+            color: #5EFF5E;
+            background: url(../images/right.png) no-repeat #DFFFDF 4px 3px;
+            border: 1px solid #ACFFAC;
+        }
+
+        .wrong { /*错误的*/
+            background: url(../images/wrong.png) no-repeat #FFDCD0 4px 3px;
+            border: 1px solid #FFAC91;
+            color: #FF6B39;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            $("txt").onblur = function () {
+                // alert(this.value)
+                //this指的是 事件的调用者， 这里指的是 txt.
+                if (this.value == "") {
+                    // 1.验证是否为空值
+                    // alert("不允许为空");
+                    $("result").className = "wrong";
+
+                    // 更改span里面的内容
+                    $("result").innerHTML = "内容不能为空！";
+                } else if (isNaN(this.value)) {
+                    // 2.验证是否输入数字 isNaN 就是is not a number
+                    // isNaN 就是如果不是数字就弹出
+                    // alert("1111");
+
+                    // 如果是2个类，则这里可以写成
+                    // $("result").className = "wrong wrong1";
+                    
+                    $("result").className = "wrong";
+                    $("result").innerHTML = "内容必须为数字！";
+                } else {
+                    $("result").className = "right";
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div class="box">
+    语文: <input type="text" id="txt"/> <span id="result">请输入成绩</span>
+</div>
+</body>
+</html>

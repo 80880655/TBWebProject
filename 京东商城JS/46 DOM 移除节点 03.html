@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 移除节点 removeChild</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box div {
+            width: 30px;
+            height: 20px;
+            border: 1px solid #ccc;
+            background-color: pink;
+            margin: 20px auto;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var divs = document.getElementById("box");
+            // 1.获取box盒子下面的所有子盒子 div
+            var arr_div = divs.getElementsByTagName("div");
+
+
+            // 2.移除 box 下面的 子盒子节点，  使用 removeChild 方法
+            if (arr_div.length) {
+                divs.removeChild(arr_div[3]);
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+
+</body>
+
+</html>

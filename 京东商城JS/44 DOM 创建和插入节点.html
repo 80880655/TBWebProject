@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 创建和插入节点</title>
+    <style>
+    
+        * { margin: 0px; padding: 0px;}
+
+        div {
+            width: 120px;
+            height: 80px;
+            border: 1px solid #ccc;
+            margin: 30px auto;
+            background-color: pink;
+        }
+    
+    </style>
+    <script>
+        window.onload=function(){
+
+            var divs=document.getElementById("box");
+
+            // 1.创建节点
+            var newDiv=document.createElement("div");
+
+            // 2.添加孩子
+            divs.appendChild(newDiv);
+
+            var newLis=document.createElement("li");
+
+            // 3.insertBefore(插入的节点，参照节点)， 子节点 添加孩子
+            // 参数：参照节点为null， 则默认插入到最后一行中。
+            divs.insertBefore(newLis,null);
+
+            var obj_divChild= divs.children;
+
+            if(obj_divChild.length)
+            {
+                divs.insertBefore(newLis,obj_divChild[0]);
+                divs.insertBefore(newDiv,obj_divChild[0]);
+            }
+
+        }
+        
+    
+    </script>
+</head>
+<body>
+
+    <div id="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+        <div id="one"></div>
+        <div id="two"></div>
+    </div>
+    
+</body>
+</html>

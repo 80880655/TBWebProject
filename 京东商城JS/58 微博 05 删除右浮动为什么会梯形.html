@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博-04 删除按钮右浮动为什么会呈现梯形</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+        
+        ul {list-style: none;}
+
+        .box {
+            width: 650px;
+            /* height: 230px; */
+            border: 1px solid #333;
+            margin: 50px auto;
+            padding-bottom: 20px;
+        }
+
+        button {
+            width: 120px;
+            height: 30px;
+            /* float: right; */
+        }
+
+        .box ul li {
+            line-height: 30px;
+            border-bottom: 1px dashed #ccc;
+
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        /* 时间：2019/1/24 17:25 
+            1.只要是 li标签 加上了 line-height 属性之后，显示的结果就不出现梯形的情况。
+            2.不管是什么标签在li中，必须加上 line-height ，否则当 浮动之后就会出现 梯形 的情况。 
+         */
+
+
+        .box ul li a {
+            float:right;
+        }
+
+        .box ul li button {
+            float:right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>321321
+                <button>删除</button>
+            </li>
+            <li>321321
+                <button>删除</button>
+            </li>
+            <li>321321
+                <button>删除</button>
+            </li>
+            <li>321321
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>333333333333
+                <a href="javascript:;">删除</a>
+            </li>
+            <li>图片文字对齐,水平垂直对齐
+                <img style="vertical-align:middle" src="../京东商城JS/images/commstar.png" alt="">
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三要素：事件源、事件、事件执行程序</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #demo {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+    <button id="btn" >改变宽度</button>
+
+    <script>
+        // 获得id为demo的div 盒子给demo
+        var demo = document.getElementById("demo");
+        var btn = document.getElementById("btn");
+
+        事件源
+        btn.onclick= function() {
+            demo.style.width="400px";
+            demo.style.height="400px";
+        }
+
+
+    </script>
+</body>
+</html>

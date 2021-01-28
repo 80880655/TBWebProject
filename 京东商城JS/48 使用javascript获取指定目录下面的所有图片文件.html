@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用javascript获取指定目录下面的所有图片文件</title>
+    <script type="text/javascript">
+        window.onload = function () {
+
+
+            function init2(){
+                var fso=new ActiveXObject("Scripting.FileSystemObject");
+                var path="D:\\surface pro3 gaofeng\\Development\\Web\\淘宝WEB前端系列\\WebStormProject2018\\京东商城JS\\Dyimages";
+                var fldr=fso.GetFolder(path);
+                var ff=new Enumerator(fldr.Files);
+                var s='';
+                var fileArray=new Array();
+                var fileName='';
+                var count=0;
+                for(;!ff.atEnd();ff.moveNext()){
+                    fileName=ff.item().Name+'';
+                    fileName=fileName.toLowerCase();
+                    if(fileName.indexOf('cookie'>=0)){
+                        fileName=fileName.substring(0,fileName.indexOf('.'));
+                        fileName=fileName.substring(fileName.lastIndexOf('@'+1));
+                        s+=fileName+"\n";
+                    }
+                    count++;
+                }
+                // alert(count + ',' + s);
+                alert(count );
+            }
+            
+            init2();
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

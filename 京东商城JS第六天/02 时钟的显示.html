@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02 时钟的显示</title>
+</head>
+
+<style>
+
+    /* 时间：2019/2/28 10:15 下面这些都是错误的，没有达到理想的效果，另外需要注意一下关于CSS中的权重问题 
+    
+    */
+
+    .box {
+        width: 600px;
+        height: 600px;
+        /* background-color: yellow; */
+        margin: 0 auto;
+    }
+
+    /* 1.钟的背景 */
+    .box .clock {
+        width: 100%;
+        height: 100%;
+        background: url('../京东商城JS第六天/images/clock.jpg') no-repeat;
+        position: relative;
+    }
+
+    .box .clock div {
+        background: url('../京东商城JS第六天/images/minute.png') no-repeat center center
+    }
+
+
+    /* 1.1 小时 */
+    .box .clock .hour {
+        width: 30px;
+        height: 600px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: url('../京东商城JS第六天/images/hour.png') no-repeat center center;   
+        
+    }
+
+
+</style>
+
+<body>
+
+    <div class="box">
+        <!-- 1.钟的背景 -->
+        <div class="clock">
+            <!-- 1.1 小时 -->
+            <div class="hour">
+
+            </div>
+
+            <!-- 1.2 分钟 -->
+            <div class="minute">
+
+            </div>
+
+            <!-- 1.3 秒钟 -->
+            <div class="second">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var date = new Date();
+        var ms = date.getMilliseconds();  //获取现在的毫秒
+        var mount = date.getMinutes();    //获取分
+        var ss = date.getSeconds();       //获取秒
+
+        console.log(date);
+        console.log(ms);
+        console.log(mount);
+        console.log(ss);
+
+</script>
+
+</html>

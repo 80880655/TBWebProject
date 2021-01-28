@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22 数组的练习</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    var arr=[0,2,'abc',18,40,19,20];
+
+    console.log(arr);
+
+    // 1、通过值返回“索引值”
+    console.log(arr.indexOf('abc'));
+
+    // 2、传入方法体进行检验， 查看 value>18 的数有几个？  
+    // findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+    // findIndex() 方法为数组中的每个元素都调用一次函数执行：
+    //     当数组中的元素在测试条件时返回 true 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。
+    //     如果没有符合条件的元素返回 - 1
+    console.log(arr.findIndex(checkAdult));
+
+    function checkAdult(value){
+        // return value=2;
+        return value>18;
+    }
+
+</script>

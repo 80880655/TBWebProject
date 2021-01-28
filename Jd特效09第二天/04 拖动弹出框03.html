@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04 拖动弹出框</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .big_box {
+            width: 300px;
+            height: 230px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px 2px #666;
+
+            overflow: hidden;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+        }
+
+        /* .span {
+            display: block;
+            height: 25px;
+            width: 300px;
+            background-color: #666;
+            line-height: 25px;
+            text-align: center;
+            color: rgb(109, 109, 211);
+        } */
+
+        .samll_box {
+            height: 25px;
+            width: 300px;
+            background-color: #666;
+            line-height: 25px;
+            text-align: center;
+            color: rgb(109, 109, 211);
+            cursor: move;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big_box" id="big_box">
+        <!-- <span class="span" id="span">可以拖拽</span> -->
+        <div class="samll_box" id="samll_box">
+            可以拖拽
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // 时间：2019/12/18 16:24  重新做
+    // var span = document.getElementById('span');
+    var samll_box = document.getElementById('samll_box');
+    var big_box = document.getElementById('big_box');
+
+    startDrop(samll_box, big_box);
+
+    function startDrop(samll, big) {
+
+        // 说明：鼠标放在小盒子上，移动的是大盒子
+        //用户的动作是，先点击“小盒子”，然后拖拽，然后鼠标弹起。
+        samll.onmousedown = function (event) {
+            var event = event || window.event;
+            var x = event.clientX - big.offsetLeft;     //记录拖动之前的位置
+            var y = event.clientY - big.offsetTop;      //记录拖动之前的位置
+
+            document.onmousemove = function (event) {
+                var event = event || window.event;
+                big.style.left = event.clientX - x + 'px';
+                big.style.top = event.clientY - y + 'px';
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            }
+        }
+
+        samll.onmouseup = function (event) {
+            document.onmousemove = null;
+        }
+    }
+
+</script>

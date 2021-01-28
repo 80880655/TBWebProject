@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15 封装自己的scrollTop函数</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 时间：2020/1/14 10:46 封装自己的scrollTop函数; 全部采用json的格式来编写
+    /*
+        window.pageYOffset 被卷进去的头部，如果这里不是写 window.pageYOffset!=null ，网页刚开始的时候，则window.pageYOffset 为0
+     */
+    
+    function scroll() {
+        if (window.pageYOffset != null) {   // ie9+ 和其他浏览器
+            return {
+                left: window.pageXOffset,
+                top: window.pageYOffset
+            }
+        }
+        else if (document.compatMode == 'CSS1Compat') {
+            //2.标准模式：检测是不是怪异模式的浏览器 --- 就是没有声明 <!DOCTYPE html>，如果是 CSS1Compat，则代表是标准模式
+            return {
+                left: document.documentElement.scrollLeft,
+                top: document.documentElement.scrollTop
+            }
+        }
+        return {    //3.怪异模式：剩下的都是怪异模式
+            left: document.body.scrollLeft,
+            top: document.body.scrollTop
+        }
+    }
+
+    window.onscroll=function(){
+        console.log(scroll().top);
+        console.log(document.compatMode);
+    }
+
+</script>

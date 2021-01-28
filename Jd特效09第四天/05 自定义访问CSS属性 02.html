@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 自定义访问CSS属性 02</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 100px;
+            /* height: 100px; */
+            background-color: pink;
+        }
+
+        #btn,
+        #btn2 {
+            width: 200px;
+            height: 30px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: burlywood;
+        }
+
+        button:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">1.获取当前CSS样式</button>
+    <button id="btn2">2.更改CSS样式</button>
+    <div class="box" style="height: 100px; position: absolute; left: 0px;"></div>
+
+</body>
+
+</html>
+
+<script>
+    // time：gaofeng 2020/4/8 11:21 
+    // 1、测试 getStyle 的方法，是否是及时获取当前的CSS样式;   获取实时的CSS样式
+    var box = document.getElementsByTagName('div')[0];
+    var btn = document.getElementById('btn');
+    var btn2 = document.getElementById('btn2');
+    // var box1=document.getElementsByClassName('box')[0];
+
+    // console.log(box);
+    // console.log(box1);
+
+    // console.log(getStyle(box, 'background-color'));
+
+    // console.log(getStyle(box, 'left'));
+
+    // console.log(getStyle(box, 'width'));
+
+    //获取当前CSS样式
+    btn.onclick = function () {
+        box.innerHTML = getStyle(box, 'left') + '/' + getStyle(box, 'width');
+    }
+
+    btn2.onclick = function () {
+        box.style.left = '12px';
+        box.style.width = '300px';
+    }
+
+    // console.log(css(box, 'object', 0));
+
+    // 获取样式的兼容函数，上面的缓动函数的依赖; current 英文解释：现在的/当前的
+    function getStyle(tag, attr) {
+        if (tag.currentStyle) {
+            return tag.currentStyle[attr];
+        } else {
+            return getComputedStyle(tag, null)[attr];
+            // return getComputedStyle(tag, false)[attr];
+        }
+    }
+
+
+
+
+</script>

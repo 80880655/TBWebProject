@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 in关键字</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="box">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // time:gaofeng 2020/4/14 11:41
+    // 1、in 关键字的用法； 判断的时候 都是字符串类型。
+
+    // 1、JSON 格式中使用 in 关键字
+    var josn = { width: 300, height: 200, zIndex: 3 };
+    if ('width' in josn) {
+        console.log('true');
+        console.log(josn);
+        console.log(josn['width']);
+    }
+
+    // 2、对象中使用 in 关键字
+    var obj = document.getElementById('box');
+    if ('className' in obj) {
+        console.log(obj.className);
+    }
+
+    // 3、数组中 使用 in 关键字。 需要使用 “字符串类型”
+    var myCars = new Array("Saab", "Volvo", "BMW");
+    // var myCars=('width','30','height');
+    // console.log(arry);
+
+    if ('Volvo' in myCars) {
+        console.log(myCars[1]);
+    }
+
+
+</script>
