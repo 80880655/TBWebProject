@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 jQuery CSS详细用法</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .show {
+            width: 300px;
+            margin: 50px auto;
+            padding-bottom: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        div div ul {
+            list-style: none;
+        }
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.min.js"></script>
+    <script>
+
+        // 入口函数
+        $(document).ready(function () {
+            // 2021年2月9日11:50:55 CSS的详细用法
+
+            var obj1 = $('.li03').css(
+                {
+                    'color': 'red',
+                    'background': "pink",
+                    'font-size': '23px',
+                }
+            );
+        });
+
+        // 禁用鼠标右键菜单
+        $(document).contextmenu(Function('return false'));
+
+        // 禁用F12
+        $(document).keydown(function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 123) {
+                e.returnValue = false;
+                return (false);
+            }
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+    <div>
+        <div class="show">
+            <ul>
+                <li>这是第1个li标签元素</li>
+                <li>这是第2个li标签元素</li>
+                <li class="li03">这是第3个li标签元素</li>
+                <li>这是第4个li标签元素</li>
+                <li>这是第5个li标签元素</li>
+                <li id="ili6">这是第6个li标签元素</li>
+                <li>这是第7个li标签元素</li>
+                <li>这是第8个li标签元素</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

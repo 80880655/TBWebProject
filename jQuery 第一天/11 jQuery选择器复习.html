@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 jQuery 选择器复习</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .content {
+            margin: 50px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            text-align:  center;
+            background-color:pink;
+        }
+
+        .content ul li {
+            /* 去掉li标签前面的小圆点 */
+            list-style: none;
+        }
+
+        #li01 {
+            font-size: 20px;
+        }
+
+
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.min.js"></script>
+    <script>
+
+        // 查看版本号
+        // console.log($.fn.jquery);
+
+        // // 时间:2021年2月9日10:27:09 复习 jQuery 的语法
+		// // $("div #li01").css("background","red");
+        // console.log($("#li01").css('color'));
+        // console.log($("div").css('color'));
+
+        // 2021年2月9日10:40:17 在上面输入 jQuery 缺少入口函数
+
+        $(document).ready(function(){
+
+            // ID选择器
+            var obj1=$("#li01").css('background','blue');
+            console.log($('li01'));
+            console.log(obj1);
+
+
+            // 类选择器
+            var obj2=$('.content').css('color');
+            console.log(obj2);
+
+            // 标签选择器
+            var obj3=$('li').css("background","yellow");
+            console.log(obj3);
+
+            // 多个选择器； 并集选择器
+            var obj4=$('.cli6,#li01').css('font-size','24px');
+            var obj5=$('.cli6,#li01,cli8').css('font-weight');
+
+            var obj6=$('.cli6,#li01,.cli8').css('color','red');   // 多个元素
+
+            console.log('obj4'& obj4);
+            console.log(obj4);
+            console.log(obj5);
+            console.log(obj6);
+
+            // 获取所有元素
+            var obj7=$('*').get(0);
+            console.log(obj7);
+            
+
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="content" >点击隐藏
+        <ul>
+            <li id="li01">这是元素1,测试测试</li>
+            <li>这是元素2,测试测试</li>
+            <li>这是元素3,测试测试</li>
+            <li>这是元素4,测试测试</li>
+            <li>这是元素5,测试测试</li>
+            <li class="cli6">这是元素6,测试测试</li>
+            <li>这是元素7,测试测试</li>
+            <li class="cli8">这是元素8 cli8,测试测试</li>
+        </ul>
+    </div>
+    
+</body>
+</html>
