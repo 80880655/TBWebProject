@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 jQuery的CSS选择器详细用法02</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 80px auto;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // 2021年2月9日14:22:53  $().css(属性，函数体);
+
+            // 设置样式方法1：
+            $('li').css('background-color', function (i, val) {
+
+                // index: 指定当前元素的索引号
+                // value:标识当前元素要设置的样式，此处是指 background-color
+                console.log(i);
+                console.log(val);
+            });
+
+            // 设置样式方法2：
+            $('li').css('font-size', function (index, value) {
+
+                if(index==2){
+                    return (index+1)*parseInt(value)+"px";
+                }
+
+                return index + 12 + "px";
+            });
+
+            // 交集选择器
+            // $('li,#li08').css('font-size','40px');
+
+            $('li#li08').css('font-size','40px');
+
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li style="background-color: rosybrown;">这是第1个元素，通过jQuery来设定不同的参数</li>
+            <li>这是第2个元素，通过jQuery来设定不同的参数</li>
+            <li>这是第3个元素，通过jQuery来设定不同的参数</li>
+            <li>这是第4个元素，通过jQuery来设定不同的参数</li>
+            <li>这是第5个元素，通过jQuery来设定不同的参数</li>
+            <li style="background-color: seagreen;">这是第6个元素，通过jQuery来设定不同的参数</li>
+            <li>这是第7个元素，通过jQuery来设定不同的参数</li>
+            <li id="li08">这是第8个元素，通过jQuery来设定不同的参数</li>
+        </ul>
+    </div>
+</body>
+</html>

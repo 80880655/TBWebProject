@@ -38,7 +38,20 @@
                     'font-size': '23px',
                 }
             );
+
+            // 指向特定的元素
+            $('li').css("background-color",function(index,value){
+                // index:指定当前元素的索引号
+                // value：标识当前元素要设置的样式，此处是指： background-color
+                
+                console.log(index);
+                console.log(value)
+
+            });
         });
+
+
+
 
         // 禁用鼠标右键菜单
         $(document).contextmenu(Function('return false'));
