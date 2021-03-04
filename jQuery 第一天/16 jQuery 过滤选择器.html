@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 jQuery 过滤选择器</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            text-align:  center;
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+
+        }
+
+        ul {
+            list-style: none;
+        }
+        
+        ul li {
+            border-bottom: 1px solid #ccc;
+            /* padding: 3px 0 3px 0; */
+            cursor: pointer;
+            /* background-color: pink; */
+        }
+
+        /* li标签不能直接使用 hover , 需要结合 a 标签，可以用下面的写法来实现 */
+        div ul li:hover a {
+            background-color: blueviolet;
+        }
+
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // 1、奇数选择器
+            $('ul li:odd').css('background-color','pink');
+
+            // 2、偶数选择器
+            $('ul li:even').css('background-color','yellow');
+
+            // 3、eq 选择器，按照 index 序号来匹配的元素
+            $('div ul li:eq(4)').css('font-size','30px');
+
+            // 4、大于 gt index 是从0开始的一个数字， 选择序号大于 index 的元素
+            $('div ul li:gt(3)').css('color','red');
+            $('div ul li:gt(0)').css('font-weight','12px');
+
+            // 5、小于 index  lt
+            $('div ul li:lt(2)').css('color','black');
+
+            // 6、first 选择匹配第一个元素
+            $('div ul li:first').css('color','blue');
+
+            // 7、last 选择匹配的最后一个元素
+            $('div ul li:last').css('color','blue');
+            $('div ul li:last').css('font-size','20px');
+
+        });
+
+    </script>
+
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a >这是第0个元素</a></li>
+            <li><a>这是第1个元素</a></li>
+            <li>1111<a>这是第2个元素</a></li>
+            <li><a>这是第3个元素</a></li>
+            <li><a>这是第4个元素</a></li>
+            <li><a>这是第5个元素</a></li>
+            <li><a>这是第6个元素</a></li>
+            <li><a>这是第7个元素</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

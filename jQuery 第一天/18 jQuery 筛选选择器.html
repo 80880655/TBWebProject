@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 筛选选择器</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            width: 500px;
+            margin: 30px auto;
+            border: 1px solid #ccc;
+            text-align:  center;
+        }
+
+        div span {
+            display: block;
+        }
+
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            //1、eq 选择器
+            $('div span').eq(0).css('font-size','40px');
+
+        });
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+        <span>我是第1个span元</span>
+        <span>我是第2个span元</span>
+        <span>我是第3个span元</span>
+        <span>我是第4个span元</span>
+    </div>
+
+</body>
+
+</html>

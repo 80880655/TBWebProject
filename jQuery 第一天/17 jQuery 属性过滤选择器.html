@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 属性过滤选择器</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            margin: 30px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            // 时间：2021年2月24日16:19:55
+
+            // 属性选择器, 
+            $('.a1[href]').css('color','red');
+
+            // $('.a1+ a[href]').css('color','black');
+
+            // [attr=value]
+            // $("a[href='http://web.itcast.cn']").css('font-size','40px');
+
+            // [attr!=value]
+            // $("a[href!='http://www.baidu.com']").css('font-size','30px');
+
+            // [attr^=value] 以XXX开头的
+            // $("a[href!='http']").css('font-size','30px');
+
+            // [attr$=value] 以XXX结尾的
+            // $("a[href$='cn']").css('font-size','30px');
+
+            // [attr*=value]  包含XXX
+            // $("a[href*='web']").css('font-size','40px');
+
+            // [attribute1][attribute2][attribute3]
+            $("a[href][title*='移动']").css('font-size','40px');
+            $("a[href][title*='移动']").css('color','yellow');
+            
+        });
+
+
+    </script>
+
+</head>
+<body>
+    <div class="divItem">
+        <br/>
+        <a class="a1" href="http://www.baidu.com">百度默认a标签样式</a> 
+
+        <a href="http://web.itcast.cn" title="前端移动，更改后的样式">前端移动，更改后的样式</a>
+ 
+        <a href="http://www.sina.cn">新浪3，样式</a>
+
+    </div>
+
+
+</body>
+</html>

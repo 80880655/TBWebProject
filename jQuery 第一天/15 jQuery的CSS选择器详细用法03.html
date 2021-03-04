@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>15 jQuery的CSS选择器详细用法03 </title>
-</head>
-<body>
-    
-</body>
-</html>
+    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
 
+        div {
+            margin: 50px auto;
+            width: 500px;
+            border:  1px solid #ccc;
+            /* 去掉li标签的前面的小圆点 */
+            list-style: none;
+            text-align:  center;
+        }
+
+    </style>
+    <script>
+
+        $(document).ready(function(){
+
+            // 时间：2021年2月24日10:42:08
+            // document 是不被引号包裹的
+            // $('li').css("font-size",'24px');
+
+            // 1、后代选择器，使用空格; 是指选择后代的所有元素
+            $('.cdiv1 li').css("color",'blue');
+
+            // 2、子代选择器， 使用 > 符号
+            $('.cdiv2>li').css('font-size','40px');
+
+            // 3、紧邻选择器，选择紧挨着的下一个元素
+            $('.cdiv2+li').css('color','red');
+
+            // 4、兄弟选择器，使用符号 "~"
+            $('.li01~div').css('border','1px solid red');
+            $('.li01~div').css('width','200px');
+            $('.li01~div').css('height','100px');
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+    <div class="cdiv1">
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+        <li>这是第5个li</li>
+        <li>这是第6个li</li>
+        <li>这是第7个li</li>
+        <li>这是第8个li</li>
+    </div>
+    <div class="cdiv2">
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+        <li>这是第5个li</li>
+        <li>这是第6个li</li>
+        <li>这是第7个li</li>
+        <li>这是第8个li</li>
+    </div>
+
+    <li class="li01">紧挨着的li的元素，必须是兄弟级别的</li>
+
+    <div>
+        <!-- 外面有个div包裹着，这种不行，必须是兄弟级别的 -->
+        <!-- <li>紧挨着的li的元素</li> -->
+
+        兄弟01
+    </div>
+
+    <div>
+        兄弟02
+    </div>
+
+</body>
+
+</html>
