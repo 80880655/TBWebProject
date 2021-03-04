@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19 jQuery 筛选选择器02</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div{
+            margin: 50px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+    </style>
+    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            
+            // 时间：2021年3月4日10:10:07 复习 find 筛选选择器的用法
+            $('div').find('.cli02').css('background-color','yellow');
+
+
+            
+        });
+
+
+    </script>
+
+</head>
+<body>
+    <div>
+        <ul>
+            <li>这是第1个元素</li>
+            <li class="cli02">这是第2个元素</li>
+            <li>这是第3个元素</li>
+            <li>这是第4个元素</li>
+            <li>这是第5个元素</li>
+            <li>这是第6个元素</li>
+            <li>这是第7个元素</li>
+            <li>这是第8个元素</li>
+        </ul>
+    </div>
+    
+</body>
+</html>
