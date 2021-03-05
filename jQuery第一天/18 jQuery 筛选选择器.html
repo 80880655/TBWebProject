@@ -44,7 +44,7 @@
         }
 
     </style>
-    <script src="../jQuery 第一天/jquery-3.5.1.js"></script>
+    <script src="../jQuery第一天/jquery-3.5.1.js"></script>
     <script>
         /*
             时间：2021年3月4日09:25:54
@@ -78,11 +78,17 @@
 
 
             // 6、find() 筛选选择器； 是查找后代元素
-            $('div').find('#div3son').css('background-color','yellow');
+            // $('div').find('#div3son').css('background-color','yellow');
 
-            console.log($('div').find('#div3'));
+            // console.log($('div').find('#div3'));
 
 
+            // 7、children() 筛选选择器，查找儿子元素
+            $('div').children('span').eq(0).css('background-color','yellow');
+
+
+            $('div').children('span').eq(4).css('background-color','red');
+            console.log( $('div').children('span'));
 
         });
 
@@ -98,6 +104,16 @@
         <span>我是第2个span元</span>
         <span id="span3">我是第3个span元</span>
         <span>我是第4个span元</span>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div>
+            <span>儿子的儿子</span>
+        </div>
     </div>
 
     <div id="div2">
