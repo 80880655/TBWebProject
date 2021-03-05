@@ -64,7 +64,17 @@
 
         $(document).ready(function () {
 
+            /*
+                时间：2021年3月5日11:57:14  JS 和 jQuery 中的  onmouseover 和 mouseenter 的区别。
+                1、结构由于父和子的组成。
+                2、不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。
+                3、只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。
+            */   
+            
+            $('.wrap>ul>li').mouseenter(function(){
 
+                alert('1');
+            });
 
 
 
