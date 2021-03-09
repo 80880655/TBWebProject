@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23 jQuery和DOM对象相互转换</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            height: 120px;
+            margin: 30px auto;
+            background-color: black;
+            /* display: none; */
+        }
+
+    </style>
+    <script src="../jQuery第一天/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 第一种方式：DOM对象转换成jQuery对象
+            // var btn=document.getElementById('btn');
+            // // 第一种方式：DOM对象转换成jQuery对象
+            // // 如下面代码，将js DOM对象放到 $()里面，就可以获得jQuery对象了
+            // $(btn).click(function(){
+            //     // console.log(btn);
+            //     // console.log($(btn));
+
+            //     $("div").hide();
+            // });
+
+
+            // *****************************************
+            // 第二种方式
+            // js 里面的 click() 方法；触发 click 事件
+            // js 里面的 onclick 是绑定点击事件
+            // var btn=document.getElementById('btn');
+            // btn.onclick=function(){
+            //     alert('我是 btn 的onclick事件');
+            // }
+            // // 如果上面的 “onclick” 不去点击，则不会触发；但是使用下面的 btn.click() 则会自动触发。
+            // btn.click();
+
+
+            // *****************************************  
+            // jQuery 对象转换成DOM对象；  onclick 是 javascript DOM对象
+            $('button')[0].onclick=function(){
+                alert('jQuery 对象转换成DOM对象！');
+            }
+
+            $('button')[1].onclick=function(){
+                alert('第二个按钮演示');
+            }
+
+            $('button')[2].onclick=function(){
+                alert('第三个按钮演示');
+            }
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+    <button id="btn">第一按钮点击显示</button>
+
+    <div>
+        <button id="btn03">第二个按钮演示</button>
+    </div>
+
+    <button id="btn02">第三个按钮演示</button>
+
+
+    
+</body>
+</html>
