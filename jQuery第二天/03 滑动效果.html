@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 滑动效果</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('div').css({
+                "height": "50px",
+                "width": "400px",
+                // "background": "gold",
+                "margin": "50px auto"
+            });
+
+            $('.cdiv').css({
+                "height": "300px",
+                "width": "400px",
+                "background": "gold",
+                "margin": "50px auto"
+            });
+
+            // 设置 button按钮 的默认样式
+            $('button').css({
+                "width": "120px",
+                "height": "30px",
+                "font-size": "14px",
+                "color": "red",
+                "margin":"0 10px 0 0"
+            });
+
+
+            // $('button').eq(0).click(function(){
+            //     alert('下拉 按钮');
+
+            // });
+                
+
+
+            $('button').eq(1).click(function(){
+                alert('上拉 按钮');
+                
+            });
+
+            $('button').eq(2).click(function(){
+                alert('切换 按钮');
+                
+            });
+
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <!-- <button>下拉</button> -->
+        <input type="button" value="下拉">
+        <button>上拉</button>
+        <button>切换</button>
+    </div>
+
+    <div class="cdiv">
+
+    </div>
+
+</body>
+
+</html>

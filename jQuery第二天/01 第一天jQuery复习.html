@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 第一天jQuery复习</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            
+        }
+
+    </style>
+    <script src="../jQuery第一天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            /*
+                时间：2021年3月9日16:00:55 对比一下 jQuery和 eq 和 get 方法对象是否一样
+                1、.eq(index) 获取到 jQuery 对象
+                2、.get(index) 获取到的是DOM对象
+            */
+           var $div=$('div').eq(0).css({
+               // 这里面的键值对，键 可以带双引号或单引号，也可以不带引号
+               // 重点： 一些不合法的变量名，可以使用加引号的方式来声明
+               "font-size":"40px"
+           });
+           console.log($div);
+           console.log($div.prevObject[1]);
+
+
+           // 这里获取的是 DOM对象，
+        //    下面这句是错误的，因为 .get(index) 方法获取的是DOM， DOM对象没有css这个方法
+        //    $("div").get(1).css('font-size','40px');
+           var divDom=$('div').get(0);
+           console.log(divDom);
+
+           var divDom2=$('div').first();
+           console.log(divDom2);
+
+           var divDom3=$('div').last().css({
+            'font-size':'40px',
+            'background-color':'red'
+           });
+           console.log(divDom3);
+
+
+            
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <div>这里是DIV1</div>
+    <div id="div02">这里是DIV2</div>
+    <div>这里是DIV3</div>
+    
+</body>
+</html>

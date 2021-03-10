@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 动画show和hide</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            /*
+             时间：2021年3月9日17:08:56
+                 1、在jQuery的入口函数里面直接 设置写入CSS 样式。
+                 2、使用 "'button:last'" 的样式。
+            */
+
+            // 设置div的默认样式
+            $('div').css({
+                "display": "none",
+                "height": "200px",
+                "width": "300px",
+                "background": "gold",
+                "margin": "50px auto"
+            });
+
+            // 设置 button按钮 的默认样式
+            $('button').css({
+                "width": "120px",
+                "height": "30px",
+            });
+
+            // 获取第一按钮
+            $('button').eq(0).click(function () {
+                // 让div展示出来
+                // show 方法
+
+                // 动画1： show
+                // $('div').show(500);     // 毫秒作为单位
+
+                // 动画2： slow \normal \fast
+                // $('div').show('slow');
+                // $('div').show('normal');
+                // $('div').show('fast');
+
+
+                // 动画3： 回调函数
+                $('div').show('fast',
+                    // "swing",
+                    function () {
+                        // alert('回调函数，show动画执行完毕');
+                        $('div').hide('normal');
+                    }
+                );
+            });
+
+
+
+            // 隐藏
+            $('button:last').click(function () {
+                //   让div隐藏
+                // $('div').hide(500);
+
+                $('div').hide('normal');
+
+            });
+
+
+
+        });
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <button>显示</button>
+    <button>隐藏</button>
+
+    <div></div>
+
+</body>
+
+</html>
