@@ -23,7 +23,8 @@
                 "margin": "50px auto"
             });
 
-            $('.cdiv').css({
+            $('.divItem').css({
+                "display":"none",
                 "height": "300px",
                 "width": "400px",
                 "background": "gold",
@@ -36,25 +37,41 @@
                 "height": "30px",
                 "font-size": "14px",
                 "color": "red",
-                "margin":"0 10px 0 0"
+                "margin": "0 10px 0 0"
             });
 
+            // 使用下面筛选的方式获取jQuery对象
+            $("input[type='button']").css(
+                {
+                    "width": "120px",
+                    "height": "30px",
+                    "font-size": "14px",
+                    "color": "red",
+                    "margin": "0 10px 0 0"
+                }
+            );
 
             // $('button').eq(0).click(function(){
             //     alert('下拉 按钮');
-
             // });
-                
 
+            $("input[type='button']").click(function () {
+                // alert('input[type=button] 方式获取的按钮' );
 
-            $('button').eq(1).click(function(){
-                alert('上拉 按钮');
-                
+                // 元素如果是隐藏，则使用  slideDown 则显示出来。
+                $('.divItem').slideDown(1000);
+
             });
 
-            $('button').eq(2).click(function(){
+
+            $('button').eq(1).click(function () {
+                alert('上拉 按钮');
+
+            });
+
+            $('button').eq(2).click(function () {
                 alert('切换 按钮');
-                
+
             });
 
 
@@ -72,7 +89,7 @@
         <button>切换</button>
     </div>
 
-    <div class="cdiv">
+    <div class="divItem">
 
     </div>
 
