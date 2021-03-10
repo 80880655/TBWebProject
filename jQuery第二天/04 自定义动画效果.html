@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 自定义动画效果</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+
+        // 2021年3月10日11:08:01 jQuery 入口函数写法2：
+        $(function(){
+
+            $('div:first').css({
+                "height":"40px",
+                "width":"400px",
+                "margin":"10px auto",
+            });
+
+            $('div:last').css({
+                "height":"300px",
+                "width":"800px",
+                "margin":"30px auto",
+                "border":"1px solid #ccc",
+                "background-color":"gold",
+            });
+
+            $('button').css({
+                "height":"30px",
+                "width":"100px",
+                "color":"red"
+            });
+
+
+            // 自定义动画效果
+            $('button:eq(0)').click(function(){
+                $('.divItem').animate({
+                    "width":"600px",
+                    "height":"500px",
+                    "opacity":"0.2",
+                    // "background-color":"green",
+                },
+                800
+                );
+            });
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+
+    <div>
+        <button>自定义动画</button>
+
+    </div>
+
+    <div class="divItem"></div>
+
+    
+</body>
+</html>
