@@ -10,25 +10,30 @@
         * {
             padding: 0;
             margin: 0;
+            
         }
     </style>
     <script src="../jQuery第二天/jquery-3.5.1.js"></script>
     <script>
 
         $(document).ready(function () {
-            $('div').css({
+            $('div:first').css({
                 "height": "50px",
                 "width": "400px",
                 // "background": "gold",
-                "margin": "50px auto"
+                "margin": "30px auto",
+                "margin-bottom":"20px",
+                // "float":"left"
             });
 
             $('.divItem').css({
                 "display":"none",
-                "height": "300px",
-                "width": "400px",
+                "height": "200px",
+                "width": "300px",
                 "background": "gold",
-                "margin": "50px auto"
+                "margin": "30px auto",
+                "float":"left",
+                "margin-right":"100px"
             });
 
             // 设置 button按钮 的默认样式
@@ -59,19 +64,40 @@
                 // alert('input[type=button] 方式获取的按钮' );
 
                 // 元素如果是隐藏，则使用  slideDown 则显示出来。
-                $('.divItem').slideDown(1000);
+                // $('.divItem').slideDown(1000);
 
+                // 第一个参数是：动画执行的时长
+                // 第二个参数是： 用来指定切换效果，默认是"swing"，可用参数"linear"
+                // 第三个参数是：动画执行完毕后要执行的函数
+
+                $('.divItem:first').slideDown(2000,'linear',function(){ 
+                    // alert('1');
+                });
+
+                $('.divItem:last').slideDown(2000,'swing',function(){ 
+                    // alert('1');
+                });
+
+            });
+
+
+
+            // 2021年3月10日09:57:23 下面也可以写成
+            // 方式1
+            // $('button').eq(1).click(function () {
+            //     alert('上拉 按钮');
+            // });
+
+            // 方式2：  上拉效果
+            $('button:first').click(function(){
+                // alert('2');
+                $('.divItem:first').slideUp(1000);
             });
 
 
             $('button').eq(1).click(function () {
-                alert('上拉 按钮');
-
-            });
-
-            $('button').eq(2).click(function () {
-                alert('切换 按钮');
-
+                // alert('切换 按钮');
+                $('.divItem').slideToggle();
             });
 
 
@@ -87,6 +113,10 @@
         <input type="button" value="下拉">
         <button>上拉</button>
         <button>切换</button>
+    </div>
+
+    <div class="divItem">
+
     </div>
 
     <div class="divItem">
