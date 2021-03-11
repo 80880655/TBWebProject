@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 jQuery 样式操作</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .divItems {
+            color: blue;
+            background-color: gold;
+            margin: 50px auto;
+            width: 300px;
+            height: 400px;
+            list-style: none;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .liItems {
+            padding-top: 10px;
+        }
+
+        .divItems2 {
+            font-size: 40px;
+            font-weight: 200;
+            color: black;
+        }
+
+        .divItems3 {
+            background-color: blue;
+            padding-top: 50px;
+            color: red;
+        }
+
+
+    </style>
+    <script src="../jQuery第一天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            // $('li').css('font-size','18px');
+            // $('li').css({
+            //     'background':'gold',
+            //     'color':'black'
+            // });
+            // var fontSize=$('li').css('font-size');
+            // console.log(fontSize);
+
+
+            /*
+                时间：2021年3月11日08:28:05
+                1、jQuery 如果要设置样式，要一个个设置。
+                2、是否可以直接点，省略点代码？ 
+                3、直接使用 jQuery 的 “样式操作”方法来添加样式。
+            */
+
+            // 1、添加样式： 给选定的元素添加 类样式、 注意： 只会添加 类的名字， 是没有带上 “点”的。
+            $('ul').addClass('divItems');
+            $('li').addClass('liItems');
+
+
+            // 2、清除样式； 使用参数 和 不使用参数
+            // 不使用参数，会将当前所有css 样式全部清除掉
+            // $('li').eq(2).removeClass();
+
+            // 3、给指定的元素删除某个样式； 使用参数，清除指定的样式
+            // 如果指定的样式该元素不存在，那么将不删除任何样式（类）
+            // $('li').eq(2).removeClass('divItems2');
+
+
+            
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+        <ul>
+            <li>测试样式1</li>
+            <li>测试样式2</li>
+            <li class="divItems2 divItems3">测试样式3</li>
+            <li>测试样式4</li>
+            <li>测试样式5</li>
+            <li>测试样式6</li>
+            <li>测试样式7</li>
+            <li>测试样式8</li>
+        </ul>
+
+    
+</body>
+</html>

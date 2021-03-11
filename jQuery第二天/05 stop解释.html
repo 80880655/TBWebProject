@@ -51,10 +51,14 @@
                 $("div").animate({ width: '500px' }, 5000);
             });
 
+
+            // 停止当前动画，继续执行队列的动画; 默认为 false
             $("#stop").click(function () {
                 $("div").stop();
+                // $("div").stop(false);
             });
 
+            // 停止当前动画，病情况后续队列中的所有动画
             $("#stop2").click(function () {
                 $("div").stop(true);
             });
