@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24 jQuery 样式操作</title>
+    <title>06 jQuery 样式操作</title>
     <style>
         * {
             padding: 0;
@@ -74,6 +74,29 @@
             // 如果指定的样式该元素不存在，那么将不删除任何样式（类）
             // $('li').eq(2).removeClass('divItems2');
 
+            // 4、切换样式   
+            $("input[type='button']").eq(0).click(function(){
+                // alert('1');
+
+                // 有参数
+                // $('li').eq(2).toggleClass('divItems3');
+
+                // 无参数，会根据原本的样式进行来回切换
+                $('li').eq(2).toggleClass();
+            });
+
+            // 5、判断样式是否存在
+            $("input[type='button']").eq(1).click(function(){
+
+                // alert('2');
+                // Document.write()
+                // $(document.write('222'));
+
+                var isHasClass= $('li').eq(2).hasClass('divItems3');
+
+                console.log(isHasClass);
+
+            });
 
             
         });
@@ -83,6 +106,11 @@
 
 </head>
 <body>
+
+    <div style="margin: 30px auto;width: 300px;height: 30px;">
+        <input type="button" style="width: 120px;height: 30px;" value="切换样式">
+        <input type="button" style="width: 120px;height: 30px;" value="判断样式是否存在">
+    </div>
 
         <ul>
             <li>测试样式1</li>
