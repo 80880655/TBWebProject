@@ -92,9 +92,18 @@
                 // Document.write()
                 // $(document.write('222'));
 
-                var isHasClass= $('li').eq(2).hasClass('divItems3');
+                // var isHasClass= $('li').eq(2).hasClass('divItems3');
 
-                console.log(isHasClass);
+                // console.log(isHasClass);
+
+
+                // 通过下面方法可以来判断当前指定的样式是否存在
+                var isHasClass= $('li').eq(2).hasClass('divItems3');
+                if(isHasClass){
+                    $('li').eq(2).removeClass('divItems3');
+                }else{
+                    $('li').eq(2).addClass('divItems3');
+                }
 
             });
 

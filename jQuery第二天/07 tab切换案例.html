@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 tab切换案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        div,
+        ul,
+        li,
+        ol,
+        dl,
+        dt,
+        p,
+        dd,
+        img,
+        input,
+        a,
+        span,
+        h1,
+        h2,
+        h3,
+        h4 {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 1000px;
+            height: 475px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .tab {
+            border: 1px solid #ddd;
+            border-bottom: 0;
+            height: 36px;
+            width: 320px;
+        }
+
+        .tab li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+            /* 切换栏上面的 红色底块 */
+            border-top: 4px solid #fff;
+        }
+
+        .tab span {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background: #ddd;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .products {
+            width: 1002px;
+            border: 1px solid #ddd;
+            height: 476px;
+        }
+
+        .products .main {
+            float: left;
+            display: none;
+        }
+
+        /* tab 选中后，出现对应的 div 内容，这里使用的是 selected 样式 */
+        .products .main.selected {
+            display: block;
+        }
+
+        .tab li.active {
+            border-color: red;
+            border-bottom: 0;
+        }
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+        // 入口函数
+        $(function () {
+
+            //1、鼠标移上去
+            // $('.tab > li').mouseenter(function(){
+            //     let ss=$('.tab').children().length;
+            //     // console.log(ss);
+            //     for (let index = 0,maxindex=ss.length-1; index < ss; index++) {
+            //         $('.tab').children().eq(index).addClass('active');
+
+            //         // if(!$('.tab').children().eq(index).hasClass('active')){
+            //         //     $('.tab').children().eq(index).addClass('active');
+            //         // }          
+            //     }
+            // });
+
+            // $('.tab > li').mouseleave(function(){
+            //     let ss=$('.tab').children().length;
+            //     // console.log(ss);
+            //     for (let index = 0,maxindex=ss.length-1; index < ss; index++) {
+            //         if($('.tab').children().eq(index).hasClass('active')){
+            //             $('.tab').children().eq(index).removeClass('active');
+            //         }          
+            //     }
+            // });
+
+
+            // 时间：2021年3月11日11:13:22 重做
+            //1、鼠标移上去
+            $('.tab > li').mouseenter(function () {
+
+                // 思路：
+                //     1、给当前元素添加 active 这个样式
+                //     2、给当前这个元素的所有兄弟元素移除 active 这个样式
+
+                // 第一步，获取这个元素 li  ， 使用 $(this)
+                // console.log($(this).next());
+
+                // 第二步，给这个 li 全部增加上 active 样式，然后在移除 其他兄弟的 这个样式即可。
+
+                // console.log($(this));
+                // console.log($(this).siblings());
+
+                // 第三步，给li全部增加 active 样式，然后在移除所有的 active 样式； 即可实现这个效果
+                $(this).addClass('active').siblings().removeClass('active');
+
+                // 第四步，让下面的 div 的内容，根据上面的 tab 栏菜单展示相应的内容
+                var selectIndex = $(this).index();
+
+                // $('products').eq(selectIndex).addClass('selected');
+                // console.log($('.main'));
+
+                $('.main')
+                    .eq(selectIndex)
+                    .addClass('selected')
+                    .siblings("div")
+                    .removeClass("selected");
+
+                // $(".products div").eq(selectIndex).addClass("selected").siblings("div").removeClass("selected");
+
+
+            });
+
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul class="tab">
+            <li class="tab-item active">国际大牌<span>◆</span></li>
+            <li class="tab-item">国妆名牌<span>◆</span></li>
+            <li class="tab-item">清洁用品<span>◆</span></li>
+            <li class="tab-item">男士精品</li>
+        </ul>
+        <div class="products">
+            <div class="main selected">
+                <a href="###"><img src="../jQuery第二天/imgs/guojidapai.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="../jQuery第二天/imgs/guozhuangmingpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="../jQuery第二天/imgs/qingjieyongpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="../jQuery第二天/imgs/nanshijingpin.jpg" alt="" /></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 获取当前鼠标点击的元素序列号</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+            margin: 80px;
+        }
+        ul li {
+            padding-bottom: 10px;    
+        }
+
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            // .index()方法来获取当前用户点击的 “元素序号”
+            // 获取当前这个元素的序号
+
+            $('li').click(function(){
+                // alert('111');
+
+                // 这种是获取不了 li 的元素序号
+                // console.log($('li').index());    // // 永远输出 0
+
+                // 必须使用 jQuery 的 $(this) 来获取当前 click 的序号
+                console.log($(this).index());
+
+            });
+
+            
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <ul>
+        <li>我是第1个元素</li>
+        <li>我是第2个元素</li>
+        <li>我是第3个元素</li>
+        <li>我是第4个元素</li>
+        <li>我是第5个元素</li>
+        <li>我是第6个元素</li>
+        <li>我是第7个元素</li>
+    </ul>
+    
+</body>
+</html>
