@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 外部操作节点</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .buttonGroup {
+            margin: 50px auto;
+            width: 200px;
+            height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding:5px 5px 5px 5px; 
+        }
+
+        .context {
+            margin: 5px auto;
+            width: 350px;
+            height: 250px;
+            background-color: yellow;
+            font-size: 14px;
+            border:1px solid red;
+            border-radius: 15px;
+        }
+
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(function(){
+            // console.log(jQuery.fn);
+            
+            // $('div').after(node)   // 1、在div后面添加兄弟节点node
+            $('button:eq(0)').click(function(){
+                //往div的后面添加元素，他们是兄弟关系
+                $('.context').after("<div>在div后面添加兄弟节点node<div>");
+            });
+
+            // $('div').before(node)   // 2、在div前面添加兄弟节点node
+            $('button:eq(1)').click(function(){
+                // 往div的前面添加元素，他们是兄弟关系
+                $('.context').before("<div>在div 前面添加兄弟节点node<div>");
+            });
+
+            // $('div').insertBefore(node)   // 3、把div插入到node前面
+            $('button:eq(2)').click(function(){
+
+                // 此时还没有div，故界面消失不显示
+                // $('div').insertBefore('<div>3、把div插入到node前面<div>');
+
+                // 2种写法都可以
+                // $('<div>3、把div插入到node前面<div>').insertBefore('.context');
+
+                $('<div>3、把div插入到node前面<div>').insertBefore($('.context'));
+                    
+            });
+
+            // $('div').insertAfter(node)   // 4、把div追加到node后面
+            $('button:eq(3)').click(function(){
+
+                $('<div>4、把div追加到node后面<div>').insertAfter('.context');
+            });
+
+
+
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <div class="buttonGroup">
+        <button>1、在div后面添加兄弟节点node</button>
+        <button>2、在div前面添加兄弟节点node</button>
+        <button>3、把div插入到node前面</button>
+        <button>4、把div追加到node后面</button>
+    </div>
+
+    <div class="context">
+        <h3>分割线</h3>
+    </div>
+    
+</body>
+</html>

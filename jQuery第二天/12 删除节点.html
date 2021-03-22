@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 删除节点</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .buttonGroup {
+            margin: 50px auto;
+            width: 400px;
+            height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding:5px 5px 5px 5px; 
+        }
+
+        .context {
+            margin: 5px auto;
+            width: 350px;
+            height: 250px;
+            background-color: yellow;
+            font-size: 14px;
+            border:1px solid red;
+            border-radius: 15px;
+        }
+
+    </style>
+    <script src="../jQuery第二天/jquery-3.5.1.js"></script>
+    <script>
+
+        $(function(){
+            // 1、删除节点； $('div').remove();   // 删除选中的元素, "自杀"
+            $('button:eq(0)').click(function(){
+                $('.context').remove();
+
+            });
+
+            // 2、清空子元素 empty ; $('div').empty();   //清空子元素
+            $('button:eq(1)').click(function(){
+                $('.context').empty();
+            });
+
+            // 3、复制节点;  clone(默认为false)； 分为 深复制 和 浅复制 
+            $('p').click(function(){
+                alert('这是p元素的单击事件！');
+            });
+
+
+            $('button:eq(2)').click(function(){
+                // $('.context').clone();
+
+                // $('.context').append($('.context').clone());
+
+                // 浅复制
+                $('.context').append($('p').clone());
+
+                // 深复制
+                // $('.context').append($('p').clone(true));
+
+            });
+
+            //4、wrap包裹元素;  $('div').wrap(node)  //包裹 单个包裹 ； 可以是类 也可以是具体的元素
+            $('button:eq(3)').click(function(){
+
+                // 2种方法都可以
+                // $('p').wrap('<div>wrap包裹元素</div>');
+
+                $('p').wrap('.divitem');
+            });
+
+
+            // 5、wrapAll 包裹所有元素
+            $('button:eq(4)').click(function(){
+                $('ul').wrapAll('<div>测试wrapAll 包裹所有元素</div>');
+            });
+
+            // 6、$('div').replaceWith(node));   //将所有匹配的元素替换成指定的HTML或DOM元素。
+            $('button:eq(5)').click(function(){
+                $('li').replaceWith('<div> 测试 replaceWith </div>');
+
+            });
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <div class="buttonGroup">
+        <button>删除节点;删除选中的元素, "自杀"</button>
+        <button>清空子元素empty</button>
+        <button>复制节点</button>
+        <button>wrap 包裹节点</button>
+        <button>wrapAll 所有包裹在一个node中</button>
+
+        <button>replaceWith 将所有匹配的元素替换成指定的HTML或DOM元素</button>
+
+    </div>
+
+    <div class="context">
+        <h3>分割线1</h3>
+        <h3>分割线2</h3>
+        <h3>分割线3</h3>
+        <h3>分割线4</h3>
+    </div>
+
+    <p>这是外面的p元素，用于复制</p>
+
+    <div class="divitem">
+        div类对象来包裹
+    </div>
+
+    <ul>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+        <li>测试wrapAll</li>
+    </ul>
+    
+</body>
+</html>
